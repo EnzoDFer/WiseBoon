@@ -1,6 +1,11 @@
 .layout {
   display: flex;
   flex-direction: row;
-  gap: 3px;
+  gap: 12px;
   margin-bottom: 1rem;
 }
+
+.layout>h1{
+  margin-right: auto;
+}
+
