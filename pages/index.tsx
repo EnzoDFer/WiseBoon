@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Container from '../components/ui/Container/Container'
+import Header from '../components/ui/Header/Header'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -12,6 +13,9 @@ export default function Home() {
         <meta name="description" content="Track your expenses and keep your budget tight!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header>
+        
+      </Header>
     </Container>
   )
 }
