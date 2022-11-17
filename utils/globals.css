@@ -1,6 +1,6 @@
 :root {
   --mainGreen: #07F858;
-  --darkGreen: #05be44;
+  --darkGreen: #007628;
 }
 
 html,
@@ -18,7 +18,7 @@ a {
 
 * {
   box-sizing: border-box;
-  
+  font-family: sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

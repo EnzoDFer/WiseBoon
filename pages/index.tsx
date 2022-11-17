@@ -16,12 +16,12 @@ export default function Home() {
         <Button
           type='fill'
         >
-          Add new Budget
+          Add Budget
         </Button>
         <Button
           type='outline'
         >
-          Add new expense
+          Add Expense
         </Button>
       </Header>
     </Container>
