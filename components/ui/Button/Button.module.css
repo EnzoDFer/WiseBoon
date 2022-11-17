@@ -9,7 +9,7 @@
 
 .baseButton:hover {
   background: var(--darkGreen);
-  border: 1px solid var(--mainGreen);
+  border: 1px solid var(--darkGreen);
   color: white;
 }
 
