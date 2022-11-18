@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: normal;
+  margin-bottom: 1rem;
+
+  &>title{
+    margin-right: auto;
+  }
+}
+
+.card {
+  border: 1px solid rgb(0,0,0,.1);
+  border-radius: 4px;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.balanceDisplayWrapper {
+  display: flex;
+  align-items: baseline;
+
+  &>#max {
+    font-size: 1rem;
+    color: purple;
+  }
+}
