@@ -24,10 +24,10 @@ const CardTitle = (
   {title:string, current: number, maximum: number}
 ): JSX.Element => {
   return(
-    <title
+    <div
       className={styles.title}
     >
-      {title}
+      <title>{title}</title>
       <div
         className={styles.balanceDisplayWrapper}
       >
@@ -38,6 +38,6 @@ const CardTitle = (
           / {usdFormatter.format(maximum)}
         </span>
       </div>
-    </title>
+    </div>
   );
 }
