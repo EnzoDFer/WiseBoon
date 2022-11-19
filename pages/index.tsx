@@ -3,9 +3,11 @@ import Container from '../components/ui/Container/Container';
 import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
-import { BudgetsProvider } from '../contexts/BudgetsContext';
+import { BudgetsProvider, IBudget, useBudget } from '../contexts/BudgetsContext';
 
 export default function Home() {
+  const {budgets} = useBudget();
+
   return (
     <BudgetsProvider>
       <Container>
@@ -27,11 +29,14 @@ export default function Home() {
             Add Expense
           </Button>
         </Header>
-        <BudgetCard
-          title={'title'}
-          current={200}
-          maximum={4000}
-        />
+        {budgets.map((budget:IBudget, index: number)=>{
+          <BudgetCard
+            key={`card ${index}`}
+            title={budget.name}
+            current={200}
+            maximum={budget.max}
+          />
+        })}
       </Container>
     </BudgetsProvider>
   )

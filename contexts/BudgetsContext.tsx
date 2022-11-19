@@ -7,6 +7,7 @@ interface IBudgetContext {
   budgets: IBudget[],
   expenses: IExpense[],
   getBudgetExpenses: (arg0: string)=>(IExpense | undefined)[],
+  getBudgetExpenseTotal: (budgetId:string) => number,
   addBudget: ({name, max}: {name:string, max: number}) => void,
   addExpense: ({budgetId, amount, description}:{budgetId: string, amount: number, description: string}) => void,
   deleteBudget: (id:string) => void,
@@ -19,7 +20,7 @@ export function useBudget() {
 
 //Provider component for the Budgets context
 export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Element => {
-  
+
   const [budgets, setBudgets] = useState<IBudget[]>([]);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
@@ -27,6 +28,15 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
     return expenses.map((expense: IExpense)=> {
       if (expense.budgetId===budgetId) return expense;
     },[] as IExpense[])
+  }
+
+  function getBudgetExpenseTotal(budgetId:string):number {
+    return expenses.reduce<number>((total:number, currentExpense:IExpense): number => {
+      if (currentExpense.budgetId===budgetId) {
+        return total + currentExpense.amount;
+      }
+      return total;
+    },0)
   }
   
   function addExpense(
@@ -68,6 +78,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
         budgets: budgets,
         expenses: expenses,
         getBudgetExpenses: getBudgetExpenses,
+        getBudgetExpenseTotal: getBudgetExpenseTotal,
         addBudget: addBudget,
         addExpense: addExpense,
         deleteBudget: deleteBudget,
@@ -79,13 +90,13 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   );
 }
 
-interface IBudget {
+export interface IBudget {
   id: string,
   name: string,
   max: number
 }
 
-interface IExpense {
+export interface IExpense {
   id: string,
   budgetId: string,
   amount: number,
