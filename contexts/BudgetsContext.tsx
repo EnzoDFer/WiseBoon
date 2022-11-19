@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { warn } from "console";
+import { createContext, useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
-const BudgetsContext = useContext();
+const BudgetsContext = createContext();
 
 export function useBudget() {
   return useContext(BudgetsContext);
@@ -17,12 +18,27 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
 
   }
   
-  function addExpense() {
-
+  function addExpense(
+    {budgetId, amount, description}: 
+    {budgetId: string, amount: number, description: string}
+  ): void {
+    const newExpense:IExpense = {
+      id: uuidV4(),
+      budgetId: budgetId,
+      amount: amount,
+      description: description
+    }
+    setExpenses([...expenses,newExpense]);
   }
 
-  function addBudget() {
-
+  function addBudget({name, max}: {name: string, max: number}): void {
+    if (name in budgets) throw warn('Budget already exists.  Please enter unique name.');
+    const newBudget = {
+      id: uuidV4(),
+      name: name,
+      max: max,
+    }
+    setBudgets([...budgets,newBudget])
   }
 
   function deleteBudget() {
@@ -45,13 +61,13 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
 }
 
 interface IBudget {
-  id: number,
+  id: string,
   name: string,
   max: number
 }
 
 interface IExpense {
-  id: number,
+  id: string,
   budgetId: string,
   amount: number,
   description: string
