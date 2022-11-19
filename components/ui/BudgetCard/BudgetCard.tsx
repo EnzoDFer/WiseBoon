@@ -16,8 +16,8 @@ export default function BudgetCard(
         maximum={maximum}
       />
       <ProgressBar
-        current={20}
-        total={100}
+        current={current}
+        total={maximum}
       />
     </div>
   )
