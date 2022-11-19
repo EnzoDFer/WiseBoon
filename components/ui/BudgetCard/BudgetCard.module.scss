@@ -14,7 +14,7 @@
 .card {
   border: 1px solid rgb(var(--darkGreenRGB),0.5);
   background-color: rgb(var(--mainGreenRGB),0.15);
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 1rem;
   font-size: 1.75rem;
 }
@@ -29,4 +29,10 @@
   margin-left: 3px;
   font-size: 1.25rem;
   color: rgb(var(--darkGreenRGB),.8);
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
 }

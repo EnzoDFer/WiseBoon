@@ -1,7 +1,7 @@
 .baseButton {
   cursor: pointer;
   border-radius: 8px;
-  padding: 0 1rem;
+  padding: 1rem;
   border: 1px solid var(--darkGreen);
   color: white;
   margin: 1rem 0;

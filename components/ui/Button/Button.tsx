@@ -3,7 +3,7 @@ import styles from "./Button.module.css"
 
 export default function Button(
   {children,type}:
-  {children:ReactNode,type:"fill"|"outline"}
+  {children?:ReactNode,type:"fill"|"outline"}
 ) {
   return (
     <button

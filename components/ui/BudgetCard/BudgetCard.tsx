@@ -1,6 +1,7 @@
 import styles from "./BudgetCard.module.scss";
 import { usdFormatter } from "../../../utils/formatCurrency";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import Button from "../Button/Button";
 
 export default function BudgetCard(
   {title, current, maximum}:
@@ -19,6 +20,12 @@ export default function BudgetCard(
         current={current}
         total={maximum}
       />
+      <div
+        className={styles.buttonWrapper}
+      >
+        <Button type={"outline"}>Add Expense</Button>
+        <Button type={"outline"}>View Expenses</Button>
+      </div>
     </div>
   )
 }
