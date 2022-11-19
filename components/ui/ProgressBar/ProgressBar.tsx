@@ -6,7 +6,7 @@ export default function ProgressBar({current,total}:{current:number,total:number
 
   useEffect(()=>{
     setProgress(current/total);
-  })
+  },[current,total])
 
   return (
     <div
