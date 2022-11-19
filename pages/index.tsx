@@ -20,7 +20,7 @@ export default function Home() {
     <>  
       <BudgetModal
         opened={true}
-        setOpened={()=>setBudgetModal}
+        setOpened={setBudgetModal}
       />
       <Container>
         <Head>
