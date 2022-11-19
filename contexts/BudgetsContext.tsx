@@ -1,18 +1,29 @@
-import { Context, createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
-
-const BudgetsContext:Context<IBudgetContext> = createContext<IBudgetContext>({} as IBudgetContext);
 
 interface IBudgetContext {
   budgets: IBudget[],
   expenses: IExpense[],
-  getBudgetExpenses: (arg0: string)=>(IExpense | undefined)[],
+  getBudgetExpenses: (budgetId: string)=>(IExpense | undefined)[],
   getBudgetExpenseTotal: (budgetId:string) => number,
   addBudget: ({name, max}: {name:string, max: number}) => void,
   addExpense: ({budgetId, amount, description}:{budgetId: string, amount: number, description: string}) => void,
   deleteBudget: (id:string) => void,
   deleteExpense: (id:string) => void,
 }
+
+const defaultContext: IBudgetContext = {
+  budgets: [],
+  expenses: [],
+  getBudgetExpenses: ()=>[],
+  getBudgetExpenseTotal: () => 0,
+  addBudget: () => {},
+  addExpense: () => {},
+  deleteBudget: () => {},
+  deleteExpense: () => {},
+}
+
+const BudgetsContext = createContext<IBudgetContext>(defaultContext);
 
 export function useBudget() {
   return useContext(BudgetsContext);
@@ -21,7 +32,7 @@ export function useBudget() {
 //Provider component for the Budgets context
 export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Element => {
 
-  const [budgets, setBudgets] = useState<IBudget[]>([{id:'1',max:1000,name:'test'}]);
+  const [budgets, setBudgets] = useState<IBudget[]>([]);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
   function getBudgetExpenses(budgetId:string):(IExpense | undefined)[] {

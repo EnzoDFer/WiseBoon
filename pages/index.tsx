@@ -3,7 +3,8 @@ import Container from '../components/ui/Container/Container';
 import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
-import { BudgetsProvider, IBudget, useBudget } from '../contexts/BudgetsContext';
+import { IBudget, useBudget } from '../contexts/BudgetsContext';
+import { useEffect } from 'react';
 
 export default function Home() {
   const {
@@ -13,45 +14,47 @@ export default function Home() {
     addExpense,
   } = useBudget();
 
+  useEffect(()=>{
+    console.log('rerendering');
+  },[budgets])
+
   return (
-    <BudgetsProvider>
-      <Container>
-        <Head>
-          <title>Budget Tracker</title>
-          <meta name="description" content="Track your expenses and keep your budget tight!" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Header>
-          <h1>Budget</h1>
-          <Button
-            type='fill'
-            onClick={()=>addBudget({
-              name:'test',
-              max:1000
-            })}
-          >
-            Add Budget
-          </Button>
-          <Button
-            type='outline'
-            onClick={()=>addExpense({
-              budgetId:budgets[0].id,
-              amount: 50,
-              description:'this is a test'
-            })}
-          >
-            Add Expense
-          </Button>
-        </Header>
-        {budgets && budgets.map((budget:IBudget, index: number)=>{
-          return <BudgetCard
-            key={`card ${index}`}
-            title={budget.name}
-            current={getBudgetExpenseTotal(budget.id)}
-            maximum={budget.max}
-          />
-        })}
-      </Container>
-    </BudgetsProvider>
+    <Container>
+      <Head>
+        <title>Budget Tracker</title>
+        <meta name="description" content="Track your expenses and keep your budget tight!" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Header>
+        <h1>Budget</h1>
+        <Button
+          type='fill'
+          onClick={()=>addBudget({
+            name:'test',
+            max:1000
+          })}
+        >
+          Add Budget
+        </Button>
+        <Button
+          type='outline'
+          onClick={()=>addExpense({
+            budgetId:budgets[0].id,
+            amount: 50,
+            description:'this is a test'
+          })}
+        >
+          Add Expense
+        </Button>
+      </Header>
+      {budgets.map((budget:IBudget, index: number)=>{
+        return <BudgetCard
+          key={`card ${index}`}
+          title={budget.name}
+          current={getBudgetExpenseTotal(budget.id)}
+          maximum={budget.max}
+        />
+      })}
+    </Container>
   )
 }
