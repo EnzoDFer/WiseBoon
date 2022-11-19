@@ -40,7 +40,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
 
   function addBudget({name, max}: {name: string, max: number}): void {
     if (name in budgets) throw warn('Budget already exists.  Please enter unique name.');
-    const newBudget = {
+    const newBudget:IBudget= {
       id: uuidV4(),
       name: name,
       max: max,
@@ -48,12 +48,14 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
     setBudgets([...budgets,newBudget])
   }
 
-  function deleteBudget() {
-
+  function deleteBudget(id:string): void {
+    const filteredBudget:IBudget[] = filterById(budgets,id);
+    setBudgets(filteredBudget);
   }
 
-  function deleteExpense() {
-
+  function deleteExpense(id: string): void {
+    const filteredExpenses: IExpense[] = filterById(expenses,id);
+    setExpenses(filteredExpenses);
   }
   
   return(
@@ -79,4 +81,8 @@ interface IExpense {
   budgetId: string,
   amount: number,
   description: string
+}
+
+function filterById<T extends {id:string}>(myArray:T[],id:string):T[] {
+  return myArray.filter((ele:T) => ele.id!==id);
 }
