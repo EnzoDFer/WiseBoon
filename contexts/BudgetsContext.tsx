@@ -2,12 +2,7 @@ import { warn } from "console";
 import { Context, createContext, useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
-interface IBudgetsContext {
-  budgets: IBudget[],
-  expenses: IExpense[],
-}
-
-const BudgetsContext = createContext();  // has to include all things included in provider value
+const BudgetsContext: Context<{}> = createContext({});
 
 export function useBudget() {
   return useContext(BudgetsContext);
@@ -61,7 +56,13 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   return(
     <BudgetsContext.Provider value={
         {
-
+          budgets,
+          expenses,
+          getBudgetExpenses,
+          addBudget,
+          addExpense,
+          deleteBudget,
+          deleteExpense
         }
       }
     >
