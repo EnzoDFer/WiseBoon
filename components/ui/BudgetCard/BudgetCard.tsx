@@ -33,7 +33,7 @@ const CardTitle = (
       >
         {usdFormatter.format(current)} 
         <span
-          id='max'
+          id={styles.max}
         >
           / {usdFormatter.format(maximum)}
         </span>

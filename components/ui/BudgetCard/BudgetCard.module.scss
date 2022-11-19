@@ -12,18 +12,21 @@
 }
 
 .card {
-  border: 1px solid rgb(0,0,0,.1);
+  border: 1px solid rgb(var(--darkGreenRGB),0.5);
+  background-color: rgb(var(--mainGreenRGB),0.15);
   border-radius: 4px;
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .balanceDisplayWrapper {
   display: flex;
   align-items: baseline;
+  color: var(--darkGreen);
+}
 
-  &>#max {
-    font-size: 1rem;
-    color: purple;
-  }
+#max {
+  margin-left: 3px;
+  font-size: 1.25rem;
+  color: rgb(var(--darkGreenRGB),.8);
 }
