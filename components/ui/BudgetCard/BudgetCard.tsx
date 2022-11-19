@@ -30,8 +30,8 @@ export default function BudgetCard(
       <div
         className={styles.buttonWrapper}
       >
-        <Button type={"outline"}>Add Expense</Button>
-        <Button type={"outline"}>View Expenses</Button>
+        <Button type={"outline"} onClick={()=>{}}>Add Expense</Button>
+        <Button type={"outline"} onClick={()=>{}}>View Expenses</Button>
       </div>
     </div>
   )

@@ -6,7 +6,12 @@ import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { BudgetsProvider, IBudget, useBudget } from '../contexts/BudgetsContext';
 
 export default function Home() {
-  const {budgets} = useBudget();
+  const {
+    budgets,
+    getBudgetExpenseTotal,
+    addBudget,
+    addExpense,
+  } = useBudget();
 
   return (
     <BudgetsProvider>
@@ -20,20 +25,29 @@ export default function Home() {
           <h1>Budget</h1>
           <Button
             type='fill'
+            onClick={()=>addBudget({
+              name:'test',
+              max:1000
+            })}
           >
             Add Budget
           </Button>
           <Button
             type='outline'
+            onClick={()=>addExpense({
+              budgetId:budgets[0].id,
+              amount: 50,
+              description:'this is a test'
+            })}
           >
             Add Expense
           </Button>
         </Header>
-        {budgets.map((budget:IBudget, index: number)=>{
-          <BudgetCard
+        {budgets && budgets.map((budget:IBudget, index: number)=>{
+          return <BudgetCard
             key={`card ${index}`}
             title={budget.name}
-            current={200}
+            current={getBudgetExpenseTotal(budget.id)}
             maximum={budget.max}
           />
         })}

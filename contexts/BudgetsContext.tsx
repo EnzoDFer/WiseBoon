@@ -21,7 +21,7 @@ export function useBudget() {
 //Provider component for the Budgets context
 export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Element => {
 
-  const [budgets, setBudgets] = useState<IBudget[]>([]);
+  const [budgets, setBudgets] = useState<IBudget[]>([{id:'1',max:1000,name:'test'}]);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
   function getBudgetExpenses(budgetId:string):(IExpense | undefined)[] {
@@ -48,7 +48,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
       budgetId: budgetId,
       amount: amount,
       description: description
-    }
+    };
     setExpenses([...expenses,newExpense]);
   }
 
@@ -58,8 +58,8 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
       id: uuidV4(),
       name: name,
       max: max,
-    }
-    setBudgets([...budgets,newBudget])
+    };
+    setBudgets([...budgets,newBudget]);
   }
 
   function deleteBudget(id:string): void {
