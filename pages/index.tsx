@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>  
       <BudgetModal
-        opened={true}
+        opened={budgetModal}
         setOpened={setBudgetModal}
       />
       <Container>

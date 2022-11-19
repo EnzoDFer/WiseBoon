@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
-import styles from "./BudgetModal.module.css";
+import styles from "./BudgetModal.module.scss";
 
 export default function BudgetModal(
   {opened,setOpened}:{opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
@@ -37,14 +37,27 @@ export default function BudgetModal(
 
   if (opened) return (
     <div
-      className={styles.background}
-      onClick={()=>setOpened(false)}
+      className={styles.wrapper}
     >
+      <div 
+        className={styles.background} 
+        onClick={()=>setOpened(false)}
+      />
       <div
         className={styles.modal}
       >
-        <button onClick={()=>setOpened(false)}>close</button>
-        <h1>Add New Budget</h1>
+        <div
+          className={styles.titleWrapper}
+        >
+          <h1>Add New Budget</h1>
+          <button 
+            onClick={()=>setOpened(false)}
+            className={styles.closeButton}
+            name='close button'
+          >
+            x
+          </button>
+        </div>
         <hr className={styles.divider}/>
         <form onSubmit={()=>handleCreateBudget()}>
           <div>
