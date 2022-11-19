@@ -1,5 +1,6 @@
 import styles from "./BudgetCard.module.scss";
 import { usdFormatter } from "../../../utils/formatCurrency";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 export default function BudgetCard(
   {title, current, maximum}:
@@ -13,6 +14,10 @@ export default function BudgetCard(
         title={title}
         current={current}
         maximum={maximum}
+      />
+      <ProgressBar
+        current={20}
+        total={100}
       />
     </div>
   )
