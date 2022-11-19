@@ -54,6 +54,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
     {budgetId, amount, description}: 
     {budgetId: string, amount: number, description: string}
   ): void {
+    if (!budgetId) throw new Error('Budget does not exist to enter expense into');
     const newExpense:IExpense = {
       id: uuidV4(),
       budgetId: budgetId,

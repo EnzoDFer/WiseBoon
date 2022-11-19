@@ -1,5 +1,5 @@
 .background {
-  position: fixed;
+  position: absolute;
   background: rgb(0,0,0,0.4);
   height: 100vh;
   width: 100vw;
@@ -10,7 +10,8 @@
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
+  background-color: white;
   z-index: 20;
   padding: 1rem;
   width: 50%;
