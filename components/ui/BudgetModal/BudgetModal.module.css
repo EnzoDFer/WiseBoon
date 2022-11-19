@@ -17,3 +17,7 @@
   width: 50%;
   height: 50%;
 }
+
+.input[valid='true'] {
+  
+}
