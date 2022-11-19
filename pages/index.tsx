@@ -31,13 +31,13 @@ export default function Home() {
         <Header>
           <h1>Budget</h1>
           <Button
-            type='fill'
+            variant='fill'
             onClick={()=>setBudgetModal(!budgetModal)}
           >
             Add Budget
           </Button>
           <Button
-            type='outline'
+            variant='outline'
             onClick={()=>addExpense({
               budgetId:budgets[0].id,
               amount: 50,

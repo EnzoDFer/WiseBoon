@@ -55,9 +55,17 @@
 
   &>div>input {
     border-radius: 8px;
-    border: 1px solid var(--darkGreen);
+    border: 2px solid var(--darkGreen);
     padding: .5rem;
     flex:1;
   }
+  &>div>input:focus {
+    outline: none;
+  }
 
+}
+
+.error {
+  color: rgba(251, 58, 33, 0.815);
+  margin-left: 1rem;
 }
