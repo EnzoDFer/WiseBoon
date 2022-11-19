@@ -1,4 +1,3 @@
-import { warn } from "console";
 import { Context, createContext, useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
@@ -34,7 +33,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   }
 
   function addBudget({name, max}: {name: string, max: number}): void {
-    if (name in budgets) throw warn('Budget already exists.  Please enter unique name.');
+    if (name in budgets) return;
     const newBudget:IBudget= {
       id: uuidV4(),
       name: name,
