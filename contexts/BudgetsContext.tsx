@@ -1,8 +1,13 @@
 import { warn } from "console";
-import { createContext, useContext, useState } from "react";
+import { Context, createContext, useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
-const BudgetsContext = createContext();
+interface IBudgetsContext {
+  budgets: IBudget[],
+  expenses: IExpense[],
+}
+
+const BudgetsContext = createContext();  // has to include all things included in provider value
 
 export function useBudget() {
   return useContext(BudgetsContext);
@@ -14,8 +19,10 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   const [budgets, setBudgets] = useState<IBudget[]>([]);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
-  function getBudgetExpenses(budgetId:number) {
-
+  function getBudgetExpenses(budgetId:string):(IExpense | undefined)[] {
+    return expenses.map((expense: IExpense)=> {
+      if (expense.budgetId===budgetId) return expense;
+    },[] as IExpense[])
   }
   
   function addExpense(
@@ -51,10 +58,11 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   
   return(
     <BudgetsContext.Provider value={
-      {
+        {
 
+        }
       }
-      } >
+    >
       {children}
     </BudgetsContext.Provider>
   );
