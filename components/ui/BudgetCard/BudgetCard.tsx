@@ -10,6 +10,9 @@ export default function BudgetCard(
   return (
     <div
       className={styles.card}
+      style={{
+        backgroundColor: getPriorityColor(current/maximum)
+      }}
     >
       <CardTitle
         title={title}
@@ -52,4 +55,15 @@ const CardTitle = (
       </div>
     </div>
   );
+}
+
+function getPriorityColor(ratio:number): string {
+  let colors: string[] = [
+    "rgb(234,251,212,0.6)", //grey with green tint
+    "rgb(243,245,121,0.6)", //light yellow tint
+    "rgb(251,59,33,0.6)", //light red tint
+  ]
+  if (ratio<0.5) return colors[0];
+  else if (ratio<0.75) return colors[1];
+  else return colors[2];
 }
