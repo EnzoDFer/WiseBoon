@@ -4,7 +4,6 @@ import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { IBudget, useBudget } from '../contexts/BudgetsContext';
-import { useEffect } from 'react';
 
 export default function Home() {
   const {
@@ -13,10 +12,6 @@ export default function Home() {
     addBudget,
     addExpense,
   } = useBudget();
-
-  useEffect(()=>{
-    console.log('rerendering');
-  },[budgets])
 
   return (
     <Container>
