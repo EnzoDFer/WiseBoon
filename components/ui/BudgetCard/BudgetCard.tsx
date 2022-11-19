@@ -2,11 +2,15 @@ import styles from "./BudgetCard.module.scss";
 import { usdFormatter } from "../../../utils/formatCurrency";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
+import { useBudget } from "../../../contexts/BudgetsContext";
 
 export default function BudgetCard(
   {title, current, maximum}:
   {title:string, current: number, maximum: number}
 ) {
+  
+  const {addExpense, addBudget} = useBudget();
+
   return (
     <div
       className={styles.card}

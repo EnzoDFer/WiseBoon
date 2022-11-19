@@ -1,7 +1,17 @@
 import { Context, createContext, useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 
-const BudgetsContext: Context<{}> = createContext({});
+const BudgetsContext:Context<IBudgetContext> = createContext<IBudgetContext>({} as IBudgetContext);
+
+interface IBudgetContext {
+  budgets: IBudget[],
+  expenses: IExpense[],
+  getBudgetExpenses: (arg0: string)=>(IExpense | undefined)[],
+  addBudget: ({name, max}: {name:string, max: number}) => void,
+  addExpense: ({budgetId, amount, description}:{budgetId: string, amount: number, description: string}) => void,
+  deleteBudget: (id:string) => void,
+  deleteExpense: (id:string) => void,
+}
 
 export function useBudget() {
   return useContext(BudgetsContext);
@@ -54,17 +64,16 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   
   return(
     <BudgetsContext.Provider value={
-        {
-          budgets,
-          expenses,
-          getBudgetExpenses,
-          addBudget,
-          addExpense,
-          deleteBudget,
-          deleteExpense
-        }
+      {
+        budgets: budgets,
+        expenses: expenses,
+        getBudgetExpenses: getBudgetExpenses,
+        addBudget: addBudget,
+        addExpense: addExpense,
+        deleteBudget: deleteBudget,
+        deleteExpense: deleteExpense,
       }
-    >
+    }>
       {children}
     </BudgetsContext.Provider>
   );
