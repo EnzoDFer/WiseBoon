@@ -1,5 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
+import { findNameInArray } from "../../../utils/genericHelperFuntions";
 import styles from "./BudgetModal.module.scss";
 
 export default function BudgetModal(
@@ -16,7 +17,7 @@ export default function BudgetModal(
   useEffect(()=>{
     //Validation
     //Name Validation
-    if (newName && !(newName in budgets)) {
+    if (newName && !(findNameInArray(budgets,newName))) {
       setNameValid(true);
     } else setNameValid(false);
     //Max Validation
@@ -59,9 +60,16 @@ export default function BudgetModal(
           </button>
         </div>
         <hr className={styles.divider}/>
-        <form onSubmit={()=>handleCreateBudget()}>
+        <form 
+          onSubmit={()=>handleCreateBudget()}
+          className={styles.form}
+        >
           <div>
-            <label htmlFor="budget name">{nameValid?'':"Budget name already taken."}</label>
+            <label htmlFor="budget name">
+              {(!newName)?'Please enter a name for the budget':
+              nameValid?'':"Budget name already taken."
+              }
+            </label>
             <input
               type={'text'}
               name="budget name"

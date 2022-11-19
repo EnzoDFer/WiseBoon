@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { filterById } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
 
 interface IBudgetContext {
@@ -113,8 +114,4 @@ export interface IExpense {
   budgetId: string,
   amount: number,
   description: string
-}
-
-function filterById<T extends {id:string}>(myArray:T[],id:string):T[] {
-  return myArray.filter((ele:T) => ele.id!==id);
 }
