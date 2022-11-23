@@ -27,7 +27,7 @@ export default function Home() {
       <ExpenseModal
         opened={expenseModal}
         setOpened={setExpenseModal}
-        parentBudgetId={null}
+        parentBudget={null}
       />
       <Container>
         <Head>

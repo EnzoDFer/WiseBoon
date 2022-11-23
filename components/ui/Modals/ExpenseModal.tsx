@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useBudget } from "../../../contexts/BudgetsContext";
+import { IBudget, useBudget } from "../../../contexts/BudgetsContext";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
 import BaseModal from "./BaseModal/BaseModal";
@@ -8,14 +8,14 @@ import styles from './BaseModal/ModalForm.module.scss';
 interface IExpenseModalProps {
   opened: boolean,
   setOpened:Dispatch<SetStateAction<boolean>>
-  parentBudgetId: string|null,
+  parentBudget: IBudget|null,
 }
 
 export default function ExpenseModal(
-  {opened,setOpened,parentBudgetId}:IExpenseModalProps
+  {opened,setOpened,parentBudget}:IExpenseModalProps
 ):JSX.Element|null {
 
-  const [budgetId,setBudgetId] = useState<string|null>(parentBudgetId);
+  const [budgetId,setBudgetId] = useState<string|null>(parentBudget?parentBudget.id:null);
   const [budgetIdValid,setBudgetIdValid] = useState<boolean>(false);
   const [newAmount, setAmount] = useState<number>();
   const [amountValid, setAmountValid] = useState<boolean>(false);
@@ -57,11 +57,13 @@ export default function ExpenseModal(
       setOpened={setOpened}
       title={"Add New Expense"}
     >
-      {(!parentBudgetId) && 
+      {(!parentBudget)? 
         <DropDown 
           defaultText="Please select parent budget."
           callback={setBudgetId}
-        />}
+        />:
+        <div style={{marginBottom:'1rem'}}>{`Parent budget: ${parentBudget.name}`}</div>
+      }
       <form 
         onSubmit={()=>handleCreateExpense()}  
         className={styles.form} 
