@@ -107,7 +107,12 @@ export default function BudgetModal(
               </text>
             }
           </div>
-          <Button variant='fill'>Create</Button>
+          <Button 
+            variant='fill'
+            disabled={(!nameValid || !maxValid)?true:false}// if !nameValid || !maxValid
+          >
+            Create
+          </Button>
         </form>
       </div>
     </div>

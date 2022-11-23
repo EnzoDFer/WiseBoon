@@ -1,20 +1,20 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 import styles from "./Button.module.css"
 
 export default function Button(
-  {children,onClick,variant,...props}:
+  {children,onClick,variant,disabled}:
   {
     children?:ReactNode,
     variant:"fill"|"outline",
     onClick?:()=>void,
-    props?:ButtonHTMLAttributes<HTMLButtonElement>[]|ButtonHTMLAttributes<HTMLButtonElement>
+    disabled?:boolean,
   }
 ) {
   return (
     <button
       className={variant==='fill'?styles.filledButton:styles.outlinedButton}
       onClick={onClick}
-      {...props}
+      disabled={disabled}
     >
       {children}
     </button>
