@@ -1,8 +1,9 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
-import {  useBudget } from "../../../contexts/BudgetsContext";
-import { findNameInArray } from "../../../utils/genericHelperFuntions";
-import Button from "../Button/Button";
-import styles from "./BudgetModal.module.scss";
+import {  useBudget } from "../../../../contexts/BudgetsContext";
+import { findNameInArray } from "../../../../utils/genericHelperFuntions";
+import Button from "../../Button/Button";
+import BaseModal from "../BaseModal/BaseModal";
+import styles from './BudgetModal.module.scss';
 
 export default function BudgetModal(
   {opened,setOpened}:{opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
@@ -38,30 +39,11 @@ export default function BudgetModal(
   }
 
   if (opened) return (
-    <div
-      className={styles.wrapper}
-    >
-      <div 
-        className={styles.background} 
-        onClick={()=>setOpened(false)}
-      />
-      <div
-        className={styles.modal}
-      >
-        <div
-          className={styles.titleWrapper}
-        >
-          <h1>Add New Budget</h1>
-          <button 
-            onClick={()=>setOpened(false)}
-            className={styles.closeButton}
-            name='close button'
-          >
-            x
-          </button>
-        </div>
-        <hr className={styles.divider}/>
-        <form 
+    <BaseModal
+    opened={opened} 
+    setOpened={setOpened} 
+    title={"Add New Budget"}>
+      <form 
           onSubmit={()=>handleCreateBudget()}
           className={styles.form}
         >
@@ -114,8 +96,7 @@ export default function BudgetModal(
             Create
           </Button>
         </form>
-      </div>
-    </div>
+    </BaseModal>
   );
 
   return null;

@@ -4,7 +4,7 @@ import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { IBudget, useBudget } from '../contexts/BudgetsContext';
-import BudgetModal from '../components/ui/BudgetModal/BudgetModal';
+import BudgetModal from '../components/ui/Modals/BudgetModal/BudgetModal';
 import { useState } from 'react';
 
 export default function Home() {
