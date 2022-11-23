@@ -5,14 +5,15 @@ import BaseModal from "./BaseModal/BaseModal";
 interface IExpenseModalProps {
   opened: boolean,
   setOpened:Dispatch<SetStateAction<boolean>>
-  parentBudgetId: string,
+  parentBudgetId: string|null,
 }
 
 export default function ExpenseModal(
   {opened,setOpened,parentBudgetId}:IExpenseModalProps
 ):JSX.Element|null {
 
-  const [budgetId,setBudgetId] = useState<string>(parentBudgetId);
+  const [budgetId,setBudgetId] = useState<string|null>(parentBudgetId);
+  const [budgetIdValid,setBudgetIdValid] = useState<boolean>(false);
   const [newAmount, setAmount] = useState<number>();
   const [amountValid, setAmountValid] = useState<boolean>(false);
   const [newDescription, setDescription] = useState<string>();
@@ -22,6 +23,10 @@ export default function ExpenseModal(
 
   useEffect(()=>{
     //Validation
+    //budgetId Validation
+    if (budgetId) {
+      setBudgetIdValid(true);
+    } else setBudgetIdValid(false);
     //Amount Validation
     if (newAmount && (newAmount>=0)) {
       setAmountValid(true);
@@ -30,12 +35,12 @@ export default function ExpenseModal(
     if (newDescription) {
       setDescriptionValid(true);
     } else setDescriptionValid(false);
-  },[newAmount, newDescription])
+  },[budgetId, newAmount, newDescription])
 
   function handleCreateExpense(): void {
-    if (amountValid && descriptionValid) {
+    if (budgetIdValid && amountValid && descriptionValid) {
       addExpense({
-        budgetId: budgetId,
+        budgetId: budgetId!,
         amount: newAmount!,
         description: newDescription!,
       })
@@ -49,11 +54,9 @@ export default function ExpenseModal(
       setOpened={setOpened}
       title={"Add New Expense"}
     >
-     {/*  {
-        if no budgetId <DropDownMenu chooseBudget
-      } */}
-      <form>
-
+     {(!parentBudgetId) && <div>choose parent budget</div>}
+      <form onSubmit={()=>handleCreateExpense()}>
+        test
       </form>
     </BaseModal>
   );

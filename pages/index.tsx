@@ -6,6 +6,7 @@ import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { IBudget, useBudget } from '../contexts/BudgetsContext';
 import BudgetModal from '../components/ui/Modals/BudgetModal';
 import { useState } from 'react';
+import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 
 export default function Home() {
   const {
@@ -15,12 +16,18 @@ export default function Home() {
   } = useBudget();
 
   const [budgetModal, setBudgetModal] = useState<boolean>(false);
+  const [expenseModal, setExpenseModal] = useState<boolean>(false);
 
   return (
     <>  
       <BudgetModal
         opened={budgetModal}
         setOpened={setBudgetModal}
+      />
+      <ExpenseModal
+        opened={expenseModal}
+        setOpened={setExpenseModal}
+        parentBudgetId={null}
       />
       <Container>
         <Head>
@@ -38,11 +45,7 @@ export default function Home() {
           </Button>
           <Button
             variant='outline'
-            onClick={()=>addExpense({
-              budgetId:budgets[0].id,
-              amount: 50,
-              description:'this is a test'
-            })}
+            onClick={()=>setExpenseModal(!expenseModal)}
           >
             Add Expense
           </Button>

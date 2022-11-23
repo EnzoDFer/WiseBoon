@@ -3,7 +3,7 @@ import {  useBudget } from "../../../contexts/BudgetsContext";
 import { findNameInArray } from "../../../utils/genericHelperFuntions";
 import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
-import styles from './ModalForm.module.scss';
+import styles from './BaseModal/ModalForm.module.scss';
 
 export default function BudgetModal(
   {opened,setOpened}:{opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
