@@ -1,9 +1,9 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
-import {  useBudget } from "../../../../contexts/BudgetsContext";
-import { findNameInArray } from "../../../../utils/genericHelperFuntions";
-import Button from "../../Button/Button";
-import BaseModal from "../BaseModal/BaseModal";
-import styles from './BudgetModal.module.scss';
+import {  useBudget } from "../../../contexts/BudgetsContext";
+import { findNameInArray } from "../../../utils/genericHelperFuntions";
+import Button from "../Button/Button";
+import BaseModal from "./BaseModal/BaseModal";
+import styles from './ModalForm.module.scss';
 
 export default function BudgetModal(
   {opened,setOpened}:{opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
@@ -40,9 +40,10 @@ export default function BudgetModal(
 
   if (opened) return (
     <BaseModal
-    opened={opened} 
-    setOpened={setOpened} 
-    title={"Add New Budget"}>
+      opened={opened} 
+      setOpened={setOpened} 
+      title={"Add New Budget"}
+    >
       <form 
           onSubmit={()=>handleCreateBudget()}
           className={styles.form}
