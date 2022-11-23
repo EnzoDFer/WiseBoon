@@ -7,13 +7,20 @@
     display: block;
   }
 
-  &>div>input {
+  &>div>input,
+  &>div>textarea {
     border-radius: 8px;
     border: 2px solid var(--darkGreen);
     padding: .5rem;
     flex:1;
+    margin-right: 1rem;
   }
-  &>div>input:focus {
+  &>div>textarea {
+    width: 100%;
+  }
+
+  &>div>input:focus,
+  &>div>textarea:focus {
     outline: none;
   }
 

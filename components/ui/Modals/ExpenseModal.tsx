@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useBudget } from "../../../contexts/BudgetsContext";
+import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
+import styles from './BaseModal/ModalForm.module.scss';
 
 interface IExpenseModalProps {
   opened: boolean,
@@ -55,8 +57,63 @@ export default function ExpenseModal(
       title={"Add New Expense"}
     >
      {(!parentBudgetId) && <div>choose parent budget</div>}
-      <form onSubmit={()=>handleCreateExpense()}>
-        test
+      <form 
+        onSubmit={()=>handleCreateExpense()}  
+        className={styles.form} 
+      >
+        {/* Expense Amount Input */}
+        <div>
+          <label htmlFor="expense amount">
+            Expense Amount
+          </label>
+          <input
+            type={"number"}
+            name="expense amount"
+            placeholder="$0"
+            onChange={(e:ChangeEvent<HTMLInputElement>)=>setAmount(parseFloat(e.target.value))}
+            style={(amountValid?{}:{border:'2px solid rgb(251,59,33,0.6)'})}
+            value={newAmount}
+            required
+          />
+          {(!newAmount || !amountValid) && 
+            <text
+              className={styles.error}
+            >
+              {(!newAmount)?'Please enter the expense amount':
+            amountValid?'':"Please enter an expense greater than 0"
+              }
+            </text>
+          }
+        </div>
+        {/* Expense Description Input */}
+        <div>
+          <label htmlFor="expense description">
+            Expense Description
+          </label>
+          <textarea
+            name="expense description"
+            placeholder="Ex: New wallet purchased at XYZ Mall"
+            onChange={(e:ChangeEvent<HTMLTextAreaElement>)=>setDescription(e.target.value)}
+            style={(descriptionValid?{}:{border:'2px solid rgb(251,59,33,0.6)'})}
+            value={newDescription}
+            required
+          />
+          {(!newDescription || !descriptionValid) && 
+            <text
+              className={styles.error}
+            >
+              {
+                (!newDescription || !descriptionValid) && 'Please enter an expense description'
+              }
+            </text>
+          }
+        </div>
+        <Button 
+            variant='fill'
+            disabled={(!budgetIdValid || !amountValid || !descriptionValid)?true:false}
+          >
+            Create
+          </Button>
       </form>
     </BaseModal>
   );
