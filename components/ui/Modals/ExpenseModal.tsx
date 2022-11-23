@@ -1,6 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useBudget } from "../../../contexts/BudgetsContext";
 import Button from "../Button/Button";
+import DropDown from "../DropDown/DropDown";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from './BaseModal/ModalForm.module.scss';
 
@@ -56,7 +57,11 @@ export default function ExpenseModal(
       setOpened={setOpened}
       title={"Add New Expense"}
     >
-     {(!parentBudgetId) && <div>choose parent budget</div>}
+      {(!parentBudgetId) && 
+        <DropDown 
+          defaultText="Please select parent budget."
+          callback={setBudgetId}
+        />}
       <form 
         onSubmit={()=>handleCreateExpense()}  
         className={styles.form} 
