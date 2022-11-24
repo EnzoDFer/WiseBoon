@@ -2,14 +2,15 @@ import styles from "./BudgetCard.module.scss";
 import { usdFormatter } from "../../../utils/formatCurrency";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
-import { useBudget } from "../../../contexts/BudgetsContext";
+import { IBudget, useBudget } from "../../../contexts/BudgetsContext";
+import { Dispatch, SetStateAction } from "react";
 
 export default function BudgetCard(
-  {title, current, maximum}:
-  {title:string, current: number, maximum: number}
+  {title, current, maximum, openExpenseModal}:
+  {title:string, current: number, maximum: number,openExpenseModal: ()=>void}
 ) {
   
-  const {addExpense, addBudget} = useBudget();
+  const {getBudgetExpenses} = useBudget();
 
   return (
     <div
@@ -30,8 +31,8 @@ export default function BudgetCard(
       <div
         className={styles.buttonWrapper}
       >
-        <Button type={"outline"} onClick={()=>{}}>Add Expense</Button>
-        <Button type={"outline"} onClick={()=>{}}>View Expenses</Button>
+        <Button variant={"outline"} onClick={openExpenseModal}>Add Expense</Button>
+        <Button variant={"outline"} onClick={()=>{}}>View Expenses</Button>
       </div>
     </div>
   )

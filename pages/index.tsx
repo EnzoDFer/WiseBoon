@@ -15,19 +15,21 @@ export default function Home() {
     addExpense,
   } = useBudget();
 
-  const [budgetModal, setBudgetModal] = useState<boolean>(false);
-  const [expenseModal, setExpenseModal] = useState<boolean>(false);
+
+  const [budgetModalOpen, setBudgetModalOpen] = useState<boolean>(false);
+  const [expenseModalOpen, setExpenseModalOpen] = useState<boolean>(false);
+  const [expenseParent,setExpenseParent] = useState<IBudget|null>(null);
 
   return (
     <>  
       <BudgetModal
-        opened={budgetModal}
-        setOpened={setBudgetModal}
+        opened={budgetModalOpen}
+        setOpened={setBudgetModalOpen}
       />
       <ExpenseModal
-        opened={expenseModal}
-        setOpened={setExpenseModal}
-        parentBudget={null}
+        opened={expenseModalOpen}
+        setOpened={setExpenseModalOpen}
+        parentBudget={expenseParent?expenseParent:null}
       />
       <Container>
         <Head>
@@ -36,16 +38,21 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header>
+        
           <h1>Budget</h1>
           <Button
             variant='fill'
-            onClick={()=>setBudgetModal(!budgetModal)}
+            onClick={()=>setBudgetModalOpen(!budgetModalOpen)}
           >
             Add Budget
           </Button>
           <Button
             variant='outline'
-            onClick={()=>setExpenseModal(!expenseModal)}
+            onClick={()=>{
+              setExpenseParent(null)
+              setExpenseModalOpen(!expenseModalOpen)
+            }}
+
           >
             Add Expense
           </Button>
@@ -56,6 +63,10 @@ export default function Home() {
             title={budget.name}
             current={getBudgetExpenseTotal(budget.id)}
             maximum={budget.max}
+            openExpenseModal={()=>{
+              setExpenseParent(budget)
+              setExpenseModalOpen(!expenseModalOpen)
+            }}
           />
         })}
       </Container>
