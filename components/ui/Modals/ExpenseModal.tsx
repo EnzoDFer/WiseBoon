@@ -21,7 +21,7 @@ export default function ExpenseModal(
   const [newDescription, setDescription] = useState<string>();
   const [descriptionValid, setDescriptionValid] = useState<boolean>(false);
 
-  const {addExpense, currentBudget} = useBudget();
+  const {addExpense, currentBudget, setCurrentBudget} = useBudget();
 
   useEffect(()=>{
     //Validation
@@ -55,9 +55,10 @@ export default function ExpenseModal(
       })
     }
     setOpened(false);
+    setCurrentBudget(undefined);
     setBudgetId(undefined);
-  /*   setAmount(undefined);
-    setDescription(undefined); */
+    setAmount(undefined);
+    setDescription(undefined);
   }
 
    if (opened) return (
