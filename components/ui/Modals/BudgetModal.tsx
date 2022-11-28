@@ -62,13 +62,13 @@ export default function BudgetModal(
               required
             />
             {(!newName || !nameValid) && 
-              <text
+              <span
                 className={styles.error}
               >
                 {(!newName)?'Please enter a name for the budget':
               nameValid?'':"Budget name already taken."
                 }
-              </text>
+              </span>
             }
           </div>
           <div>
@@ -83,11 +83,11 @@ export default function BudgetModal(
               required
             />
             {(!newMax || !maxValid) && 
-              <text
+              <span
                 className={styles.error}
               >
                 {maxValid?'':"Please enter max greater than 0."}  
-              </text>
+              </span>
             }
           </div>
           <Button 

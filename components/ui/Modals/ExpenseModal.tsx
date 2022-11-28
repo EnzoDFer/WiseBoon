@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
-import { IBudget, useBudget } from "../../../contexts/BudgetsContext";
+import { useBudget } from "../../../contexts/BudgetsContext";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
 import BaseModal from "./BaseModal/BaseModal";
@@ -8,28 +8,34 @@ import styles from './BaseModal/ModalForm.module.scss';
 interface IExpenseModalProps {
   opened: boolean,
   setOpened:Dispatch<SetStateAction<boolean>>
-  parentBudget: IBudget|null,
 }
 
 export default function ExpenseModal(
-  {opened,setOpened,parentBudget}:IExpenseModalProps
+  {opened,setOpened}:IExpenseModalProps
 ):JSX.Element|null {
 
-  const [budgetId,setBudgetId] = useState<string|null>(parentBudget?parentBudget.id:null);
+  const [budgetId,setBudgetId] = useState<string>();
   const [budgetIdValid,setBudgetIdValid] = useState<boolean>(false);
   const [newAmount, setAmount] = useState<number>();
   const [amountValid, setAmountValid] = useState<boolean>(false);
   const [newDescription, setDescription] = useState<string>();
   const [descriptionValid, setDescriptionValid] = useState<boolean>(false);
 
-  const {addExpense} = useBudget();
+  const {addExpense, currentBudget} = useBudget();
 
   useEffect(()=>{
     //Validation
+
+    if (currentBudget) {
+      setBudgetId(currentBudget.id);
+    }
+
     //budgetId Validation
     if (budgetId) {
       setBudgetIdValid(true);
-    } else setBudgetIdValid(false);
+    } else {
+      setBudgetIdValid(false);
+    }
     //Amount Validation
     if (newAmount && (newAmount>=0)) {
       setAmountValid(true);
@@ -38,7 +44,7 @@ export default function ExpenseModal(
     if (newDescription) {
       setDescriptionValid(true);
     } else setDescriptionValid(false);
-  },[budgetId, newAmount, newDescription])
+  }, [budgetId, currentBudget, newAmount, newDescription])
 
   function handleCreateExpense(): void {
     if (budgetIdValid && amountValid && descriptionValid) {
@@ -49,6 +55,9 @@ export default function ExpenseModal(
       })
     }
     setOpened(false);
+    setBudgetId(undefined);
+  /*   setAmount(undefined);
+    setDescription(undefined); */
   }
 
    if (opened) return (
@@ -57,12 +66,13 @@ export default function ExpenseModal(
       setOpened={setOpened}
       title={"Add New Expense"}
     >
-      {(!parentBudget)? 
+      { 
+        (!currentBudget)? 
         <DropDown 
           defaultText="Please select parent budget."
           callback={setBudgetId}
         />:
-        <div style={{marginBottom:'1rem'}}>{`Parent budget: ${parentBudget.name}`}</div>
+        <div style={{marginBottom:'1rem'}}>{`Parent budget: ${currentBudget.name}`}</div>
       }
       <form 
         onSubmit={()=>handleCreateExpense()}  
@@ -81,15 +91,20 @@ export default function ExpenseModal(
             style={(amountValid?{}:{border:'2px solid rgb(251,59,33,0.6)'})}
             value={newAmount}
             required
-          />
-          {(!newAmount || !amountValid) && 
-            <text
+          />  
+          {
+            (!newAmount || !amountValid) && 
+            <span
               className={styles.error}
             >
-              {(!newAmount)?'Please enter the expense amount':
-            amountValid?'':"Please enter an expense greater than 0"
+              {
+                (!newAmount)?
+                'Please enter the expense amount':
+                amountValid?
+                  '':
+                  "Please enter an expense greater than 0"
               }
-            </text>
+            </span>
           }
         </div>
         {/* Expense Description Input */}
@@ -106,13 +121,13 @@ export default function ExpenseModal(
             required
           />
           {(!newDescription || !descriptionValid) && 
-            <text
+            <span
               className={styles.error}
             >
               {
                 (!newDescription || !descriptionValid) && 'Please enter an expense description'
               }
-            </text>
+            </span>
           }
         </div>
         <Button 

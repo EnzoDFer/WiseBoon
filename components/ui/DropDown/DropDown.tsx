@@ -4,7 +4,7 @@ import styles from "./DropDown.module.scss";
 
 interface IDropDownProps {
   defaultText: string,
-  callback: Dispatch<SetStateAction<string|null>>
+  callback: Dispatch<SetStateAction<string|undefined>>
 }
 
 export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Element {
@@ -23,17 +23,21 @@ export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Elem
     >
       <button>{`Parent budget: ${text}`}</button>
       <div className={styles.itemWrapper}>
-        {budgets.map((budget:IBudget,index:number)=>{
-          return (
-            <div
-              key={`budget ${index}`}
-              className={styles.item}
-              onClick={()=>handleClick(budget.id,budget.name)}
-            >
-              {budget.name}
-            </div>
-          );
-        })}
+        {
+          budgets[0]? //Check if there are any budget groups for user
+          budgets.map((budget:IBudget,index:number)=>{
+            return (
+              <div
+                key={`budget ${index}`}
+                className={styles.item}
+                onClick={()=>handleClick(budget.id,budget.name)}
+              >
+                {budget.name}
+              </div>
+            )
+          }):
+          <div className={styles.item}> No budget groups found</div>
+        }
       </div>
     </div>
   )

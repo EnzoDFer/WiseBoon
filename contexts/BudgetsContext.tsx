@@ -1,11 +1,13 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
 import { filterById } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
 
 interface IBudgetContext {
   budgets: IBudget[],
   expenses: IExpense[],
-  getBudgetExpenses: (budgetId: string)=>(IExpense | undefined)[],
+  currentBudget: IBudget | undefined,
+  setCurrentBudget: Dispatch<SetStateAction<IBudget | undefined>>,
+  getBudgetExpenses: (budgetId: string)=>IExpense[],
   getBudgetExpenseTotal: (budgetId:string) => number,
   addBudget: ({name, max}: {name:string, max: number}) => void,
   addExpense: ({budgetId, amount, description}:{budgetId: string, amount: number, description: string}) => void,
@@ -16,7 +18,9 @@ interface IBudgetContext {
 const defaultContext: IBudgetContext = {
   budgets: [],
   expenses: [],
-  getBudgetExpenses: ()=>[],
+  currentBudget: undefined,
+  setCurrentBudget: () => {},
+  getBudgetExpenses: () => [],
   getBudgetExpenseTotal: () => 0,
   addBudget: () => {},
   addExpense: () => {},
@@ -35,11 +39,14 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
 
   const [budgets, setBudgets] = useState<IBudget[]>([]);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
+  const [currentBudget,setCurrentBudget] = useState<IBudget|undefined>();
 
-  function getBudgetExpenses(budgetId:string):(IExpense | undefined)[] {
-    return expenses.map((expense: IExpense)=> {
-      if (expense.budgetId===budgetId) return expense;
-    },[] as IExpense[])
+  function getBudgetExpenses(budgetId:string): IExpense[] {
+    const expenseList: IExpense[] = [];
+    expenses.forEach((expense:IExpense)=>{
+      if (expense.budgetId===budgetId) expenseList.push(expense);
+    });  
+    return expenseList;
   }
 
   function getBudgetExpenseTotal(budgetId:string):number {
@@ -90,6 +97,8 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
       {
         budgets: budgets,
         expenses: expenses,
+        currentBudget: currentBudget,
+        setCurrentBudget: setCurrentBudget,
         getBudgetExpenses: getBudgetExpenses,
         getBudgetExpenseTotal: getBudgetExpenseTotal,
         addBudget: addBudget,

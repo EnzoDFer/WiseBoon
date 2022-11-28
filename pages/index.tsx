@@ -5,20 +5,21 @@ import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { IBudget, useBudget } from '../contexts/BudgetsContext';
 import BudgetModal from '../components/ui/Modals/BudgetModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
+import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 
 export default function Home() {
   const {
     budgets,
     getBudgetExpenseTotal,
-    addExpense,
+    setCurrentBudget
   } = useBudget();
 
 
   const [budgetModalOpen, setBudgetModalOpen] = useState<boolean>(false);
   const [expenseModalOpen, setExpenseModalOpen] = useState<boolean>(false);
-  const [expenseParent,setExpenseParent] = useState<IBudget|null>(null);
+  const [expenseListModalOpen, setExpenseListModalOpen] = useState<boolean>(false);
 
   return (
     <>  
@@ -29,7 +30,10 @@ export default function Home() {
       <ExpenseModal
         opened={expenseModalOpen}
         setOpened={setExpenseModalOpen}
-        parentBudget={expenseParent?expenseParent:null}
+      />
+      <ExpenseListModal
+        opened={expenseListModalOpen}
+        setOpened={setExpenseListModalOpen}
       />
       <Container>
         <Head>
@@ -49,10 +53,9 @@ export default function Home() {
           <Button
             variant='outline'
             onClick={()=>{
-              setExpenseParent(null)
-              setExpenseModalOpen(!expenseModalOpen)
+              setCurrentBudget(undefined);
+              setExpenseModalOpen(!expenseModalOpen);
             }}
-
           >
             Add Expense
           </Button>
@@ -63,9 +66,13 @@ export default function Home() {
             title={budget.name}
             current={getBudgetExpenseTotal(budget.id)}
             maximum={budget.max}
-            openExpenseModal={()=>{
-              setExpenseParent(budget)
-              setExpenseModalOpen(!expenseModalOpen)
+            createExpenseModal={()=>{
+              setCurrentBudget(budget);
+              setExpenseModalOpen(!expenseModalOpen);
+            }}
+            expenseListModal={()=>{
+              setCurrentBudget(budget);
+              setExpenseListModalOpen(!expenseListModalOpen);
             }}
           />
         })}
