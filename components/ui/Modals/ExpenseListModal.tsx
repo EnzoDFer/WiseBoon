@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
-import { IBudget, IExpense, useBudget } from "../../../contexts/BudgetsContext";
-import { usdFormatter } from "../../../utils/formatCurrency";
+import { IExpense, useBudget } from "../../../contexts/BudgetsContext";
 import { ExpenseItem } from "../ExpenseItem/ExpenseItem";
 import BaseModal from "./BaseModal/BaseModal";
+import styles from "./BaseModal/BaseModal.module.scss";
 
 export default function ExpenseListModal(
   {opened,setOpened}:
@@ -22,7 +22,9 @@ export default function ExpenseListModal(
     >
       { 
         expenseList.length?
-        <ul>
+        <div
+          className={styles.list}
+        >
           {expenseList.map((expense:IExpense,index:number)=>{
             return (
               <ExpenseItem
@@ -34,7 +36,7 @@ export default function ExpenseListModal(
               />
             );
           })}
-        </ul>:
+        </div>:
         <div>Has no expenses</div>
       }
     </BaseModal>

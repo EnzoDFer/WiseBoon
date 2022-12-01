@@ -48,3 +48,11 @@
   color: rgba(251, 58, 33, 0.815);
   margin-left: 1rem;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: 50vh;
+  overflow-y: auto;
+  gap: 8px;
+}
