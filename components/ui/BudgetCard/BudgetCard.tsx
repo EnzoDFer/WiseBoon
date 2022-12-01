@@ -2,11 +2,25 @@ import styles from "./BudgetCard.module.scss";
 import { usdFormatter } from "../../../utils/formatCurrency";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
+import { useBudget } from "../../../contexts/BudgetsContext";
+import { useState } from "react";
 
 export default function BudgetCard(
-  {title, current, maximum, createExpenseModal,expenseListModal}:
-  {title:string, current: number, maximum: number,createExpenseModal: ()=>void,expenseListModal: ()=>void}
+  {title, current, maximum, id,createExpenseModal,expenseListModal}:
+  {title:string, current: number, maximum: number, id:string, createExpenseModal: ()=>void,expenseListModal: ()=>void}
 ) {
+
+  const {deleteBudget} = useBudget();
+  const [popup, setPopup] = useState<boolean>(false);
+
+  function handlePopup() {
+    setPopup(!popup);
+  }
+  
+  function handleBudgetDel() {
+    if (popup) deleteBudget(id);
+    else return;
+  }
 
   return (
     <div
@@ -27,6 +41,12 @@ export default function BudgetCard(
       <div
         className={styles.buttonWrapper}
       >
+        <Button variant={"outline"} onClick={()=>handlePopup()}>{popup?'Cancel':'Del'}</Button>
+        <Button 
+          variant={"outline"} 
+          onClick={popup?()=>handleBudgetDel():()=>{}}
+          className={popup?styles.popupButton:styles.hidden}
+        >Confirm Delete</Button>
         <Button variant={"outline"} onClick={createExpenseModal}>Add Expense</Button>
         <Button variant={"outline"} onClick={expenseListModal}>View Expenses</Button>
       </div>

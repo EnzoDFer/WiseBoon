@@ -36,3 +36,18 @@
   justify-content: flex-end;
   gap: 6px;
 }
+
+.hidden {
+  opacity: 0;
+  cursor: unset;
+  margin-right: auto;
+  transform: translateX(-1rem);
+  z-index: -1;
+}
+
+.popupButton {
+  opacity: 1;
+  transition: opacity 0.5s linear, transform 0.25s linear;
+  margin-right: auto;
+  z-index: 2;
+}

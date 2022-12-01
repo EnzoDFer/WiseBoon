@@ -64,6 +64,7 @@ export default function Home() {
           return <BudgetCard
             key={`card ${index}`}
             title={budget.name}
+            id={budget.id}
             current={getBudgetExpenseTotal(budget.id)}
             maximum={budget.max}
             createExpenseModal={()=>{
