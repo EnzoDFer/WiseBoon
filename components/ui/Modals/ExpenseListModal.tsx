@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { IBudget, IExpense, useBudget } from "../../../contexts/BudgetsContext";
 import { usdFormatter } from "../../../utils/formatCurrency";
+import { ExpenseItem } from "../ExpenseItem/ExpenseItem";
 import BaseModal from "./BaseModal/BaseModal";
 
 export default function ExpenseListModal(
@@ -24,13 +25,13 @@ export default function ExpenseListModal(
         <ul>
           {expenseList.map((expense:IExpense,index:number)=>{
             return (
-              <li
-                key={`expense ${index}`}
-              >
-               <div>{`Description:`}</div>
-               <div>{expense.description}</div> 
-               <div>{`Amount: ${usdFormatter.format(expense.amount)}`}</div>
-              </li>
+              <ExpenseItem
+                key={`expense ${index}`} 
+                description={expense.description} 
+                amount={expense.amount} 
+                handleEdit={()=>{}} 
+                handleDel={()=>{}}                
+              />
             );
           })}
         </ul>:
