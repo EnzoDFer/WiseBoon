@@ -9,7 +9,7 @@ export default function ExpenseListModal(
   {opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
 ):JSX.Element|null {
 
-  const {getBudgetExpenses, currentBudget} = useBudget();
+  const {getBudgetExpenses, currentBudget, deleteExpense} = useBudget();
 
   if (!currentBudget) return null;
   const expenseList: IExpense[] = getBudgetExpenses(currentBudget.id);
@@ -30,9 +30,8 @@ export default function ExpenseListModal(
               <ExpenseItem
                 key={`expense ${index}`} 
                 description={expense.description} 
-                amount={expense.amount} 
-                handleEdit={()=>{}} 
-                handleDel={()=>{}}                
+                amount={expense.amount}
+                handleDel={()=>deleteExpense(expense.id)}                
               />
             );
           })}
