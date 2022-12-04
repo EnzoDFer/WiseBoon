@@ -8,16 +8,16 @@ import { useState } from "react";
 export default function BudgetCard(
   {title, current, maximum, id,createExpenseModal,expenseListModal}:
   {title:string, current: number, maximum: number, id:string, createExpenseModal: ()=>void,expenseListModal: ()=>void}
-) {
+):JSX.Element {
 
   const {deleteBudget} = useBudget();
   const [popup, setPopup] = useState<boolean>(false);
 
-  function handlePopup() {
+  function handlePopup(): void {
     setPopup(!popup);
   }
   
-  function handleBudgetDel() {
+  function handleBudgetDel(): void {
     if (popup) deleteBudget(id);
     else return;
   }
@@ -41,7 +41,12 @@ export default function BudgetCard(
       <div
         className={styles.buttonWrapper}
       >
-        <Button variant={"outline"} onClick={()=>handlePopup()}>{popup?'Cancel':'Del'}</Button>
+        <Button 
+          variant={"outline"} 
+          onClick={()=>handlePopup()}
+        >
+          {popup?'Cancel':'Del'}
+        </Button>
         <Button 
           variant={"outline"} 
           onClick={popup?()=>handleBudgetDel():()=>{}}

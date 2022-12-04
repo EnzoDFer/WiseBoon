@@ -8,7 +8,7 @@ export default function Button(
     variant:"fill"|"outline",
     onClick?:()=>void,
     disabled?:boolean,
-    className?:string
+    className?:string,
   }
 ) {
   return (
