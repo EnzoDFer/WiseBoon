@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
-import { findNameInArray } from "../../../utils/genericHelperFuntions";
+import { findNameInArray, removeRedundantSpaces } from "../../../utils/genericHelperFuntions";
 import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from './BaseModal/ModalForm.module.scss';
@@ -19,9 +19,11 @@ export default function BudgetModal(
   useEffect(()=>{
     //Validation
     //Name Validation
-    if (newName && !(findNameInArray(budgets,newName))) {
-      setNameValid(true);
-    } else setNameValid(false);
+    if (newName) {
+      if (!findNameInArray(budgets,removeRedundantSpaces(newName))) setNameValid(true);
+      else setNameValid(false);
+    } 
+    else setNameValid(false);
     //Max Validation
     if (newMax && (newMax >= 0)) {
       setMaxValid(true);
@@ -56,7 +58,7 @@ export default function BudgetModal(
               type={'text'}
               name="budget name"
               placeholder="Budget Name"
-              onChange={(e:ChangeEvent<HTMLInputElement>)=>setName(e.target.value)}
+              onChange={(e:ChangeEvent<HTMLInputElement>)=>setName((e.target.value))}
               style={(nameValid?{}:{border:'2px solid rgb(251,59,33,0.6)'})}
               value={newName}
               required
