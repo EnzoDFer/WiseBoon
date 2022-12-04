@@ -32,9 +32,19 @@
 }
 
 .buttonWrapper {
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 8px;
+  margin: 1rem;
+}
+
+@media (min-width: 475px) {
+  .buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
 }
 
 .hidden {

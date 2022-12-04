@@ -1,0 +1,24 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 8px;
+  margin-bottom: 1rem;
+
+  &>h1{
+    grid-area: 1 / 1 / 3 / 2;
+  }
+}
+
+@media (min-width: 475px) {
+  .layout {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 1rem;
+
+    &>h1 {
+      margin-right: auto;
+    }
+  }
+}
