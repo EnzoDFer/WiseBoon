@@ -16,6 +16,7 @@ export default function ExpenseModal(
 
   const [budgetId,setBudgetId] = useState<string>();
   const [budgetIdValid,setBudgetIdValid] = useState<boolean>(false);
+  const [budgetName, setBudgetName] = useState<string>();
   const [newAmount, setAmount] = useState<number>();
   const [amountValid, setAmountValid] = useState<boolean>(false);
   const [newDescription, setDescription] = useState<string>();
@@ -28,6 +29,7 @@ export default function ExpenseModal(
 
     if (currentBudget) {
       setBudgetId(currentBudget.id);
+      setBudgetName(currentBudget.name);
     }
 
     //budgetId Validation
@@ -46,10 +48,17 @@ export default function ExpenseModal(
     } else setDescriptionValid(false);
   }, [budgetId, currentBudget, newAmount, newDescription])
 
+
+  function handleSetBudget(id:string, name:string) {
+    setBudgetId(id);
+    setBudgetName(name);
+  }
+
   function handleCreateExpense(): void {
     if (budgetIdValid && amountValid && descriptionValid) {
       addExpense({
         budgetId: budgetId!,
+        budgetName: budgetName!,
         amount: newAmount!,
         description: newDescription!,
       })
@@ -71,7 +80,7 @@ export default function ExpenseModal(
         (!currentBudget)? 
         <DropDown 
           defaultText="Please select parent budget."
-          callback={setBudgetId}
+          callback={handleSetBudget}
         />:
         <div style={{marginBottom:'1rem'}}>{`Parent budget: ${currentBudget.name}`}</div>
       }

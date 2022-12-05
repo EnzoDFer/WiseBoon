@@ -1,10 +1,7 @@
 .wrapper {
   border-radius: 8px;
   border: 1px solid var(--darkGreen);
-
-  &>*{
-    padding:  0 1rem;
-  }
+  padding: 1rem;
 }
 
 .innerWrapper {

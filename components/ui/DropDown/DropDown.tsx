@@ -4,7 +4,7 @@ import styles from "./DropDown.module.scss";
 
 interface IDropDownProps {
   defaultText: string,
-  callback: Dispatch<SetStateAction<string|undefined>>
+  callback: (id: string, name: string)=> void,
 }
 
 export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Element {
@@ -14,7 +14,7 @@ export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Elem
 
   function handleClick(id: string,name: string):void {
     setText(name);
-    callback(id);
+    callback(id,name);
   } 
 
   return (

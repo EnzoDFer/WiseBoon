@@ -10,7 +10,7 @@ interface IBudgetContext {
   getBudgetExpenses: (budgetId: string)=>IExpense[],
   getBudgetExpenseTotal: (budgetId:string) => number,
   addBudget: ({name, max}: {name:string, max: number}) => void,
-  addExpense: ({budgetId, amount, description}:{budgetId: string, amount: number, description: string}) => void,
+  addExpense: ({budgetId, budgetName, amount, description}:{budgetId: string, budgetName: string, amount: number, description: string}) => void,
   deleteBudget: (id:string) => void,
   deleteExpense: (id:string) => void,
 }
@@ -59,13 +59,14 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   }
   
   function addExpense(
-    {budgetId, amount, description}: 
-    {budgetId: string, amount: number, description: string}
+    {budgetId, budgetName, amount, description}: 
+    {budgetId: string, budgetName: string, amount: number, description: string}
   ): void {
     if (!budgetId) throw new Error('Budget does not exist to enter expense into');
     const newExpense:IExpense = {
       id: uuidV4(),
       budgetId: budgetId,
+      budgetName: budgetName,
       amount: amount,
       description: description
     };
@@ -123,6 +124,7 @@ export interface IBudget {
 export interface IExpense {
   id: string,
   budgetId: string,
+  budgetName: string,
   amount: number,
   description: string
 }
