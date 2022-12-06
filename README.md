@@ -1,4 +1,5 @@
-This project is based on the tutorial by Web Dev Simplified: https://www.youtube.com/watch?v=yz8x71BiGXg.
+This project is based on, but not taken directly upon, the tutorial by Web Dev Simplified: https://www.youtube.com/watch?v=yz8x71BiGXg.
+I took the design concept and fundamental elements from the tutorial and developed my own implementation.
 
 My Project Experience timeline.
 
