@@ -8,10 +8,12 @@ import BudgetModal from '../components/ui/Modals/BudgetModal';
 import { useEffect, useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
+import { expenseArrayToCSV } from '../utils/csvUtil';
 
 export default function Home() {
   const {
     budgets,
+    expenses,
     getBudgetExpenseTotal,
     setCurrentBudget
   } = useBudget();
@@ -59,6 +61,12 @@ export default function Home() {
           >
             Add Expense
           </Button>
+          <a
+            href={'data:text/csv;charset=utf-8,'+encodeURI(expenseArrayToCSV(expenses))}
+            download={`budgets_${new Date().toLocaleDateString()}.csv`}
+          >
+            Download as CSV
+          </a>
         </Header>
         {budgets.map((budget:IBudget, index: number)=>{
           return <BudgetCard

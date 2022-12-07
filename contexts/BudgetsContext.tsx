@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
-import { filterById, removeRedundantSpaces } from "../utils/genericHelperFuntions";
+import { filterById, removeRedundantBreaks } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
 
 interface IBudgetContext {
@@ -74,7 +74,7 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   }
 
   function addBudget({name, max}: {name: string, max: number}): void {
-    if (removeRedundantSpaces(name) in budgets) {
+    if (removeRedundantBreaks(name) in budgets) {
       throw new Error('attempted to create budget with existing name');
     }
     const newBudget:IBudget= {

@@ -1,6 +1,6 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
-import { findNameInArray, removeRedundantSpaces } from "../../../utils/genericHelperFuntions";
+import { findNameInArray, removeRedundantBreaks } from "../../../utils/genericHelperFuntions";
 import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from './BaseModal/ModalForm.module.scss';
@@ -20,7 +20,7 @@ export default function BudgetModal(
     //Validation
     //Name Validation
     if (newName) {
-      if (!findNameInArray(budgets,removeRedundantSpaces(newName))) setNameValid(true);
+      if (!findNameInArray(budgets,removeRedundantBreaks(newName))) setNameValid(true);
       else setNameValid(false);
     } 
     else setNameValid(false);
