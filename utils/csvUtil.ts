@@ -1,4 +1,5 @@
 import { IExpense } from "../contexts/BudgetsContext";
+import { removeRedundantBreaks } from "./genericHelperFuntions";
 
 const CSV_HEADER: string= 'Budget Name,Expense Amount,Expense Description';
 
@@ -12,13 +13,13 @@ function sortExpensesByBudget(unsortedArray: IExpense[]):IExpense[] {
   });
 }
 
-function expenseArrayToCSV(expenseArray:IExpense[]):string {
+export function expenseArrayToCSV(expenseArray:IExpense[]):string {
   //We first sort the expense array by the Budget Name alphabetically
   const sortedArray: IExpense[] = sortExpensesByBudget(expenseArray);
   //Change element structure from [{name:X,amount:Y,description:Z},etc]
   //to [`name,amount,description`,etc]
   const csvBodyAsArray: string[] = sortedArray.map((expense:IExpense)=>{
-    return `${expense.budgetName},${expense.amount},${expense.description}`
+    return `${expense.budgetName},${expense.amount},${removeRedundantBreaks(expense.description)}`
   });
   //Change structure from [`name,amount,description`,`name,amount,description`]
   //to `name,amount,description`,\n`name,amount,description],\n`
@@ -28,14 +29,3 @@ function expenseArrayToCSV(expenseArray:IExpense[]):string {
   const completeCSV: string = CSV_HEADER + ',\n' + csvBodyAsString;
   return completeCSV;
 }
-
-`
-Every Budget is as follows:
-Budget,Expense Amount,Expense Description,
-X,X,X
-X,X,X
-Y,Y,Y
-Y,Y,Y
-`
-
-export {};

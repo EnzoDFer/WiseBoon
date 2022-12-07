@@ -15,14 +15,8 @@ export function findNameInArray<T extends {name:string}>(myArray:T[],name: strin
   },false)
 }
 
-export function removeRedundantSpaces(str: string): string {
-  //Checks to see if there are any starting or ending spaces
-  //and removes them accordingly
-  if (str[0]===' ') {
-    return removeRedundantSpaces(str.substring(1));
-  } 
-  else if (str[str.length-1]===' ') {
-    return removeRedundantSpaces(str.substring(0,str.length-1));
-  } 
-  else return str;
+export function removeRedundantBreaks(str: string): string {
+  //First trims starting and ending spaces
+  //then replaces inner line breaks using regex with a normal space
+  return str.trim().replace(/[\r\n]/gm, ' ');
 }
