@@ -5,7 +5,7 @@ import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { IBudget, useBudget } from '../contexts/BudgetsContext';
 import BudgetModal from '../components/ui/Modals/BudgetModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import { expenseArrayToCSV } from '../utils/csvUtil';
