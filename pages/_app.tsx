@@ -1,11 +1,15 @@
-import '../utils/globals.scss'
-import type { AppProps } from 'next/app'
-import { HomeWrapper } from '../components/providers/HomeWrapper'
+import '../utils/globals.scss';
+import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
+import { BudgetsProvider } from '../contexts/BudgetsContext';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App(
+  { Component, pageProps: {session, ...pageProps} }: AppProps) {
   return (
-    <HomeWrapper>
-      <Component {...pageProps} />
-    </HomeWrapper>
+    <SessionProvider session={session}>
+      <BudgetsProvider>
+        <Component {...pageProps} />
+      </BudgetsProvider>
+    </SessionProvider>
   );
 }
