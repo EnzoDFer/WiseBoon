@@ -6,6 +6,23 @@ interface ILoginDetails {
   password: string,
 }
 
+interface IUser {
+  username: string,
+  password: string,
+  budgets: [],
+  expenses: [],
+}
+
+const placeholderUser: IUser = {
+  username: 'PLACEHOLDER',
+  password: 'PLACEHOLDER',
+  budgets: [],
+  expenses: [],
+}
+
+const placeholderToken = {
+  key: 'random_string'
+}
 
 export default async function login(
   req: NextApiRequest,
@@ -14,9 +31,22 @@ export default async function login(
   // Get username and password from login form request
   const {username,password} = req.body as ILoginDetails;
   // Connect to MongoDB
-  const mdbClient = await MongoClient.connect(
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@budget-tracker-users.kyjqupl.mongodb.net/?retryWrites=true&w=majority`
-  );
+  /* const mdbClient = await MongoClient.connect(
+    process.env.DB_URI
+  ); 
+    const db = mdbClient.db();
+  */
+  // Authenticate password use decrypter
+  // const decryptedPass = decrypter(password);
 
-
+  //Query db for username and decryptedPass
+  // db.query({username,decryptedPass})
+    
+  if (placeholderUser) {
+    //create a token here => const token = 
+    res.send(placeholderToken);
+    //save this token when calling api/login and save it to localStorage
+  } else {
+    res.status(401);
+  }
 }
