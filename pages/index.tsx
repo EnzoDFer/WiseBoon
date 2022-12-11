@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import { expenseArrayToCSV } from '../utils/csvUtil';
+import IsAuthorized from '../components/providers/IsAuthorized';
 
 export default function Home() {
   const {
@@ -24,7 +25,7 @@ export default function Home() {
   const [expenseListModalOpen, setExpenseListModalOpen] = useState<boolean>(false);
 
   return (
-    <>  
+    <IsAuthorized>  
       <BudgetModal
         opened={budgetModalOpen}
         setOpened={setBudgetModalOpen}
@@ -86,6 +87,6 @@ export default function Home() {
           />
         })}
       </Container>
-    </>
+    </IsAuthorized>
   )
 }
