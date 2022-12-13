@@ -1,24 +1,32 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "../components/ui/Button/Button";
+import styles from "../styles/login.module.scss";
 
 export const Login = ():JSX.Element => {
   const {data:session, status} = useSession();
 
   return (
-    <div>
-      Sign in to app to store your work or continue as guest.
-      {
-        !session?  
-        <Button
-          variant="fill"
-          onClick={()=>signIn('github',{ callbackUrl: 'http://localhost:3000/' })}
-        >
-          Sign in using GitHub
-        </Button>:
-        <button onClick={()=>signOut()}>
-          sign out
-        </button>
-      }
+    <div
+      className={styles.background}
+    >
+      <div
+        className={styles.loginForm}
+      >
+        <p>Sign in to app to store your work or continue as guest.</p>
+        {
+          !session?
+          <Button
+            variant="outline"
+            onClick={()=>signIn('github',{ callbackUrl: 'http://localhost:3000/' })}
+          >
+            Sign in using GitHub
+          </Button>:
+          <button onClick={()=>signOut()}>
+            sign out
+          </button>
+        }
+        <p className={styles.guest} > Continue as guest </p>
+      </div>
     </div>
   );
 }
