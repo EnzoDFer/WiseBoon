@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 import { filterByParam, removeRedundantBreaks } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense } from "../utils/interfaces";
+import { getSession } from "next-auth/react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const defaultContext: IBudgetContext = {
   budgets: [],
@@ -104,10 +106,22 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
 }
 
 // Fetch Budget and Expense data from (mock)DB using user
-export async function getServerSideProps(context) => {
+export const getServerSideProps: GetServerSideProps = async (context:GetServerSidePropsContext): Promise<{
+  props: {userData: {budgets: IBudget[], expenses: IExpense[]}}}
+> => {
+  // Retrieve logged user from session
+  const session = await getSession(context);
+  // Check for user information
+  if (!session || !session.user) {
+    throw new Error('No session user found');
+  }
+  // Fetch current user data from back end api
+  const res = await fetch(`../pages/api/user/${session.user}`);
+  const userData: {budgets: IBudget[], expenses: IExpense[]} = await res.json();
+
   return {
     props: {
-
+      userData: {...userData}
     },
   }
 }

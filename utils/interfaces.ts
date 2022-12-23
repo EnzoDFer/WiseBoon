@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from "react"
 export interface IUser {
   name: string,
   email: string,
-  budgets: IBudget,
-  expenses: IExpense
+  budgets: IBudget[],
+  expenses: IExpense[]
 }
 
 export interface IBudgetContext {
