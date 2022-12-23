@@ -10,9 +10,10 @@ import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import { expenseArrayToCSV } from '../utils/csvUtil';
 import IsAuthorized from '../components/providers/IsAuthorized';
-import { IBudget, IUserData } from '../utils/interfaces';
+import { IBudget, IUser, IUserData } from '../utils/interfaces';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
+import { filterByParam } from '../utils/genericHelperFuntions';
 
 export default function Home({userData}:{userData:IUserData}) {
   const {
@@ -22,6 +23,9 @@ export default function Home({userData}:{userData:IUserData}) {
     setCurrentBudget
   } = useBudget();
 
+  //testing *************
+  console.log(userData);
+  //delete above ********************
 
   const [budgetModalOpen, setBudgetModalOpen] = useState<boolean>(false);
   const [expenseModalOpen, setExpenseModalOpen] = useState<boolean>(false);
@@ -108,7 +112,7 @@ export const getServerSideProps: GetServerSideProps = async (context:GetServerSi
     throw new Error('No session user found');
   }
   // Fetch current user data from back end api
-  const res = await fetch(`../pages/api/user/${session.user}`);
+  const res = await fetch(`${process.env.HOST_URL}/api/user/${session.user}`);
   const userData: IUserData = await res.json();
 
   return {
