@@ -10,10 +10,9 @@ import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import { expenseArrayToCSV } from '../utils/csvUtil';
 import IsAuthorized from '../components/providers/IsAuthorized';
-import { IBudget, IUser, IUserData } from '../utils/interfaces';
+import { IBudget, IUserData } from '../utils/interfaces';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
-import { filterByParam } from '../utils/genericHelperFuntions';
 
 export default function Home({userData}:{userData:IUserData}) {
   const {
@@ -22,10 +21,6 @@ export default function Home({userData}:{userData:IUserData}) {
     getBudgetExpenseTotal,
     setCurrentBudget
   } = useBudget();
-
-  //testing *************
-  console.log(userData);
-  //delete above ********************
 
   const [budgetModalOpen, setBudgetModalOpen] = useState<boolean>(false);
   const [expenseModalOpen, setExpenseModalOpen] = useState<boolean>(false);
