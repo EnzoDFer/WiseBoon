@@ -12,5 +12,5 @@ export default async function GET(
     // Fetch user data from "DB"
     const users = mockDB;
     // Mock querying the "DB" for current user data
-    const userData = filterByParam(users,email,user);
+    const userData = filterByParam(users,'name',user);
 };

@@ -74,12 +74,12 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
   }
 
   function deleteBudget(id:string): void {
-    const filteredBudget:IBudget[] = filterById(budgets,id);
+    const filteredBudget:IBudget[] = filterByParam(budgets,'id',id);
     setBudgets(filteredBudget);
   }
 
   function deleteExpense(id: string): void {
-    const filteredExpenses: IExpense[] = filterById(expenses,id);
+    const filteredExpenses: IExpense[] = filterByParam(expenses,'id',id);
     setExpenses(filteredExpenses);
   }
   
