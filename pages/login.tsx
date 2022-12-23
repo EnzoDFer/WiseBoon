@@ -9,23 +9,26 @@ export const Login = ():JSX.Element => {
     <div
       className={styles.background}
     >
-      <div
-        className={styles.loginForm}
-      >
-        <p>Sign in to app to store your work or continue as guest.</p>
-        {
-          !session?
-          <Button
-            variant="outline"
-            onClick={()=>signIn('github',{ callbackUrl: 'http://localhost:3000/' })}
-          >
-            Sign in using GitHub
-          </Button>:
-          <button onClick={()=>signOut()}>
-            sign out
-          </button>
-        }
-        <p className={styles.guest} > Continue as guest </p>
+      <div className={styles.wrapper}>
+        <h1>BUDGETpal</h1>
+        <div
+          className={styles.loginForm}
+        >
+          <p>Sign in to app to store your work or continue as guest.</p>
+          {
+            !session?
+            <Button
+              variant="outline"
+              onClick={()=>signIn('github',{ callbackUrl: 'http://localhost:3000/' })}
+            >
+              Sign in using GitHub
+            </Button>:
+            <button onClick={()=>signOut()}>
+              sign out
+            </button>
+          }
+          <p className={styles.guest} > Continue as guest </p>
+        </div>
       </div>
     </div>
   );

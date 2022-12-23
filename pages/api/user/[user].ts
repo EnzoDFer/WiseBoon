@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 export default async function GET(  
   req: NextApiRequest,
   res: NextApiResponse,
-  ){
+  ) {
     // Get user from dynamic path
     const { user,method } = req.query;
     // Retrieve jwt from req

@@ -1,19 +1,7 @@
-import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { filterById, removeRedundantBreaks } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
-
-interface IBudgetContext {
-  budgets: IBudget[],
-  expenses: IExpense[],
-  currentBudget: IBudget | undefined,
-  setCurrentBudget: Dispatch<SetStateAction<IBudget | undefined>>,
-  getBudgetExpenses: (budgetId: string)=>IExpense[],
-  getBudgetExpenseTotal: (budgetId:string) => number,
-  addBudget: ({name, max}: {name:string, max: number}) => void,
-  addExpense: ({budgetId, budgetName, amount, description}:{budgetId: string, budgetName: string, amount: number, description: string}) => void,
-  deleteBudget: (id:string) => void,
-  deleteExpense: (id:string) => void,
-}
+import { IBudget, IBudgetContext, IExpense } from "../utils/interfaces";
 
 const defaultContext: IBudgetContext = {
   budgets: [],
@@ -113,18 +101,4 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
       {children}
     </BudgetsContext.Provider>
   );
-}
-
-export interface IBudget {
-  id: string,
-  name: string,
-  max: number
-}
-
-export interface IExpense {
-  id: string,
-  budgetId: string,
-  budgetName: string,
-  amount: number,
-  description: string
 }

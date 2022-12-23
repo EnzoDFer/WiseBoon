@@ -15,12 +15,9 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET,
     })
   ],
-  // To Re-add after finishing authorization
-  // To Re-add after finishing authorization
-  /* session: {
-    jwt: false,
+  session: {
+    
   },
-  database: 'mongodburl' */
 }
 
 export default NextAuth(authOptions);
