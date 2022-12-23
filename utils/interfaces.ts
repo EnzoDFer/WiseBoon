@@ -7,6 +7,11 @@ export interface IUser {
   expenses: IExpense[]
 }
 
+export interface IUserData {
+  budgets: IBudget[],
+  expenses: IExpense[]
+}
+
 export interface IBudgetContext {
   budgets: IBudget[],
   expenses: IExpense[],
