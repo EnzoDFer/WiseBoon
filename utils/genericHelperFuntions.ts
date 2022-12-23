@@ -1,5 +1,5 @@
-export function filterById<T extends {id:string}>(myArray:T[],id:string):T[] {
-  return myArray.filter((ele:T) => ele.id!==id);
+export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K):T[] {
+  return myArray.filter((ele:T) => ele[param]===value);
 }
 
 export function filterByName<T extends {name:string}>(myArray:T[],name:string):T[] {

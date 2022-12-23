@@ -1,4 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import mockDB from '../../../mockDB/mockDB';
+import { filterByParam } from '../../../utils/genericHelperFuntions';
 
 export default async function GET(  
   req: NextApiRequest,
@@ -6,23 +8,9 @@ export default async function GET(
   ) {
     // Get user from dynamic path
     const { user,method } = req.query;
-    // Retrieve jwt from req
-    // const jwt = req.headers.authorization
 
-    // Verify jwt is valid before returning data
-    /* jwt.verify((err)=>{
-      if (err) return res.status(401)
-      
-      // Since jwt is valid, this must be an authenticated user.
-      // So we can pull or manipulate user data with user id from path
-
-      switch (method){
-        case 'GET':
-          const userData = db.query(find(user))
-          //insert error handler if no user
-          return res.json(userData)
-          break;
-      }
-      
-    })*/
+    // Fetch user data from "DB"
+    const users = mockDB;
+    // Mock querying the "DB" for current user data
+    const userData = filterByParam(users,email,user);
 };

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { filterById, removeRedundantBreaks } from "../utils/genericHelperFuntions";
+import { filterByParam, removeRedundantBreaks } from "../utils/genericHelperFuntions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense } from "../utils/interfaces";
 
@@ -101,4 +101,13 @@ export const BudgetsProvider = ({children}:{children:React.ReactNode}):JSX.Eleme
       {children}
     </BudgetsContext.Provider>
   );
+}
+
+// Fetch Budget and Expense data from (mock)DB using user
+export async function getServerSideProps(context) => {
+  return {
+    props: {
+
+    },
+  }
 }
