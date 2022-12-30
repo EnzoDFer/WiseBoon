@@ -76,12 +76,12 @@ export const BudgetsProvider = (
   }
 
   function deleteBudget(id:string): void {
-    const filteredBudget:IBudget[] = filterByParam(budgets,'id',id);
+    const filteredBudget:IBudget[] = filterByParam(budgets,'id',id,'exclude');
     setBudgets(filteredBudget);
   }
 
   function deleteExpense(id: string): void {
-    const filteredExpenses: IExpense[] = filterByParam(expenses,'id',id);
+    const filteredExpenses: IExpense[] = filterByParam(expenses,'id',id,'exclude');
     setExpenses(filteredExpenses);
   }
   

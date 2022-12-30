@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { IBudget, useBudget } from "../../../contexts/BudgetsContext";
+import { useBudget } from "../../../contexts/BudgetsContext";
+import { IBudget } from "../../../utils/interfaces";
 import styles from "./DropDown.module.scss";
 
 interface IDropDownProps {

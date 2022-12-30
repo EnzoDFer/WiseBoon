@@ -1,8 +1,14 @@
-export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K):T[] {
-  return myArray.filter((ele:T) => ele[param]===value);
+export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K,filter: 'include'|'exclude'):T[] {
+  if (filter==='include') {
+    return myArray.filter((ele:T) => ele[param]===value);
+  } else {
+    return myArray.filter((ele:T) => ele[param]!==value);
+  }
 }
 
+//depracated due to filterByParam
 export function filterByName<T extends {name:string}>(myArray:T[],name:string):T[] {
+  console.warn("filterByName is deprecated.  Please use filterByParam")
   return myArray.filter((ele:T) => ele.name.toLowerCase()!==name.toLowerCase());
 }
 

@@ -5,7 +5,7 @@ import Header from '../components/ui/Header/Header';
 import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { BudgetsProvider, useBudget } from '../contexts/BudgetsContext';
 import BudgetModal from '../components/ui/Modals/BudgetModal';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import { expenseArrayToCSV } from '../utils/csvUtil';
@@ -13,12 +13,13 @@ import IsAuthorized from '../components/providers/IsAuthorized';
 import { IBudget, IUserData } from '../utils/interfaces';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
+import BudgetCardDisplay from '../components/ui/BudgetCardDisplay';
+import CSVlink from '../components/ui/CSVlink';
 
 export default function Home({userData}:{userData:IUserData}) {
+
   const {
-    budgets,
     expenses,
-    getBudgetExpenseTotal,
     setCurrentBudget
   } = useBudget();
 
@@ -65,30 +66,14 @@ export default function Home({userData}:{userData:IUserData}) {
             >
               Add Expense
             </Button>
-            <a
-              href={'data:text/csv;charset=utf-8,'+encodeURI(expenseArrayToCSV(expenses))}
-              download={`budgets_${new Date().toLocaleDateString()}.csv`}
-            >
-              Download as CSV
-            </a>
+            <CSVlink/>
           </Header>
-          {budgets.map((budget:IBudget, index: number)=>{
-            return <BudgetCard
-              key={`card ${index}`}
-              title={budget.name}
-              id={budget.id}
-              current={getBudgetExpenseTotal(budget.id)}
-              maximum={budget.max}
-              createExpenseModal={()=>{
-                setCurrentBudget(budget);
-                setExpenseModalOpen(!expenseModalOpen);
-              }}
-              expenseListModal={()=>{
-                setCurrentBudget(budget);
-                setExpenseListModalOpen(!expenseListModalOpen);
-              }}
-            />
-          })}
+          <BudgetCardDisplay 
+            expenseModalState={expenseModalOpen} 
+            expenseModalContol={setExpenseModalOpen} 
+            expenseListModalState={expenseListModalOpen} 
+            expenseListModalControl={setExpenseListModalOpen}            
+          />
         </Container>
       </IsAuthorized>
     </BudgetsProvider>

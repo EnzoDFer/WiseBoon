@@ -13,7 +13,7 @@ export default async function GET(
     // Fetch user data from "DB"
     const users = mockDB;
     // Mock querying the "DB" for current user data
-    const userData = filterByParam(users,'name',user)[0];
+    const userData = filterByParam(users,'name',user,'include')[0];
     res.json(
       {
         budgets: userData.budgets,
