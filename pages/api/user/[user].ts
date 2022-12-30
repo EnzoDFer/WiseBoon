@@ -21,3 +21,24 @@ export default async function GET(
       }
     );
 };
+
+export async function POST(  
+  req: NextApiRequest,
+  res: NextApiResponse,
+  ) {
+
+};
+
+export async function PUT(  
+  req: NextApiRequest,
+  res: NextApiResponse,
+  ) {
+
+};
+
+export async function DELETE(  
+  req: NextApiRequest,
+  res: NextApiResponse,
+  ) {
+
+};
