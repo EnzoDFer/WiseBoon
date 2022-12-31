@@ -8,7 +8,7 @@ import { authOptions } from '../auth/[...nextauth]';
 export default async function GET(  
   req: NextApiRequest,
   res: NextApiResponse,
-  ) {
+) {
     // Get user from dynamic path
     // const { user } = req.query;
     // As we are mocking a DB query, we force this default user
@@ -28,15 +28,65 @@ export default async function GET(
 export async function POST(  
   req: NextApiRequest,
   res: NextApiResponse,
-  ) {
+) {
+  const session = await unstable_getServerSession(req,res, authOptions);
+  if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
+  // Providing API authentication for user using session
+  const data: IBudget | IExpense = req.body;
 
+  if (data.hasOwnProperty('max')) { // Only budgets have 'max'
+    mockDB.filter((user:IUser)=> {
+      if (user.email===session!.user!.email) {
+        return {
+          ...user,
+          budgets: [...user.budgets,data]
+        }
+      }
+    })
+  } else {
+    mockDB.filter((user:IUser)=> {
+      if (user.email===session!.user!.email) {
+        return {
+          ...user,
+          budgets: [...user.expenses,data]
+        }
+      }
+    })
+  }
 };
 
 export async function PUT(  
   req: NextApiRequest,
   res: NextApiResponse,
-  ) {
+) {
+  const session = await unstable_getServerSession(req,res, authOptions);
+  if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
+  // Providing API authentication for user using session
+  const data: IBudget | IExpense = req.body;
 
+  if (data.hasOwnProperty('max')) { // Only budgets have 'max'
+    mockDB.filter((user:IUser)=> {
+      if (user.email===session!.user!.email) {
+        return {
+          ...user,
+          budgets: user.budgets.filter((budget:IBudget)=>{
+            if (budget.id===data.id) return data;
+          })
+        }
+      }
+    })
+  } else {
+    mockDB.filter((user:IUser)=> {
+      if (user.email===session!.user!.email) {
+        return {
+          ...user,
+          expenses: user.expenses.filter((expense:IExpense)=>{
+            if (expense.id === data.id) return data;
+          })
+        }
+      }
+    })
+  }
 };
 
 export async function DELETE(  
@@ -70,5 +120,4 @@ export async function DELETE(
         }
       })
     }
-
 };
