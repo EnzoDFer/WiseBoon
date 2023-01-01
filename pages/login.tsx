@@ -14,7 +14,7 @@ export const Login = ():JSX.Element => {
         <div
           className={styles.loginForm}
         >
-          <p>Sign in to app to store your work or continue as guest.</p>
+          <p>Sign in to app to continue.</p>
           {
             !session?
             <Button
@@ -27,7 +27,6 @@ export const Login = ():JSX.Element => {
               sign out
             </button>
           }
-          <p className={styles.guest} > Continue as guest </p>
         </div>
       </div>
     </div>

@@ -19,7 +19,6 @@ import CSVlink from '../components/ui/CSVlink';
 export default function Home({userData}:{userData:IUserData}) {
 
   const {
-    expenses,
     setCurrentBudget
   } = useBudget();
 
@@ -50,7 +49,7 @@ export default function Home({userData}:{userData:IUserData}) {
           </Head>
           <Header>
           
-            <h1>Budget</h1>
+            <h1>BUDGETpal</h1>
             <Button
               variant='fill'
               onClick={()=>setBudgetModalOpen(!budgetModalOpen)}
@@ -89,10 +88,14 @@ export const getServerSideProps: GetServerSideProps = async (context:GetServerSi
   const session = await getSession(context);
   // Check for user information
   if (!session || !session.user) {
-    throw new Error('No session user found');
+    const {res} = context;
+    res.writeHead(302,{
+      Location: '/login'
+    });
+    res.end();
   }
   // Fetch current user data from back end api
-  const res = await fetch(`${process.env.HOST_URL}/api/user/${session.user}`);
+  const res = await fetch(`${process.env.HOST_URL}/api/user/${session!.user}`);
   const userData: IUserData = await res.json();
 
   return {
