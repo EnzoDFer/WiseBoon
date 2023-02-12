@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
-import { findNameInArray, removeRedundantBreaks } from "../../../utils/utilFunctions";
+import { filterByParam, removeRedundantBreaks } from "../../../utils/utilFunctions";
 import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from './BaseModal/ModalForm.module.scss';
@@ -20,7 +20,10 @@ export default function BudgetModal(
     //Validation
     //Name Validation
     if (newName) {
-      if (!findNameInArray(budgets,removeRedundantBreaks(newName))) setNameValid(true);
+      // Checks if name already exists by filtering budgets by name and checking if filtered array is empty
+      if (!filterByParam(budgets,'name',removeRedundantBreaks(newName),'include').length) {
+        setNameValid(true);
+      }
       else setNameValid(false);
     } 
     else setNameValid(false);
