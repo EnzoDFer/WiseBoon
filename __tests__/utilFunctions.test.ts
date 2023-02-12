@@ -1,4 +1,4 @@
-import { filterByParam } from "./utilFunctions";
+import { filterByParam } from "../utils/utilFunctions";
 /*
   Testing function filterByParam
 */
