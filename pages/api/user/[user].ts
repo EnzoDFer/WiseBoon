@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
 import mockDB from '../../../mockDB/mockDB';
-import { filterByParam } from '../../../utils/genericHelperFuntions';
+import { filterByParam } from '../../../utils/utilFunctions';
 import { IBudget, IExpense, IUser } from '../../../utils/interfaces';
 import { authOptions } from '../auth/[...nextauth]';
 

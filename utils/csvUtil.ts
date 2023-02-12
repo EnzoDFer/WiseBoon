@@ -1,5 +1,5 @@
 import { IExpense } from "../contexts/BudgetsContext";
-import { removeRedundantBreaks } from "./genericHelperFuntions";
+import { removeRedundantBreaks } from "./utilFunctions";
 
 const CSV_HEADER: string= 'Budget Name,Expense Amount,Expense Description';
 
