@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { filterByParam, removeRedundantBreaks } from "../utils/utilFunctions";
+import { filterByParam, cleanString } from "../utils/utilFunctions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense, IUserData } from "../utils/interfaces";
 import { useSession } from "next-auth/react";
@@ -71,7 +71,7 @@ export const BudgetsProvider = (
   }
 
   function addBudget({name, max}: {name: string, max: number}): void {
-    if (removeRedundantBreaks(name) in budgets) {
+    if (cleanString(name) in budgets) {
       throw new Error('attempted to create budget with existing name');
     }
     const newBudget:IBudget= {
