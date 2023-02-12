@@ -35,6 +35,13 @@ describe('filterByParam', () => {
     const array2 = filterByParam(array1,'age',25,'exclude');
     expect(array2).toEqual([{ name: "Jane", age: 30 }, { name: "Jim", age: 35 }]);
   })
+
+  test('Handles empty array case', () => {
+    const array1 = filterByParam([],'param','val','include');
+    const array2 = filterByParam([],'param','val','exclude');
+    expect(array1).toStrictEqual([]);
+    expect(array2).toStrictEqual([]);
+  })
 });
 
 export {};
