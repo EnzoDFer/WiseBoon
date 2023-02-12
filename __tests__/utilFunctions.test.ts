@@ -51,6 +51,9 @@ describe('filterByParam', () => {
   })
 });
 
+/*
+  Testing function cleanString
+*/
 describe(cleanString, () => {
   test('removes trailing and leading spaces', () => {
     expect(cleanString(' string ')).toBe('string');
