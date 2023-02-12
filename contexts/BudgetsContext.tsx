@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { filterByParam, removeRedundantBreaks } from "../utils/utilFunctions";
+import { filterByParam, removeRedundantBreaks } from "../utils/utilFunctions/utilFunctions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense, IUserData } from "../utils/interfaces";
 import { useSession } from "next-auth/react";
