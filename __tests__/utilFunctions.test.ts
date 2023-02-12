@@ -89,6 +89,10 @@ describe(usdFormat, () => {
   test('Delimits with comma every three digits', () => {
     expect(usdFormat(1000000)).toBe('$1,000,000');
   });
+  
+  test('Handles negative values', () => {
+    expect(usdFormat(-100)).toBe('-$100');
+  });
 });
 
 export {};
