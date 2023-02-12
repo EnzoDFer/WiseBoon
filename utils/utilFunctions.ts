@@ -32,6 +32,10 @@ export function cleanString(str: string): string {
  * @returns A string representation of num as USD
  */
 export const usdFormat = (num: number): string => {
+  // throws error if null or undefined is forcibly passed
+  if (!num){
+    throw new Error(`${num} was attempted to be formatted as USD.`);
+  }
   return new Intl.NumberFormat(
     undefined,
     {
