@@ -1,4 +1,4 @@
-import { filterByParam } from "../utils/utilFunctions";
+import { cleanString, filterByParam } from "../utils/utilFunctions";
 /*
   Testing function filterByParam
 */
@@ -49,6 +49,12 @@ describe('filterByParam', () => {
     expect(array2).toStrictEqual([{name: 'John', age: 25}, {name: 'John', city: 'NY'}]);
     expect(array2).not.toStrictEqual([{}]);
   })
+});
+
+describe(cleanString, () => {
+  test('removes trailing and leading spaces', () => {
+    expect(cleanString(' string ')).toBe('string');
+  });
 });
 
 export {};
