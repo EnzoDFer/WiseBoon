@@ -1,4 +1,4 @@
-import { cleanString, filterByParam } from "../utils/utilFunctions";
+import { cleanString, filterByParam, usdFormat } from "../utils/utilFunctions";
 /*
   Testing function filterByParam
 */
@@ -80,6 +80,13 @@ string`
     expect(cleanString('\n')).toBe('');
     expect(cleanString(' \n ')).toBe('');
   });
+});
+
+/*
+  Testing function usdFormat
+*/
+describe(usdFormat, () => {
+  
 });
 
 export {};
