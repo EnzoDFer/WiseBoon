@@ -67,6 +67,10 @@ string`
   test('multiple line breaks are replaced with a single string', () => {
     expect(cleanString('My\n\n\n\nstring')).toBe('My string');
   });
+  
+  test('consecutive spaces within string are replaced with single string', () => {
+    expect(cleanString('My     string')).toBe('My string');
+  });
 });
 
 export {};
