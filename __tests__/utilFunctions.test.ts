@@ -55,6 +55,14 @@ describe(cleanString, () => {
   test('removes trailing and leading spaces', () => {
     expect(cleanString(' string ')).toBe('string');
   });
+
+  test('removes in-line breaks', () => {
+    expect(cleanString(
+      `My
+string`
+    )).toBe('My string');
+    expect(cleanString('My\nstring')).toBe('My string');
+  });
 });
 
 export {};
