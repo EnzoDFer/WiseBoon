@@ -14,7 +14,12 @@ export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K,filter: '
     return myArray.filter((ele:T) => ele[param]!==value);
   }
 }
-
+/**
+ * Returns a new string where leading/trailing spaces are removed 
+ * and multi-line breaks are replaced with single space
+ * @param str String to be trimmed
+ * @returns new string
+ */
 export function removeRedundantBreaks(str: string): string {
   //First trims starting and ending spaces
   //then replaces inner line breaks using regex with a normal space
