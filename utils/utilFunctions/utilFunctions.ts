@@ -15,12 +15,6 @@ export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K,filter: '
   }
 }
 
-//depracated due to filterByParam
-export function filterByName<T extends {name:string}>(myArray:T[],name:string):T[] {
-  console.warn("filterByName is deprecated.  Please use filterByParam")
-  return myArray.filter((ele:T) => ele.name.toLowerCase()!==name.toLowerCase());
-}
-
 export function findNameInArray<T extends {name:string}>(myArray:T[],name: string):boolean {
   return myArray.reduce((isPresent:boolean,currentElement:T)=>{
     if (currentElement.name.toLowerCase()!==name.toLowerCase()) {
