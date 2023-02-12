@@ -33,8 +33,8 @@ export function cleanString(str: string): string {
  */
 export const usdFormat = (num: number): string => {
   // throws error if null or undefined is forcibly passed
-  if (!num){
-    throw new Error(`${num} was attempted to be formatted as USD.`);
+  if (typeof num !== "number"){
+    throw new Error(`${typeof num} was attempted to be formatted as USD instead of a number.`);
   }
   return new Intl.NumberFormat(
     undefined,
