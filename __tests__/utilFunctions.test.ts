@@ -99,6 +99,10 @@ describe(usdFormat, () => {
     expect(() => usdFormat(undefined as any)).toThrowError();
     expect(() => usdFormat('200' as any)).toThrowError();
   });
+
+  test('Removes floating point values', () => {
+    expect(usdFormat(100.12)).toBe('$100');
+  });
 });
 
 export {};
