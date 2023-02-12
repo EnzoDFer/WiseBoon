@@ -86,7 +86,9 @@ string`
   Testing function usdFormat
 */
 describe(usdFormat, () => {
-  
+  test('Delimits with comma every three digits', () => {
+    expect(usdFormat(1000000)).toBe('$1,000,000');
+  });
 });
 
 export {};
