@@ -25,3 +25,12 @@ export function cleanString(str: string): string {
   //then replaces inner line breaks using regex with a normal space
   return str.trim().replace(/[\r\n\s]+/gm, ' ');
 }
+
+export const usdFormatter: Intl.NumberFormat = new Intl.NumberFormat(
+  undefined,
+  {
+    currency: "usd",
+    style: "currency",
+    maximumFractionDigits: 0
+  }
+);
