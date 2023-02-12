@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
-import { findNameInArray, removeRedundantBreaks } from "../../../utils/utilFunctions/utilFunctions";
+import { findNameInArray, removeRedundantBreaks } from "../../../utils/utilFunctions";
 import Button from "../Button/Button";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from './BaseModal/ModalForm.module.scss';
