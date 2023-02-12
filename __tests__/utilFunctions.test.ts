@@ -63,6 +63,10 @@ string`
     )).toBe('My string');
     expect(cleanString('My\nstring')).toBe('My string');
   });
+
+  test('multiple line breaks are replaced with a single string', () => {
+    expect(cleanString('My\n\n\n\nstring')).toBe('My string');
+  });
 });
 
 export {};

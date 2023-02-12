@@ -23,5 +23,5 @@ export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K,filter: '
 export function cleanString(str: string): string {
   //First trims starting and ending spaces
   //then replaces inner line breaks using regex with a normal space
-  return str.trim().replace(/[\r\n]/gm, ' ');
+  return str.trim().replace(/[\r\n]+/gm, ' ');
 }
