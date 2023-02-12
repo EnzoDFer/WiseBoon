@@ -42,6 +42,13 @@ describe('filterByParam', () => {
     expect(array1).toStrictEqual([]);
     expect(array2).toStrictEqual([]);
   })
+
+  test('Handles multi-type object', () => {
+    const array1 = [{name: 'John', age: 25}, {name: 'John', city: 'NY'}];
+    const array2 = filterByParam(array1,'name','John','include');
+    expect(array2).toStrictEqual([{name: 'John', age: 25}, {name: 'John', city: 'NY'}]);
+    expect(array2).not.toStrictEqual([{}]);
+  })
 });
 
 export {};
