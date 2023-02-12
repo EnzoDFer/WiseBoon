@@ -1,5 +1,5 @@
 import { IExpense } from "../contexts/BudgetsContext";
-import { removeRedundantBreaks } from "./utilFunctions";
+import { cleanString } from "./utilFunctions";
 
 const CSV_HEADER: string= 'Budget Name,Expense Amount,Expense Description';
 
@@ -19,7 +19,7 @@ export function expenseArrayToCSV(expenseArray:IExpense[]):string {
   //Change element structure from [{name:X,amount:Y,description:Z},etc]
   //to [`name,amount,description`,etc]
   const csvBodyAsArray: string[] = sortedArray.map((expense:IExpense)=>{
-    return `${expense.budgetName},${expense.amount},${removeRedundantBreaks(expense.description)}`
+    return `${expense.budgetName},${expense.amount},${cleanString(expense.description)}`
   });
   //Change structure from [`name,amount,description`,`name,amount,description`]
   //to `name,amount,description`,\n`name,amount,description],\n`

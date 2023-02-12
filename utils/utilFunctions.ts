@@ -20,7 +20,7 @@ export function filterByParam<T, K>(myArray:T[],param: keyof T,value:K,filter: '
  * @param str String to be trimmed
  * @returns new string
  */
-export function removeRedundantBreaks(str: string): string {
+export function cleanString(str: string): string {
   //First trims starting and ending spaces
   //then replaces inner line breaks using regex with a normal space
   return str.trim().replace(/[\r\n]/gm, ' ');
