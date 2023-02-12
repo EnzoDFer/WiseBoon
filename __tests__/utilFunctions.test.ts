@@ -94,9 +94,10 @@ describe(usdFormat, () => {
     expect(usdFormat(-100)).toBe('-$100');
   });
 
-  test('Handles null or undefined input', () => {
-    expect(() => usdFormat(null as any)).toThrow(`null was attempted to be formatted as USD.`);
-    expect(() => usdFormat(undefined as any)).toThrow(`undefined was attempted to be formatted as USD.`);
+  test('Handle unexpected input type', () => {
+    expect(() => usdFormat(null as any)).toThrowError();
+    expect(() => usdFormat(undefined as any)).toThrowError();
+    expect(() => usdFormat('200' as any)).toThrowError();
   });
 });
 
