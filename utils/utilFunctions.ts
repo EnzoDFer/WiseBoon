@@ -26,11 +26,18 @@ export function cleanString(str: string): string {
   return str.trim().replace(/[\r\n\s]+/gm, ' ');
 }
 
-export const usdFormatter: Intl.NumberFormat = new Intl.NumberFormat(
-  undefined,
-  {
-    currency: "usd",
-    style: "currency",
-    maximumFractionDigits: 0
-  }
-);
+/**
+ * Enables formatting currency value to  USD standard
+ * @param num A currency value as number
+ * @returns A string representation of num as USD
+ */
+export const usdFormat = (num: number): string => {
+  return new Intl.NumberFormat(
+    undefined,
+    {
+      currency: "usd",
+      style: "currency",
+      maximumFractionDigits: 0
+    }
+  ).format(num);
+};
