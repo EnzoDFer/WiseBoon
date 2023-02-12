@@ -1,9 +1,9 @@
-import { IExpense } from "../contexts/BudgetsContext";
+import { IExpense } from "./interfaces";
 import { cleanString } from "./utilFunctions";
 
 const CSV_HEADER: string= 'Budget Name,Expense Amount,Expense Description';
 
-function sortExpensesByBudget(unsortedArray: IExpense[]):IExpense[] {
+function sortExpensesByBudget(unsortedArray: IExpense[]): IExpense[] {
   //Creates a copy of the unsorted array which it then sorts and returns
   //Chose to use Intl.Collator over localeCompare() as documentation states
   //better performance comparing larger arrays
