@@ -1,5 +1,5 @@
 import styles from "./BudgetCard.module.scss";
-import { usdFormatter } from "../../../utils/formatCurrency";
+import { usdFormat } from '../../../utils/utilFunctions'
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
 import { useBudget } from "../../../contexts/BudgetsContext";
@@ -72,11 +72,11 @@ const CardTitle = (
       <div
         className={styles.balanceDisplayWrapper}
       >
-        {usdFormatter.format(current)} 
+        {usdFormat(current)} 
         <span
           id={styles.max}
         >
-          / {usdFormatter.format(maximum)}
+          / {usdFormat(maximum)}
         </span>
       </div>
     </div>
