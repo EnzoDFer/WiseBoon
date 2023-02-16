@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usdFormatter } from "../../../utils/formatCurrency";
+import { usdFormat } from '../../../utils/utilFunctions'
 import Button from "../Button/Button";
 import styles from "./ExpenseItem.module.scss";
 
@@ -38,7 +38,7 @@ export const ExpenseItem = ({description,amount,handleDel}:IExpenseItemProps):JS
         >
           Confirm Delete
         </Button>
-        <h1 className={styles.amount}>{usdFormatter.format(amount)}</h1>
+        <h1 className={styles.amount}>{usdFormat(amount)}</h1>
       </div>
     </div>
   );
