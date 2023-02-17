@@ -19,7 +19,7 @@ export const Login = ():JSX.Element => {
             !session?
             <Button
               variant="outline"
-              onClick={()=>signIn('github',{ callbackUrl: 'http://localhost:3000/' })}
+              onClick={()=>signIn('github',{ callbackUrl: process.env.HOST_URL })}
             >
               Sign in using GitHub
             </Button>:
