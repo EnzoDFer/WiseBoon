@@ -1,12 +1,11 @@
 import NextAuth from 'next-auth';
-import { Provider } from 'next-auth/providers';
 import GithubProvider from 'next-auth/providers/github';
 
 if (
   !process.env.GITHUB_ID ||
   !process.env.GITHUB_SECRET 
 ) {
-  throw new Error('Error wih authentication')
+  throw new Error('Error loading authentication variables')
 }
 
 export const authOptions = {
