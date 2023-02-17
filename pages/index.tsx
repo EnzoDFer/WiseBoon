@@ -15,6 +15,8 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
 import BudgetCardDisplay from '../components/ui/BudgetCardDisplay';
 import CSVlink from '../components/ui/CSVlink';
+import mockDB from '../mockDB/mockDB';
+import { filterByParam } from '../utils/utilFunctions';
 
 export default function Home({userData}:{userData:IUserData}) {
 
@@ -94,9 +96,14 @@ export const getServerSideProps: GetServerSideProps = async (context:GetServerSi
     });
     res.end();
   }
-  // Fetch current user data from back end api
-  const res = await fetch(`${process.env.HOST_URL}/api/user/${session!.user}`);
-  const userData: IUserData = await res.json();
+  // Get user from dynamic path
+  // const { user } = req.query;
+  // As we are mocking a DB query, we force this default user
+  const user = 'Fake Namerson'; 
+  // Fetch user data from "DB"
+  const users = mockDB;
+  // Mock querying the "DB" for current user data
+  const userData = filterByParam(users,'name',user,'include')[0];
 
   return {
     props: {
