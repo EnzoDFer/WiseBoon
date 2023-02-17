@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { IExpense, useBudget } from "../../../contexts/BudgetsContext";
+import { useBudget } from "../../../contexts/BudgetsContext";
+import { IExpense } from "../../../utils/interfaces";
 import { ExpenseItem } from "../ExpenseItem/ExpenseItem";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from "./BaseModal/BaseModal.module.scss";
