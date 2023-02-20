@@ -33,9 +33,12 @@ export const Login = ():JSX.Element => {
               Sign in using GitHub
             </Button>
           </>:
-          <button onClick={()=>signOut()}>
-            sign out
-          </button>
+          <Button 
+            className={styles.buttonBase}
+            onClick={()=>signOut()}
+          >
+            Sign out
+          </Button>
         }
       </div>
     </div>
