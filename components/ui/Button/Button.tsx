@@ -13,7 +13,7 @@ export default function Button(
 ) {
   return (
     <button
-      className={`${variant==='fill'?styles.filledButton:styles.outlinedButton} ${className}`}
+      className={className?className:`${variant==='fill'?styles.filledButton:styles.outlinedButton}`}
       onClick={onClick}
       disabled={disabled}
     >
