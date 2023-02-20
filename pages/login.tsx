@@ -28,7 +28,6 @@ export const Login = ():JSX.Element => {
             <p>Sign in to continue</p>
             <Button
               className={styles.buttonBase}
-              variant="outline"
               onClick={()=>signIn('github',{ callbackUrl: `/` })}
             >
               Sign in using GitHub

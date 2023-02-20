@@ -5,7 +5,7 @@ export default function Button(
   {children,onClick,variant,disabled,className}:
   {
     children?:ReactNode,
-    variant:"fill"|"outline",
+    variant?:"fill"|"outline",
     onClick?:()=>void,
     disabled?:boolean,
     className?:string,
