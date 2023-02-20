@@ -1,13 +1,16 @@
 .background {
-  position: relative;
   background: white;
-  background-image: url('../img/wiseboon-login-background-circle.svg');
+  background-image: url('/img/wiseboon-login-background-circle.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
-  display: grid;
-  place-items: center;
+}
+
+.iconWrapper {
+  position: relative;
+  height: 100px;
+  width: 100px;
 }
 
 .frosted {

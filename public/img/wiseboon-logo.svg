@@ -1,4 +1,4 @@
-<svg id="wiseboon-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<svg id="wiseboon-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450 450" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
   <defs>
     <linearGradient id="wiseboon-logo-s-path1-fill" x1="0.203451" y1="0.228013" x2="1" y2="1" spreadMethod="pad" gradientUnits="objectBoundingBox" gradientTransform="translate(0 0)">
       <stop id="wiseboon-logo-s-path1-fill-0" offset="0%" stop-color="#4055a8"/>
@@ -7,7 +7,7 @@
       <stop id="wiseboon-logo-s-path1-fill-3" offset="100%" stop-color="#647acb"/>
     </linearGradient>
   </defs>
-  <g id="wiseboon-logo-s-g1" transform="translate(18.069352 51.714028)">
+  <g id="wiseboon-logo-s-g1" transform="translate(-55 0)">
     <path id="wiseboon-logo-s-path1" d="M99.438063,300l1.133619,200.480532l148.872042-59.862009l151.127958,59.862009-.705465-200.480533c-5.4978-42.575231-45.333614-100.717935-109.294535-99.714157l9.428316-56.683342c-7.790601-1.956253-29.600757-11.2104-39.428316-3.316658-7.057392,6.372425-16.915186,11.368047-30,10-10,0-16.155388-13.512693-30.285842-10l10.285842,60C157.548376,203.031048,95.619444,250.80524,99.438063,300Z" transform="translate(32.023285-70.528545)" fill="url(#wiseboon-logo-s-path1-fill)" stroke="#19216c" stroke-width="8"/>
     <text id="wiseboon-logo-s-text1" dx="0" dy="0" font-family="&quot;wiseboon-logo:::Roboto&quot;" font-size="48" font-weight="700" transform="matrix(2.053653 0 0 2.849536 58.992995 334.004249)" paint-order="stroke fill markers" fill="#fff" stroke="#19216c" stroke-linecap="round">
       <tspan id="wiseboon-logo-s-tspan1" y="0" font-weight="700" stroke-width="4"><![CDATA[WiseBoon]]>

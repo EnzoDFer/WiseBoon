@@ -1,4 +1,5 @@
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Button from "../components/ui/Button/Button";
 import styles from "../styles/login.module.scss";
 
@@ -10,7 +11,15 @@ export const Login = ():JSX.Element => {
       className={styles.background}
     >
       <div className={styles.wrapper}>
-        <h1>BUDGETpal</h1>
+        <div
+          className={styles.iconWrapper}
+        >
+          <Image
+            src={'/img/wiseboon-logo.svg'}
+            fill
+            alt='WiseBoon Logo'
+          />
+        </div>
         <div
           className={styles.loginForm}
         >
