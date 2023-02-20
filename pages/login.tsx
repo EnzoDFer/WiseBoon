@@ -26,6 +26,7 @@ export const Login = ():JSX.Element => {
           {
             !session?
             <Button
+              className={styles.buttonBase}
               variant="outline"
               onClick={()=>signIn('github',{ callbackUrl: `/` })}
             >
