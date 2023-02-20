@@ -22,16 +22,18 @@ export const Login = ():JSX.Element => {
       <div
         className={styles.loginForm}
       >
-        <p>Sign in to continue</p>
         {
           !session?
-          <Button
-            className={styles.buttonBase}
-            variant="outline"
-            onClick={()=>signIn('github',{ callbackUrl: `/` })}
-          >
-            Sign in using GitHub
-          </Button>:
+          <>
+            <p>Sign in to continue</p>
+            <Button
+              className={styles.buttonBase}
+              variant="outline"
+              onClick={()=>signIn('github',{ callbackUrl: `/` })}
+            >
+              Sign in using GitHub
+            </Button>
+          </>:
           <button onClick={()=>signOut()}>
             sign out
           </button>
