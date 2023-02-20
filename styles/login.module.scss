@@ -5,10 +5,13 @@
   background-size: cover;
   background-position: center;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .iconWrapper {
   position: relative;
+  margin: 0 auto;
   height: 100px;
   width: 100px;
 }
