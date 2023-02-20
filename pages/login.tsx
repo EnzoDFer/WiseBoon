@@ -23,7 +23,6 @@ export const Login = ():JSX.Element => {
         <div
           className={styles.loginForm}
         >
-          <p>Sign in to app to continue.</p>
           {
             !session?
             <Button
