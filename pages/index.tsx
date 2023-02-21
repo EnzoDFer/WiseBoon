@@ -46,7 +46,7 @@ export default function Home({userData}:{userData:IUserData}) {
         />
         <main className={styles.main}>
           <Head>
-            <title>Budget Tracker</title>
+            <title>WiseBoon</title>
             <meta name="description" content="Track your expenses and keep your budget tight!" />
             <link rel="icon" href="/favicon.ico" />
           </Head>
