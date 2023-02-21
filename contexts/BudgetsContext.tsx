@@ -13,6 +13,7 @@ const defaultContext: IBudgetContext = {
   addExpense: () => {},
   deleteBudget: () => {},
   deleteExpense: () => {},
+  getTotalExpenses: () => 0,
 }
 
 const BudgetsContext = createContext<IBudgetContext>(defaultContext);
@@ -32,6 +33,12 @@ export const BudgetsProvider = (
   const [expenses, setExpenses] = useState<IExpense[]>(userData.expenses);
   const [currentBudget,setCurrentBudget] = useState<IBudget|undefined>();
   
+  function getTotalExpenses(): number {
+    return expenses.reduce( (tot: number,curr: IExpense) => {
+      return tot+curr.amount;
+    }, 0);
+  }
+
   function addExpense(
     {budgetId, budgetName, amount, description}: 
     {budgetId: string, budgetName: string, amount: number, description: string}
@@ -96,6 +103,7 @@ export const BudgetsProvider = (
         addExpense,
         deleteBudget,
         deleteExpense,
+        getTotalExpenses
       }
     }>
       {children}

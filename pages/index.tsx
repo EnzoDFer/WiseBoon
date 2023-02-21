@@ -58,12 +58,6 @@ export default function Home({userData}:{userData:IUserData}) {
 
           <SummaryCard />
 
-          <BudgetCardDisplay 
-            expenseModalState={expenseModalOpen} 
-            expenseModalContol={setExpenseModalOpen} 
-            expenseListModalState={expenseListModalOpen} 
-            expenseListModalControl={setExpenseListModalOpen}            
-          />
         </main>
       </IsAuthorized>
     </BudgetsProvider>
