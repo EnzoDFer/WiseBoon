@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss'
+import Image from 'next/image';
 import Container from '../components/ui/Container/Container';
 import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
@@ -45,31 +46,23 @@ export default function Home({userData}:{userData:IUserData}) {
           setOpened={setExpenseListModalOpen}
         />
         <main className={styles.main}>
+
           <Head>
             <title>WiseBoon</title>
             <meta name="description" content="Track your expenses and keep your budget tight!" />
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          <Header>
-          
-            <h1>BUDGETpal</h1>
-            <Button
-              variant='fill'
-              onClick={()=>setBudgetModalOpen(!budgetModalOpen)}
-            >
-              Add Budget
-            </Button>
-            <Button
-              variant='outline'
-              onClick={()=>{
-                setCurrentBudget(undefined);
-                setExpenseModalOpen(!expenseModalOpen);
-              }}
-            >
-              Add Expense
-            </Button>
-            <CSVlink/>
-          </Header>
+
+          <header className={styles.header}>
+            <div>Burger</div>
+            <div className={styles.iconWrapper}>
+              <Image
+                src={'/img/wiseboon-logo.svg'}
+                fill
+                alt='WiseBoon Logo'
+              />
+            </div>
+          </header>
           <BudgetCardDisplay 
             expenseModalState={expenseModalOpen} 
             expenseModalContol={setExpenseModalOpen} 

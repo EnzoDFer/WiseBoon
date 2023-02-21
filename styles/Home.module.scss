@@ -1,5 +1,23 @@
 .main {
+  height: 100%;
   display: grid;
   padding: 8px;
   gap: 24px;
+  background-color: hsl(214,15,91);
+}
+
+.header {
+  background-color: white;
+  padding: 8px 24px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px hsl(0,0,0,.15);
+}
+
+.iconWrapper {
+  position: relative;
+  height: 100%;
+  width: 48px;
 }
