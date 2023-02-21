@@ -9,8 +9,6 @@ const defaultContext: IBudgetContext = {
   expenses: [],
   currentBudget: undefined,
   setCurrentBudget: () => {},
-  getBudgetExpenses: () => [],
-  getBudgetExpenseTotal: () => 0,
   addBudget: () => {},
   addExpense: () => {},
   deleteBudget: () => {},
@@ -33,23 +31,6 @@ export const BudgetsProvider = (
   const [budgets, setBudgets] = useState<IBudget[]>(userData.budgets);
   const [expenses, setExpenses] = useState<IExpense[]>(userData.expenses);
   const [currentBudget,setCurrentBudget] = useState<IBudget|undefined>();
-
-  function getBudgetExpenses(budgetId:string): IExpense[] {
-    const expenseList: IExpense[] = [];
-    expenses.forEach((expense:IExpense)=>{
-      if (expense.budgetId===budgetId) expenseList.push(expense);
-    });  
-    return expenseList;
-  }
-
-  function getBudgetExpenseTotal(budgetId:string):number {
-    return expenses.reduce<number>((total:number, currentExpense:IExpense): number => {
-      if (currentExpense.budgetId===budgetId) {
-        return total + currentExpense.amount;
-      }
-      return total;
-    },0)
-  }
   
   function addExpense(
     {budgetId, budgetName, amount, description}: 
@@ -111,8 +92,6 @@ export const BudgetsProvider = (
         expenses,
         currentBudget,
         setCurrentBudget,
-        getBudgetExpenses,
-        getBudgetExpenseTotal,
         addBudget,
         addExpense,
         deleteBudget,

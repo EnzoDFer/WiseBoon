@@ -17,8 +17,6 @@ export interface IBudgetContext {
   expenses: IExpense[],
   currentBudget: IBudget | undefined,
   setCurrentBudget: Dispatch<SetStateAction<IBudget | undefined>>,
-  getBudgetExpenses: (budgetId: string)=>IExpense[],
-  getBudgetExpenseTotal: (budgetId:string) => number,
   addBudget: ({name, max}: {name:string, max: number}) => void,
   addExpense: ({budgetId, budgetName, amount, description}:{budgetId: string, budgetName: string, amount: number, description: string}) => void,
   deleteBudget: (id:string) => void,

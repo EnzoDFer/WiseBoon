@@ -4,7 +4,9 @@ import styles from './SummaryCard.module.scss'
 
 export const SummaryCard = () => {
 
-  const {expenses} = useBudget();
+  const {
+    expenses
+  } = useBudget();
 
   return (
     <section
