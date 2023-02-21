@@ -28,7 +28,6 @@
   background-color: hsl(234,62,26);
   border-radius: 8px;
   color: hsl(221,68,93);
-  font-size: 16px;
   font-weight: bold;
 }
 
@@ -39,4 +38,20 @@
   font-weight: bolder;
   width: 192px;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .loginForm {
+    width: 384px;
+    font-size: 24px;
+  }
+
+  .buttonBase {
+    height: 48px;
+  }
+
+  .iconWrapper {
+    height: 200px;
+    width: 200px;
+  }
 }
