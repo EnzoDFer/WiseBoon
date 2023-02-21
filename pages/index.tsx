@@ -53,16 +53,8 @@ export default function Home({userData}:{userData:IUserData}) {
             <link rel="icon" href="/favicon.ico" />
           </Head>
 
-          <header className={styles.header}>
-            <div>Burger</div>
-            <div className={styles.iconWrapper}>
-              <Image
-                src={'/img/wiseboon-logo.svg'}
-                fill
-                alt='WiseBoon Logo'
-              />
-            </div>
-          </header>
+          <Header />
+
           <BudgetCardDisplay 
             expenseModalState={expenseModalOpen} 
             expenseModalContol={setExpenseModalOpen} 

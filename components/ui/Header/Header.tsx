@@ -1,11 +1,19 @@
 import styles from "./Header.module.scss";
+import Image from "next/image";
 
-export default function Header({children}:{children:React.ReactNode}) {
+export default function Header() {
   return (
-    <header
-      className={styles.layout}
+    <header 
+      className={styles.header}
     >
-      {children}
+      <div>Burger</div>
+      <div className={styles.iconWrapper}>
+        <Image
+          src={'/img/wiseboon-logo.svg'}
+          fill
+          alt='WiseBoon Logo'
+        />
+      </div>
     </header>
   )
 }

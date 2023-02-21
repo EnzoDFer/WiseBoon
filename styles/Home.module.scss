@@ -6,19 +6,3 @@
   padding: 8px;
   background-color: hsl(214,15,91);
 }
-
-.header {
-  flex: 0 auto;
-  background-color: white;
-  padding: 8px 24px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px hsl(0,0,0,.15);
-}
-
-.iconWrapper {
-  position: relative;
-  height: 48px;
-  width: 48px;
-}
