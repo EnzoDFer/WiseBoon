@@ -1,10 +1,12 @@
 import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext'
+import { usdFormat } from '../../../utils/utilFunctions';
 import styles from './SummaryCard.module.scss'
 
 export const SummaryCard = () => {
 
   const {
+    getTotalExpenses,
     expenses
   } = useBudget();
 
@@ -12,7 +14,7 @@ export const SummaryCard = () => {
     <section
       className={styles.summary}
     >
-      <p  className={styles.sumValue} ><span>$100</span><span> spent</span></p>
+      <p  className={styles.sumValue} ><span>{usdFormat(getTotalExpenses())}</span><span> spent</span></p>
       <p  className={styles.sumValue} ><span>{expenses.length}</span><span> total expenses</span></p>
       <p  className={styles.sumValue} ><span>2</span><span> budgets over limit</span></p>
     </section>
