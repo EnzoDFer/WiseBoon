@@ -15,9 +15,18 @@ export const SummaryCard = () => {
     <section
       className={styles.summary}
     >
-      <p  className={styles.sumValue} ><span>{usdFormat(getTotalExpenses())}</span><span> spent</span></p>
-      <p  className={styles.sumValue} ><span>{expenses.length}</span><span> total expenses</span></p>
-      <p  className={styles.sumValue} ><span>{getOverLimitBudgets()}</span><span> budgets over limit</span></p>
+      <p  className={styles.sumValue} >
+        <span>{usdFormat(getTotalExpenses())}</span>
+        <span> spent</span>
+      </p>
+      <p  className={styles.sumValue} >
+        <span>{expenses.length}</span>
+        <span> total expenses</span>
+      </p>
+      <p  className={styles.sumValue} >
+        <span>{getOverLimitBudgets()}</span>
+        <span> budgets over limit</span>
+      </p>
     </section>
   )
 }
