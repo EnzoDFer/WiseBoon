@@ -107,16 +107,16 @@ export const BudgetsProvider = (
   return(
     <BudgetsContext.Provider value={
       {
-        budgets: budgets,
-        expenses: expenses,
-        currentBudget: currentBudget,
-        setCurrentBudget: setCurrentBudget,
-        getBudgetExpenses: getBudgetExpenses,
-        getBudgetExpenseTotal: getBudgetExpenseTotal,
-        addBudget: addBudget,
-        addExpense: addExpense,
-        deleteBudget: deleteBudget,
-        deleteExpense: deleteExpense,
+        budgets,
+        expenses,
+        currentBudget,
+        setCurrentBudget,
+        getBudgetExpenses,
+        getBudgetExpenseTotal,
+        addBudget,
+        addExpense,
+        deleteBudget,
+        deleteExpense,
       }
     }>
       {children}
