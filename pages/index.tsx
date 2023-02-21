@@ -19,6 +19,7 @@ import BudgetCardDisplay from '../components/ui/BudgetCardDisplay';
 import CSVlink from '../components/ui/CSVlink';
 import mockDB from '../mockDB/mockDB';
 import { filterByParam } from '../utils/utilFunctions';
+import { SummaryCard } from '../components/ui/SummaryCard/SummaryCard';
 
 export default function Home({userData}:{userData:IUserData}) {
 
@@ -54,6 +55,8 @@ export default function Home({userData}:{userData:IUserData}) {
           </Head>
 
           <Header />
+
+          <SummaryCard />
 
           <BudgetCardDisplay 
             expenseModalState={expenseModalOpen} 
