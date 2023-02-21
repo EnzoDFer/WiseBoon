@@ -21,7 +21,8 @@ export interface IBudgetContext {
   addExpense: ({budgetId, budgetName, amount, description}:{budgetId: string, budgetName: string, amount: number, description: string}) => void,
   deleteBudget: (id:string) => void,
   deleteExpense: (id:string) => void,
-  getTotalExpenses: () => number
+  getTotalExpenses: () => number,
+  getOverLimitBudgets: () => number
 }
 
 export interface IBudget {

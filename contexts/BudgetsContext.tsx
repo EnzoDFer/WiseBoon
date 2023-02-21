@@ -3,6 +3,7 @@ import { filterByParam, cleanString } from "../utils/utilFunctions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense, IUserData } from "../utils/interfaces";
 import { useSession } from "next-auth/react";
+import { isBundle } from "typescript";
 
 const defaultContext: IBudgetContext = {
   budgets: [],
@@ -14,6 +15,7 @@ const defaultContext: IBudgetContext = {
   deleteBudget: () => {},
   deleteExpense: () => {},
   getTotalExpenses: () => 0,
+  getOverLimitBudgets: () => 0,
 }
 
 const BudgetsContext = createContext<IBudgetContext>(defaultContext);
@@ -33,12 +35,7 @@ export const BudgetsProvider = (
   const [expenses, setExpenses] = useState<IExpense[]>(userData.expenses);
   const [currentBudget,setCurrentBudget] = useState<IBudget|undefined>();
   
-  function getTotalExpenses(): number {
-    return expenses.reduce( (tot: number,curr: IExpense) => {
-      return tot+curr.amount;
-    }, 0);
-  }
-
+  
   function addExpense(
     {budgetId, budgetName, amount, description}: 
     {budgetId: string, budgetName: string, amount: number, description: string}
@@ -82,7 +79,7 @@ export const BudgetsProvider = (
       body: JSON.stringify(filterByParam(budgets,'id',id,'include')[0]),
     })
   }
-
+  
   function deleteExpense(id: string): void {
     const filteredExpenses: IExpense[] = filterByParam(expenses,'id',id,'exclude');
     setExpenses(filteredExpenses);
@@ -90,6 +87,26 @@ export const BudgetsProvider = (
       method: 'DELETE',
       body: JSON.stringify(filterByParam(expenses,'id',id,'include')[0]),
     })
+  }
+  
+  function getTotalExpenses(): number {
+    return expenses.reduce( (tot: number,curr: IExpense) => {
+      return tot+curr.amount;
+    }, 0);
+  }
+  
+  function getBudgetExpensesTotal(budgetId:string): number {
+    return expenses.reduce( (tot: number, expense: IExpense) => {
+      if (expense.budgetId === budgetId) return tot+expense.amount;
+      return 0;
+    }, 0);
+  }
+
+  function getOverLimitBudgets(): number {
+    return budgets.reduce((tot: number, budget: IBudget) => {
+      if ( getBudgetExpensesTotal(budget.id) > budget.max ) return tot+1;
+      return 0;
+    }, 0);
   }
   
   return(
@@ -103,7 +120,8 @@ export const BudgetsProvider = (
         addExpense,
         deleteBudget,
         deleteExpense,
-        getTotalExpenses
+        getTotalExpenses,
+        getOverLimitBudgets,
       }
     }>
       {children}
