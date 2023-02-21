@@ -7,7 +7,8 @@ export const SummaryCard = () => {
 
   const {
     getTotalExpenses,
-    expenses
+    getOverLimitBudgets,
+    expenses,
   } = useBudget();
 
   return (
@@ -16,7 +17,7 @@ export const SummaryCard = () => {
     >
       <p  className={styles.sumValue} ><span>{usdFormat(getTotalExpenses())}</span><span> spent</span></p>
       <p  className={styles.sumValue} ><span>{expenses.length}</span><span> total expenses</span></p>
-      <p  className={styles.sumValue} ><span>2</span><span> budgets over limit</span></p>
+      <p  className={styles.sumValue} ><span>{getOverLimitBudgets()}</span><span> budgets over limit</span></p>
     </section>
   )
 }
