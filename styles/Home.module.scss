@@ -1,15 +1,16 @@
 .main {
   height: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 8px;
-  gap: 24px;
   background-color: hsl(214,15,91);
 }
 
 .header {
+  flex: 0 auto;
   background-color: white;
   padding: 8px 24px;
-  height: 64px;
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
@@ -18,6 +19,6 @@
 
 .iconWrapper {
   position: relative;
-  height: 100%;
+  height: 48px;
   width: 48px;
 }
