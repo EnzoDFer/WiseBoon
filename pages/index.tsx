@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styles from '../styles/Home.module.scss'
 import Container from '../components/ui/Container/Container';
 import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
@@ -43,7 +44,7 @@ export default function Home({userData}:{userData:IUserData}) {
           opened={expenseListModalOpen}
           setOpened={setExpenseListModalOpen}
         />
-        <Container>
+        <main className={styles.main}>
           <Head>
             <title>Budget Tracker</title>
             <meta name="description" content="Track your expenses and keep your budget tight!" />
@@ -75,7 +76,7 @@ export default function Home({userData}:{userData:IUserData}) {
             expenseListModalState={expenseListModalOpen} 
             expenseListModalControl={setExpenseListModalOpen}            
           />
-        </Container>
+        </main>
       </IsAuthorized>
     </BudgetsProvider>
   )
