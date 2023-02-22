@@ -21,14 +21,16 @@ export const SummaryCard = () => {
         text={'spent'}
         alt={'See more regarding total spent'}
       />
-      <p  className={styles.sumValue} >
-        <span>{expenses.length}</span>
-        <span> total expenses</span>
-      </p>
-      <p  className={styles.sumValue} >
-        <span>{getOverLimitBudgets()}</span>
-        <span> budgets over limit</span>
-      </p>
+      <SumValue
+        val={expenses.length}
+        text={'total expenses'}
+        alt={'See more regarding total expenses'}
+      />
+      <SumValue
+        val={getOverLimitBudgets()}
+        text={'budgets over limit'}
+        alt={'See more regarding over-limit budgets'}
+      />
     </section>
   )
 }
