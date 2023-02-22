@@ -13,13 +13,13 @@ export default function Header() {
           alt='WiseBoon Logo'
         />
       </div>
-      <div className={styles.iconWrapper}>
+      <a className={styles.iconWrapper} href={'/'}>
         <Image
           src={'/img/wiseboon-logo.svg'}
           fill
           alt='WiseBoon Logo'
         />
-      </div>
+      </a>
     </header>
   )
 }
