@@ -39,6 +39,12 @@ const SumValue = ({val,text, alt}: {val: string | number, text: string, alt: str
       <span>{val}</span>
       <span>{` ${text}`}</span>
       <Image
+        alt={`${text} Help Tooltip Button`}
+        src={'/img/icon-help.svg'}
+        height={16}
+        width={16}
+      />
+      <Image
         alt={alt}
         src={'/img/icon-cheveron-right-circle.svg'}
         height={24}
