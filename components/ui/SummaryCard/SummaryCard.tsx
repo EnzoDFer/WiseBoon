@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext'
 import { usdFormat } from '../../../utils/utilFunctions';
@@ -15,10 +16,11 @@ export const SummaryCard = () => {
     <section
       className={styles.summary}
     >
-      <p  className={styles.sumValue} >
-        <span>{usdFormat(getTotalExpenses())}</span>
-        <span> spent</span>
-      </p>
+      <SumValue
+        val={usdFormat(getTotalExpenses())}
+        text={'spent'}
+        alt={'See more regarding total spent'}
+      />
       <p  className={styles.sumValue} >
         <span>{expenses.length}</span>
         <span> total expenses</span>
@@ -29,4 +31,19 @@ export const SummaryCard = () => {
       </p>
     </section>
   )
+}
+
+const SumValue = ({val,text, alt}: {val: string | number, text: string, alt: string}) => {
+  return (
+    <p  className={styles.sumValue} >
+      <span>{val}</span>
+      <span>{` ${text}`}</span>
+      <Image
+        alt={alt}
+        src={'/img/icon-cheveron-right-circle.svg'}
+        height={24}
+        width={24}
+      />
+    </p>
+  );
 }

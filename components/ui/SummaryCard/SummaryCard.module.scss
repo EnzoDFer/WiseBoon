@@ -11,14 +11,22 @@
 
 .sumValue {
   margin: 0;
+  height: 24px;
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  gap: 8px;
   &>span:first-child {
     color: white;
     font-size: 24px;
     font-weight: bold;
   }
   &>span:nth-child(2) {
-    color: hsl(172,98,77);
+    color: #D9E4FD;
     font-size: 20px;
     font-weight: normal;
+  }
+  &>img:last-child {
+    margin-left: auto;
   }
 }
