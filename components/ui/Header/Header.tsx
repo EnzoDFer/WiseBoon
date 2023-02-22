@@ -6,7 +6,13 @@ export default function Header() {
     <header 
       className={styles.header}
     >
-      <div>Burger</div>
+      <div className={styles.iconWrapper}>
+        <Image
+          src={'/img/icon-menu.svg'}
+          fill
+          alt='WiseBoon Logo'
+        />
+      </div>
       <div className={styles.iconWrapper}>
         <Image
           src={'/img/wiseboon-logo.svg'}
