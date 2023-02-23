@@ -1,6 +1,6 @@
 .wrapper {
   position: absolute;
-  background: rgb(0,0,0,0.4);
+  background: transparent;
   height: 100%;
   width: 100%;
   z-index: 1;
@@ -9,7 +9,7 @@
 }
 
 .background {
-  background: rgb(0,0,0,0.4);
+  background: transparent;
   height: 100%;
   width: 100%;
 }
