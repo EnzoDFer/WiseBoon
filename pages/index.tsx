@@ -20,6 +20,7 @@ import CSVlink from '../components/ui/CSVlink';
 import mockDB from '../mockDB/mockDB';
 import { filterByParam } from '../utils/utilFunctions';
 import { SummaryCard } from '../components/ui/SummaryCard/SummaryCard';
+import { ModalProvider } from '../contexts/ModalContext';
 
 export default function Home({userData}:{userData:IUserData}) {
 
@@ -33,33 +34,31 @@ export default function Home({userData}:{userData:IUserData}) {
 
   return (
     <BudgetsProvider userData={userData}>
-      <IsAuthorized>  
-        <BudgetModal
-          opened={budgetModalOpen}
-          setOpened={setBudgetModalOpen}
-        />
-        <ExpenseModal
-          opened={expenseModalOpen}
-          setOpened={setExpenseModalOpen}
-        />
-        <ExpenseListModal
-          opened={expenseListModalOpen}
-          setOpened={setExpenseListModalOpen}
-        />
-        <main className={styles.main}>
-
-          <Head>
-            <title>WiseBoon</title>
-            <meta name="description" content="Track your expenses and keep your budget tight!" />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-
-          <Header />
-
-          <SummaryCard />
-
-        </main>
-      </IsAuthorized>
+      <ModalProvider>
+        <IsAuthorized>
+          <BudgetModal
+            opened={budgetModalOpen}
+            setOpened={setBudgetModalOpen}
+          />
+          <ExpenseModal
+            opened={expenseModalOpen}
+            setOpened={setExpenseModalOpen}
+          />
+          <ExpenseListModal
+            opened={expenseListModalOpen}
+            setOpened={setExpenseListModalOpen}
+          />
+          <main className={styles.main}>
+            <Head>
+              <title>WiseBoon</title>
+              <meta name="description" content="Track your expenses and keep your budget tight!" />
+              <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Header />
+            <SummaryCard />
+          </main>
+        </IsAuthorized>
+      </ModalProvider>
     </BudgetsProvider>
   )
 }
