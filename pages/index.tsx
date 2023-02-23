@@ -1,26 +1,20 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss'
-import Image from 'next/image';
-import Container from '../components/ui/Container/Container';
-import Button from '../components/ui/Button/Button';
 import Header from '../components/ui/Header/Header';
-import BudgetCard from '../components/ui/BudgetCard/BudgetCard';
 import { BudgetsProvider, useBudget } from '../contexts/BudgetsContext';
 import BudgetModal from '../components/ui/Modals/BudgetModal';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
-import { expenseArrayToCSV } from '../utils/csvUtil';
 import IsAuthorized from '../components/providers/IsAuthorized';
-import { IBudget, IUserData } from '../utils/interfaces';
+import { IUserData } from '../utils/interfaces';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
-import BudgetCardDisplay from '../components/ui/BudgetCardDisplay';
-import CSVlink from '../components/ui/CSVlink';
 import mockDB from '../mockDB/mockDB';
 import { filterByParam } from '../utils/utilFunctions';
 import { SummaryCard } from '../components/ui/SummaryCard/SummaryCard';
 import { ModalProvider } from '../contexts/ModalContext';
+import BaseModal from '../components/ui/Modals/BaseModal/BaseModal';
 
 export default function Home({userData}:{userData:IUserData}) {
 
@@ -36,6 +30,7 @@ export default function Home({userData}:{userData:IUserData}) {
     <BudgetsProvider userData={userData}>
       <ModalProvider>
         <IsAuthorized>
+          <BaseModal/>
           <BudgetModal
             opened={budgetModalOpen}
             setOpened={setBudgetModalOpen}
