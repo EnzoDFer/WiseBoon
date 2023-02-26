@@ -19,4 +19,20 @@
   height: 48px;
   width: 48px;
   padding: 8px;
+
+  & div:has(input:checked) + .menuItems {
+    transform: unset;
+  }
+}
+
+.menuItems {
+  position: fixed;
+  transition: transform 0.5s;
+  transform: translateX(-100vw);
+  width: 100%;
+  background: white;
+  top: 0;
+  left: 0;
+  padding: 96px 32px;
+  height: 100%;
 }

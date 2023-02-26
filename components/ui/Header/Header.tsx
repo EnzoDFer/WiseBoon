@@ -14,6 +14,13 @@ export default function Header() {
         className={styles.menuWrapper}
       >
         <BurgerMenu/>
+        <div
+          className={styles.menuItems}
+        >
+          <p>t1</p>
+          <p>t1</p>
+          <p>t1</p>
+        </div>
       </div>
       <a className={styles.iconWrapper} href={'/'}>
         <Image
