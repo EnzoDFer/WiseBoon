@@ -1,0 +1,63 @@
+.burgerMenu {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.checkbox {
+  all: unset;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  
+  &:checked ~ .bun1 {
+    animation: topBunMove 1s both alternate;
+  }
+  &:checked ~ .bun2 {
+    opacity: 0;
+  }
+  &:checked ~ .bun3 {
+    animation: bottomBunMove 1s both alternate;
+  }
+}
+
+.bun {
+  position: absolute;
+  background: black;
+  height: calc(50% / 3);
+  width: 100%;
+}
+
+.bun2 {
+  transform: translateY(250%);
+}
+
+.bun3 {
+  transform: translateY(500%);
+}
+
+@keyframes topBunMove {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(250%) rotateZ(0deg);
+  }
+  100% {
+    transform: translateY(250%) rotateZ(45deg);
+  }
+}
+
+@keyframes bottomBunMove {
+  0% {
+    transform: translateY(500%);
+  }
+  50% {
+    transform: translateY(250%) rotateZ(0deg);
+  }
+  100% {
+    transform: translateY(250%) rotateZ(-45deg);
+  }
+}
