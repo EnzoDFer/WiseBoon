@@ -3,7 +3,7 @@ import {  useBudget } from "../../../contexts/BudgetsContext";
 import { useModal } from "../../../contexts/ModalContext";
 import { filterByParam, cleanString } from "../../../utils/utilFunctions";
 import Button from "../Button/Button";
-import styles from './BaseModal/ModalForm.module.scss';
+import styles from './CreateBudgetForm.module.scss';
 
 export default function CreateBudgetForm():JSX.Element|null {
 
