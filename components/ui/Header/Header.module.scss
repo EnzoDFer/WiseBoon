@@ -26,6 +26,10 @@
 }
 
 .menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: 8px solid hsl(227deg 49% 59%);
   position: fixed;
   transition: transform 0.5s;
   transform: translateX(-100vw);
