@@ -31,10 +31,6 @@ export default function Home({userData}:{userData:IUserData}) {
       <ModalProvider>
         <IsAuthorized>
           <BaseModal/>
-          <BudgetModal
-            opened={budgetModalOpen}
-            setOpened={setBudgetModalOpen}
-          />
           <ExpenseModal
             opened={expenseModalOpen}
             setOpened={setExpenseModalOpen}

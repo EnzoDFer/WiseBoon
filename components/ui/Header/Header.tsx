@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useModal } from "../../../contexts/ModalContext";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { ReactNode } from "react";
+import BudgetModal from "../Modals/BudgetModal";
 
 export default function Header() {
 
@@ -17,7 +18,7 @@ export default function Header() {
         <div
           className={styles.menuItems}
         >
-          <MenuButton component={<div>test</div>} text='test button'/>
+          <MenuButton component={<BudgetModal/>} text='test button'/>
           <MenuButton component={<div>test</div>} text='test button'/>
           <MenuButton component={<div>test</div>} text='test button'/>
         </div>
