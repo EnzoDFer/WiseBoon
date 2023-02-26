@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss'
 import Header from '../components/ui/Header/Header';
 import { BudgetsProvider, useBudget } from '../contexts/BudgetsContext';
-import BudgetModal from '../components/ui/Modals/BudgetModal';
+import CreateBudgetForm from '../components/ui/CreateBudgetForm/CreateBudgetForm';
 import { useState } from 'react';
 import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';

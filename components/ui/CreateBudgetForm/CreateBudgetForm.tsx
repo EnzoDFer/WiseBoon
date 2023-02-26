@@ -5,7 +5,7 @@ import { filterByParam, cleanString } from "../../../utils/utilFunctions";
 import Button from "../Button/Button";
 import styles from './BaseModal/ModalForm.module.scss';
 
-export default function BudgetModal():JSX.Element|null {
+export default function CreateBudgetForm():JSX.Element|null {
 
   const {toggleModal} = useModal();
 
