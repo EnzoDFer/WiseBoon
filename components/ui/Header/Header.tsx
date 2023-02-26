@@ -2,9 +2,9 @@ import styles from "./Header.module.scss";
 import Image from "next/image";
 import { useModal } from "../../../contexts/ModalContext";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+import { ReactNode } from "react";
 
 export default function Header() {
-  const {openModal, opened} = useModal();
 
   return (
     <header 
@@ -17,15 +17,9 @@ export default function Header() {
         <div
           className={styles.menuItems}
         >
-          <button
-            className={styles.menuButton}
-          >ADD NEW BUDGET</button>
-          <button
-            className={styles.menuButton}
-          >ADD NEW BUDGET</button>
-          <button
-            className={styles.menuButton}
-          >ADD NEW BUDGET</button>
+          <MenuButton component={<div>test</div>} text='test button'/>
+          <MenuButton component={<div>test</div>} text='test button'/>
+          <MenuButton component={<div>test</div>} text='test button'/>
         </div>
       </div>
       <a className={styles.iconWrapper} href={'/'}>
@@ -37,4 +31,18 @@ export default function Header() {
       </a>
     </header>
   )
+}
+
+
+const MenuButton = ({component, text}:{component:ReactNode, text: string}) => {
+  const {openModal} = useModal();
+  
+  return (
+    <button
+      className={styles.menuButton}
+      onClick={()=>openModal(component)}
+    >
+      {text}
+    </button>
+  );
 }
