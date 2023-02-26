@@ -17,9 +17,15 @@ export default function Header() {
         <div
           className={styles.menuItems}
         >
-          <p>t1</p>
-          <p>t1</p>
-          <p>t1</p>
+          <button
+            className={styles.menuButton}
+          >ADD NEW BUDGET</button>
+          <button
+            className={styles.menuButton}
+          >ADD NEW BUDGET</button>
+          <button
+            className={styles.menuButton}
+          >ADD NEW BUDGET</button>
         </div>
       </div>
       <a className={styles.iconWrapper} href={'/'}>

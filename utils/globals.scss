@@ -22,6 +22,39 @@ a {
   text-decoration: none;
 }
 
+button {
+  appearance: unset;
+  writing-mode: unset;
+  font-style: unset;
+  font-variant-ligatures: unset;
+  font-variant-caps: unset;
+  font-variant-numeric: unset;
+  font-variant-east-asian: unset;
+  font-weight: unset;
+  font-stretch: unset;
+  font-size: unset;
+  font-family: unset;
+  text-rendering: unset;
+  color: unset;
+  letter-spacing: unset;
+  word-spacing: unset;
+  line-height: unset;
+  text-transform: unset;
+  text-indent: unset;
+  text-shadow: unset;
+  display: unset;
+  text-align: unset;
+  align-items: unset;
+  cursor: pointer;
+  background-color: unset;
+  padding: unset; 
+  margin: unset;
+  border-width: unset;
+  border-style: unset;
+  border-color: unset;
+  border-image: unset;
+}
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
