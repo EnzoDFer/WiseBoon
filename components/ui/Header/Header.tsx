@@ -4,6 +4,7 @@ import { useModal } from "../../../contexts/ModalContext";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { ReactNode } from "react";
 import CreateBudgetForm from "../CreateBudgetForm/CreateBudgetForm";
+import CreateExpenseForm from "../CreateExpenseForm/CreateExpenseForm";
 
 export default function Header() {
 
@@ -19,7 +20,7 @@ export default function Header() {
           className={styles.menuItems}
         >
           <MenuButton component={<CreateBudgetForm/>} text='CREATE NEW BUDGET'/>
-          <MenuButton component={<div>test</div>} text='test button'/>
+          <MenuButton component={<CreateExpenseForm/>} text='CREATE NEW EXPENSE'/>
           <MenuButton component={<div>test</div>} text='test button'/>
         </div>
       </div>
