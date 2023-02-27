@@ -22,7 +22,7 @@ export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Elem
     <div
       className={styles.menu}
     >
-      <button>{`Parent budget: ${text}`}</button>
+      <button type='button' >{`Parent budget: ${text}`}</button>
       <div className={styles.itemWrapper}>
         {
           budgets[0]? //Check if there are any budget groups for user
