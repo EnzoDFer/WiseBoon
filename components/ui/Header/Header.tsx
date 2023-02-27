@@ -18,7 +18,7 @@ export default function Header() {
         <div
           className={styles.menuItems}
         >
-          <MenuButton component={<CreateBudgetForm/>} text='test button'/>
+          <MenuButton component={<CreateBudgetForm/>} text='CREATE NEW BUDGET'/>
           <MenuButton component={<div>test</div>} text='test button'/>
           <MenuButton component={<div>test</div>} text='test button'/>
         </div>
