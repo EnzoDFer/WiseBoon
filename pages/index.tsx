@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss'
 import Header from '../components/ui/Header/Header';
-import { BudgetsProvider, useBudget } from '../contexts/BudgetsContext';
-import { useState } from 'react';
-import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
+import { BudgetsProvider } from '../contexts/BudgetsContext';
 import IsAuthorized from '../components/providers/IsAuthorized';
 import { IUserData } from '../utils/interfaces';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
@@ -15,18 +13,11 @@ import { ModalProvider } from '../contexts/ModalContext';
 import BaseModal from '../components/ui/Modals/BaseModal/BaseModal';
 
 export default function Home({userData}:{userData:IUserData}) {
-
-  const [expenseListModalOpen, setExpenseListModalOpen] = useState<boolean>(false);
-
   return (
     <BudgetsProvider userData={userData}>
       <ModalProvider>
         <IsAuthorized>
           <BaseModal/>
-          <ExpenseListModal
-            opened={expenseListModalOpen}
-            setOpened={setExpenseListModalOpen}
-          />
           <main className={styles.main}>
             <Head>
               <title>WiseBoon</title>

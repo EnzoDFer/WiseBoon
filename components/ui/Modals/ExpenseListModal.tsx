@@ -5,7 +5,7 @@ import { ExpenseItem } from "../ExpenseItem/ExpenseItem";
 import BaseModal from "./BaseModal/BaseModal";
 import styles from "./BaseModal/BaseModal.module.scss";
 
-export default function ExpenseListModal(
+/* export default function ExpenseListModal(
   {opened,setOpened}:
   {opened:boolean,setOpened:Dispatch<SetStateAction<boolean>>}
 ):JSX.Element|null {
@@ -43,4 +43,4 @@ export default function ExpenseListModal(
   );
 
   return null;
-}
+} */
