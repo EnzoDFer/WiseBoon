@@ -27,3 +27,30 @@
     background-color: hsl(360, 100%, 80%);
   }
 }
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.buttonBase {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+}
+
+.cancelButton {
+  composes: buttonBase;
+  background-color: hsl(214, 15%, 91%);
+  color: hsl(230, 49%, 41%);
+}
+
+.confirmButton {
+  composes: buttonBase;
+  background-color: hsl(230, 49%, 41%);
+  color: white;
+}

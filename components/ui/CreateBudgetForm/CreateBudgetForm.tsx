@@ -93,11 +93,18 @@ export default function CreateBudgetForm():JSX.Element|null {
           </span>
         }
       </div>
-      <button 
-        className={styles.confirmButton}
-      >
-        Create
-      </button>
+      <div className={styles.buttonGroup}>
+        <button
+          className={styles.cancelButton}
+        >
+          Cancel
+        </button>
+        <button
+          className={styles.confirmButton}
+        >
+          Create
+        </button>
+      </div>
     </form>
   );
 }
