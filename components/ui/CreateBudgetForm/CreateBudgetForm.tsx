@@ -2,7 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import {  useBudget } from "../../../contexts/BudgetsContext";
 import { useModal } from "../../../contexts/ModalContext";
 import { filterByParam, cleanString } from "../../../utils/utilFunctions";
-import Button from "../Button/Button";
 import styles from './CreateBudgetForm.module.scss';
 
 export default function CreateBudgetForm():JSX.Element|null {
@@ -94,12 +93,11 @@ export default function CreateBudgetForm():JSX.Element|null {
           </span>
         }
       </div>
-      <Button 
-        variant='fill'
-        disabled={(!nameValid || !maxValid)?true:false}// if !nameValid || !maxValid
+      <button 
+        className={styles.confirmButton}
       >
         Create
-      </Button>
+      </button>
     </form>
   );
 }
