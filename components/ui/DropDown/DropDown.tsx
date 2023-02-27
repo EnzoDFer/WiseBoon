@@ -22,7 +22,8 @@ export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Elem
     <div
       className={styles.menu}
     >
-      <button type='button' >{`Parent budget: ${text}`}</button>
+      <label htmlFor="budget-select" >{`${text} ⌄`}</label>
+      <input id='budget-select' type='checkbox' className={styles.checkbox}/>
       <div className={styles.itemWrapper}>
         {
           budgets[0]? //Check if there are any budget groups for user
@@ -37,7 +38,7 @@ export default function DropDown({defaultText,callback}:IDropDownProps):JSX.Elem
               </div>
             )
           }):
-          <div className={styles.item}> No budget groups found</div>
+          <div className={styles.item}>No budget groups found</div>
         }
       </div>
     </div>

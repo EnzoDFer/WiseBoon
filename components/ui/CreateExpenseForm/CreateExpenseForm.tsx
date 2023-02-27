@@ -73,10 +73,10 @@ export default function CreateExpenseForm():JSX.Element|null {
       { 
         (!currentBudget)? 
         <DropDown 
-          defaultText="Please select parent budget."
+          defaultText="Please select budget group ⌄"
           callback={handleSetBudget}
         />:
-        <div style={{marginBottom:'1rem'}}>{`Parent budget: ${currentBudget.name}`}</div>
+        <div style={{marginBottom:'1rem'}}>{`Budget Group: ${currentBudget.name}`}</div>
       } 
       {/* Expense Amount Input */}
       <div
