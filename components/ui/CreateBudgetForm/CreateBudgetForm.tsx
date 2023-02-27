@@ -48,7 +48,9 @@ export default function CreateBudgetForm():JSX.Element|null {
       onSubmit={()=>handleCreateBudget()}
       className={styles.form}
     >
-      <div>
+      <div
+        className={styles.inputWrapper}
+      >
         <label htmlFor="budget name">
           Budget Name
         </label>
@@ -57,7 +59,7 @@ export default function CreateBudgetForm():JSX.Element|null {
           name="budget name"
           placeholder="Budget Name"
           onChange={(e:ChangeEvent<HTMLInputElement>)=>setName((e.target.value))}
-          style={(nameValid?{}:{border:'2px solid rgb(251,59,33,0.6)'})}
+          style={(nameValid?{}:{border:'2px solid hsl(0, 100%, 80%)'})}
           value={newName}
           required
         />
@@ -71,7 +73,9 @@ export default function CreateBudgetForm():JSX.Element|null {
           </span>
         }
       </div>
-      <div>
+      <div
+        className={styles.inputWrapper}
+      >
         <label htmlFor="budget max" >Budget Maximum</label>
         <input
           type='number'
