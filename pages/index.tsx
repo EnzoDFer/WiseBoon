@@ -16,8 +16,6 @@ import BaseModal from '../components/ui/Modals/BaseModal/BaseModal';
 
 export default function Home({userData}:{userData:IUserData}) {
 
-  const [budgetModalOpen, setBudgetModalOpen] = useState<boolean>(false);
-  const [expenseModalOpen, setExpenseModalOpen] = useState<boolean>(false);
   const [expenseListModalOpen, setExpenseListModalOpen] = useState<boolean>(false);
 
   return (
