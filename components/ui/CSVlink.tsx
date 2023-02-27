@@ -6,10 +6,10 @@ export default function CSVlink() {
   const {expenses} = useBudget();
   return (
     <a
-    href={'data:text/csv;charset=utf-8,'+encodeURI(expenseArrayToCSV(expenses))}
-    download={`budgets_${new Date().toLocaleDateString()}.csv`}
+      href={'data:text/csv;charset=utf-8,'+encodeURI(expenseArrayToCSV(expenses))}
+      download={`budgets_${new Date().toLocaleDateString()}.csv`}
     >
-      Download as CSV
+      EXPORT AS CSV
     </a>
   )
 }

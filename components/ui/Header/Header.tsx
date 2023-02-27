@@ -5,6 +5,7 @@ import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { ReactNode } from "react";
 import CreateBudgetForm from "../CreateBudgetForm/CreateBudgetForm";
 import CreateExpenseForm from "../CreateExpenseForm/CreateExpenseForm";
+import CSVlink from "../CSVlink";
 
 export default function Header() {
 
@@ -19,9 +20,9 @@ export default function Header() {
         <div
           className={styles.menuItems}
         >
-          <MenuButton component={<CreateBudgetForm/>} text='CREATE NEW BUDGET'/>
-          <MenuButton component={<CreateExpenseForm/>} text='CREATE NEW EXPENSE'/>
-          <MenuButton component={<div>test</div>} text='test button'/>
+          <ModalPrompt component={<CreateBudgetForm/>} text='CREATE NEW BUDGET'/>
+          <ModalPrompt component={<CreateExpenseForm/>} text='CREATE NEW EXPENSE'/>
+          <CSVlink/>
         </div>
       </div>
       <a className={styles.iconWrapper} href={'/'}>
@@ -36,7 +37,7 @@ export default function Header() {
 }
 
 
-const MenuButton = ({component, text}:{component:ReactNode, text: string}) => {
+const ModalPrompt = ({component, text}:{component:ReactNode, text: string}) => {
   const {openModal} = useModal();
   
   return (
