@@ -2,9 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss'
 import Header from '../components/ui/Header/Header';
 import { BudgetsProvider, useBudget } from '../contexts/BudgetsContext';
-import CreateBudgetForm from '../components/ui/CreateBudgetForm/CreateBudgetForm';
 import { useState } from 'react';
-import ExpenseModal from '../components/ui/Modals/ExpenseModal';
 import ExpenseListModal from '../components/ui/Modals/ExpenseListModal';
 import IsAuthorized from '../components/providers/IsAuthorized';
 import { IUserData } from '../utils/interfaces';
@@ -31,10 +29,6 @@ export default function Home({userData}:{userData:IUserData}) {
       <ModalProvider>
         <IsAuthorized>
           <BaseModal/>
-          <ExpenseModal
-            opened={expenseModalOpen}
-            setOpened={setExpenseModalOpen}
-          />
           <ExpenseListModal
             opened={expenseListModalOpen}
             setOpened={setExpenseListModalOpen}
