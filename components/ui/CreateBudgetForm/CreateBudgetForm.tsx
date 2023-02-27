@@ -95,11 +95,14 @@ export default function CreateBudgetForm():JSX.Element|null {
       </div>
       <div className={styles.buttonGroup}>
         <button
+          type="button"
+          onClick={toggleModal}
           className={styles.cancelButton}
         >
           Cancel
         </button>
         <button
+          type="submit"
           className={styles.confirmButton}
         >
           Create
