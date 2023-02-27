@@ -55,6 +55,12 @@ button {
   border-image: unset;
 }
 
+input {
+  all: unset;
+  display: block;
+  
+}
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
