@@ -11,6 +11,7 @@ import { filterByParam } from '../utils/utilFunctions';
 import { SummaryCard } from '../components/ui/SummaryCard/SummaryCard';
 import { ModalProvider } from '../contexts/ModalContext';
 import BaseModal from '../components/ui/Modals/BaseModal/BaseModal';
+import { SummaryTable } from '../components/ui/SummaryTable/SummaryTable';
 
 export default function Home({userData}:{userData:IUserData}) {
   return (
@@ -26,6 +27,7 @@ export default function Home({userData}:{userData:IUserData}) {
             </Head>
             <Header />
             <SummaryCard />
+            <SummaryTable />
           </main>
         </IsAuthorized>
       </ModalProvider>
