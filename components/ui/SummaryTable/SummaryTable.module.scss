@@ -1,24 +1,27 @@
 .table {
+  box-shadow: 0 4px 15px hsl(0,0,0,.15);
   border-radius: 8px;
   border-collapse: collapse;
   overflow: hidden;
   table-layout: fixed;
 
   & thead {
+    font-size: 14px;
     background-color: hsl(221, 68%, 93%);
-    color: hsl(211, 10%, 53%);
+    color: hsl(211deg 9% 30%);
   }
 
   & th:nth-child(1),
-  & td:nth-child(1) {
-    vertical-align: top;
+  & td:nth-child(1) { 
     padding: 8px;
+    padding-bottom: 16px;
     text-align: left;
   }
 
   & th:nth-child(2),
   & td:nth-child(2) {
     padding: 8px;
+    padding-bottom: 16px;
     text-align: right;  
   }
 }
@@ -29,8 +32,15 @@
   & > tr:nth-child(even) {
   background-color: hsl(221, 68%, 93%);
   }
+
+  & td:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-end;
+  }
 }
 
 .max {
-  color: hsl(211, 10%, 53%);
+  color: hsl(211deg 9% 35%);
 }
