@@ -1,11 +1,13 @@
 import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext';
+import { useModal } from '../../../contexts/ModalContext';
 import { IExpense } from '../../../utils/interfaces';
 import { ExpenseItem } from '../ExpenseItem/ExpenseItem';
 import styles from "./ExpenseList.module.scss"
 
 export default function ExpenseList({budgetId}:{budgetId:string}) {
   const { getExpenseList, deleteExpense } = useBudget();
+  const { toggleModal } = useModal();
 
   const expenseList: IExpense[] = getExpenseList(budgetId);
  

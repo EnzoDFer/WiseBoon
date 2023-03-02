@@ -16,11 +16,6 @@ export default function BaseModal(): JSX.Element|null {
       <div
         className={styles.modal}
       >
-        <button
-          aria-label="Close Modal"
-          className={styles.closeButton}
-          onClick={toggleModal}
-        >X</button>
         {content}
       </div>
     </div>
