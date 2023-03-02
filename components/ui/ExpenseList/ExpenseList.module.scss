@@ -3,6 +3,11 @@
 .listWrapper {
   position: relative;
   z-index: 2;
+
+  & h4 {
+    color: hsl(211, 12%, 43%);
+    font-weight: bold;
+  }
 }
 
 .titleGroup {
@@ -12,6 +17,9 @@
 }
 
 .title {
+  font-weight: normal;
+  width: min-content;
+  margin: 0 0 auto 0;
   font-size: 24px;
   color: hsl(211, 12%, 43%);
 }

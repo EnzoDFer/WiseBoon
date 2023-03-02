@@ -24,6 +24,7 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
             <div className={styles.max}>{'/ ' + usdFormat(budget.max)}</div>
           </div>
         </div>
+        <h4>Expenses</h4>
       </div>
       <button
         type="button"
