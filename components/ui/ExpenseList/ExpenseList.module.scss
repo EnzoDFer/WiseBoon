@@ -1,0 +1,27 @@
+@use "../CreateBudgetForm/CreateBudgetForm.module.scss";
+
+.titleGroup {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.title {
+  font-size: 24px;
+  font-weight: normal;
+  color: hsl(211, 12%, 43%);
+}
+
+.amountWrapper {
+  text-align: right;
+}
+
+.amount {
+  font-size: 48px;
+  color: hsl(182, 85%, 39%, 1);
+}
+
+.max {
+  color: hsl(211, 12%, 43%);
+  font-size: 20px;
+}

@@ -34,7 +34,7 @@ export const SummaryTable = () => {
                 </td>      
                 <td>
                   <button
-                    onClick={()=>openModal(<ExpenseList budgetId={budget.id} />)}
+                    onClick={()=>openModal(<ExpenseList budget={budget} />)}
                   >
                     <Image
                       alt={`See details about ${budget.name}`}
