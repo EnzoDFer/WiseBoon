@@ -1,0 +1,36 @@
+.table {
+  border-radius: 8px;
+  border-collapse: collapse;
+  overflow: hidden;
+  table-layout: fixed;
+
+  & thead {
+    background-color: hsl(221, 68%, 93%);
+    color: hsl(211, 10%, 53%);
+  }
+
+  & th:nth-child(1),
+  & td:nth-child(1) {
+    vertical-align: top;
+    padding: 8px;
+    text-align: left;
+  }
+
+  & th:nth-child(2),
+  & td:nth-child(2) {
+    padding: 8px;
+    text-align: right;  
+  }
+}
+
+.body {
+  background-color: hsl(0,0,100);
+
+  & > tr:nth-child(even) {
+  background-color: hsl(221, 68%, 93%);
+  }
+}
+
+.max {
+  color: hsl(211, 10%, 53%);
+}

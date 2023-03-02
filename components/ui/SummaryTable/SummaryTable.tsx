@@ -11,10 +11,12 @@ export const SummaryTable = () => {
       className={styles.table}
     >
       <thead>
-        <th>Budget</th>
-        <th>Balance</th>
+        <th scope='col'>Budget</th>
+        <th scope='col'>Balance</th>
       </thead>
-      <tbody>
+      <tbody
+        className={styles.body}
+      >
         {
           budgets.map( (budget: IBudget, index: number) => {
             return (
@@ -22,7 +24,7 @@ export const SummaryTable = () => {
                 <td>{budget.name}</td>
                 <td>
                   <div>{usdFormat(getBudgetExpensesTotal(budget.id))}</div>
-                  <div>{'/ ' + usdFormat(budget.max)}</div>
+                  <div className={styles.max}>{'/ ' + usdFormat(budget.max)}</div>
                 </td>      
               </tr>
             );
