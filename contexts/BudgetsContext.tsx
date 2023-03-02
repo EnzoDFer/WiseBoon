@@ -15,6 +15,7 @@ const defaultContext: IBudgetContext = {
   deleteBudget: () => {},
   deleteExpense: () => {},
   getTotalExpenses: () => 0,
+  getBudgetExpensesTotal: (budgetId:string) => 0,
   getOverLimitBudgets: () => 0,
 }
 
@@ -121,6 +122,7 @@ export const BudgetsProvider = (
         deleteBudget,
         deleteExpense,
         getTotalExpenses,
+        getBudgetExpensesTotal,
         getOverLimitBudgets,
       }
     }>

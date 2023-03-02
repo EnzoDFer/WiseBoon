@@ -22,6 +22,7 @@ export interface IBudgetContext {
   deleteBudget: (id:string) => void,
   deleteExpense: (id:string) => void,
   getTotalExpenses: () => number,
+  getBudgetExpensesTotal: (budgetId:string) => number,
   getOverLimitBudgets: () => number
 }
 
