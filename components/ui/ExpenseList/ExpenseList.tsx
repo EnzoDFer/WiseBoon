@@ -12,25 +12,37 @@ export default function ExpenseList({budgetId}:{budgetId:string}) {
   const expenseList: IExpense[] = getExpenseList(budgetId);
  
   if (expenseList.length) return (
-    <div
-      className={styles.list}
-    >
-      {expenseList.map((expense:IExpense,index:number)=>{
-        return (
-          <ExpenseItem
-            key={`expense ${index}`} 
-            description={expense.description} 
-            amount={expense.amount}
-            handleDel={()=>deleteExpense(expense.id)}                
-          />
-        );
-      })}
+    <div>
+      <div
+        className={styles.list}
+      >
+        {expenseList.map((expense:IExpense,index:number)=>{
+          return (
+            <ExpenseItem
+              key={`expense ${index}`}
+              description={expense.description}
+              amount={expense.amount}
+              handleDel={()=>deleteExpense(expense.id)}
+            />
+          );
+        })}
+      </div>
+      <button
+        onClick={toggleModal}
+      >
+        Close
+      </button>
     </div>
   );
 
   return (
     <div>
       No recorded expenses.
+      <button
+        onClick={toggleModal}
+      >
+        Close
+      </button>
     </div>
   );
 }
