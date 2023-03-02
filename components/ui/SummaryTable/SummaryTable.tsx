@@ -4,9 +4,13 @@ import { useBudget } from '../../../contexts/BudgetsContext'
 import { IBudget } from '../../../utils/interfaces';
 import { usdFormat } from '../../../utils/utilFunctions';
 import styles from "./SummaryTable.module.scss"
+import { useModal } from '../../../contexts/ModalContext';
+import ExpenseList from '../ExpenseList/ExpenseList';
 
 export const SummaryTable = () => {
   const { budgets, getBudgetExpensesTotal } = useBudget();
+  const { openModal } = useModal();
+
   return (
     <table
       className={styles.table}
@@ -29,12 +33,16 @@ export const SummaryTable = () => {
                   <div className={styles.max}>{'/ ' + usdFormat(budget.max)}</div>
                 </td>      
                 <td>
-                  <Image
-                    alt={`See details about ${budget.name}`}
-                    src={'/img/icon-cheveron-right-circle-table.svg'}
-                    height={24}
-                    width={24}
-                  />
+                  <button
+                    onClick={()=>openModal(<ExpenseList budgetId={budget.id} />)}
+                  >
+                    <Image
+                      alt={`See details about ${budget.name}`}
+                      src={'/img/icon-cheveron-right-circle-table.svg'}
+                      height={24}
+                      width={24}
+                    />
+                  </button>
                 </td>
               </tr>
             );
