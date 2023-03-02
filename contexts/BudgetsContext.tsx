@@ -17,6 +17,7 @@ const defaultContext: IBudgetContext = {
   getTotalExpenses: () => 0,
   getBudgetExpensesTotal: (budgetId:string) => 0,
   getOverLimitBudgets: () => 0,
+  getExpenseList: (budgetId: string) => [],
 }
 
 const BudgetsContext = createContext<IBudgetContext>(defaultContext);
@@ -109,6 +110,10 @@ export const BudgetsProvider = (
       return 0;
     }, 0);
   }
+
+  function getExpenseList(budgetId: string): IExpense[] {
+    return expenses.filter( (expense: IExpense) => expense.budgetId === budgetId);
+  }
   
   return(
     <BudgetsContext.Provider value={
@@ -124,6 +129,7 @@ export const BudgetsProvider = (
         getTotalExpenses,
         getBudgetExpensesTotal,
         getOverLimitBudgets,
+        getExpenseList
       }
     }>
       {children}

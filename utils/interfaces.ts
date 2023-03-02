@@ -23,7 +23,8 @@ export interface IBudgetContext {
   deleteExpense: (id:string) => void,
   getTotalExpenses: () => number,
   getBudgetExpensesTotal: (budgetId:string) => number,
-  getOverLimitBudgets: () => number
+  getOverLimitBudgets: () => number,
+  getExpenseList: (budgetId: string) => IExpense[]
 }
 
 export interface IBudget {
