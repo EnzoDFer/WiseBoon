@@ -3,7 +3,6 @@ import { useBudget } from '../../../contexts/BudgetsContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { IBudget, IExpense } from '../../../utils/interfaces';
 import { usdFormat } from '../../../utils/utilFunctions';
-import { ExpenseItem } from '../ExpenseItem/ExpenseItem';
 import styles from "./ExpenseList.module.scss"
 
 export default function ExpenseList({budget}:{budget: IBudget}) {
@@ -14,8 +13,9 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
  
   if (expenseList.length) return (
     <>
+      <WarningBanner budget={budget} />
       <div
-        className={styles.list}
+        className={styles.listWrapper}
       >
         <div className={styles.titleGroup}>
           <h1 className={styles.title}>{budget.name}</h1>
@@ -46,6 +46,22 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
       </button>
     </div>
   );
+}
+
+const WarningBanner = ({budget}:{budget:IBudget}): JSX.Element | null => {
+  const { getBudgetExpensesTotal } = useBudget();
+  const usage: number = getBudgetExpensesTotal(budget.id) / budget.max;
+
+  if (usage >= 0.5) return (
+    <div 
+      className={styles.warningBanner}
+      style={{
+        backgroundColor: (usage<0.75)?'hsl(48,100%,88%)':'hsl(360, 100%, 87%)',
+      }}
+    />
+  );
+
+  return null;
 }
 
 
