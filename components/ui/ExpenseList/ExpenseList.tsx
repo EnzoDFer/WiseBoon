@@ -25,14 +25,25 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
           </div>
         </div>
         <h4>Expenses</h4>
+        {
+          expenseList.map( (expense: IExpense, index: number) => {
+            return (
+              <div className={styles.itemWrapper} key={`expense ${index}`}>
+                <p>{expense.description}</p>
+                <div>{usdFormat(expense.amount)}</div>
+                <button>more actions placeholder</button>
+              </div>
+            );
+          })
+        }
+        <button
+          type="button"
+          onClick={toggleModal}
+          className={styles.cancelButton}
+        >
+          Close
+        </button>
       </div>
-      <button
-        type="button"
-        onClick={toggleModal}
-        className={styles.cancelButton}
-      >
-        Close
-      </button>
     </>
   );
 
@@ -64,17 +75,3 @@ const WarningBanner = ({budget}:{budget:IBudget}): JSX.Element | null => {
 
   return null;
 }
-
-
-/*
-{expenseList.map((expense:IExpense,index:number)=>{
-          return (
-            <ExpenseItem
-              key={`expense ${index}`}
-              description={expense.description}
-              amount={expense.amount}
-              handleDel={()=>deleteExpense(expense.id)}
-            />
-          );
-        })}
-        */

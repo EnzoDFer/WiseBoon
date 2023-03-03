@@ -3,6 +3,9 @@
 .listWrapper {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   & h4 {
     color: hsl(211, 12%, 43%);
