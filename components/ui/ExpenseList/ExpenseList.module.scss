@@ -51,3 +51,21 @@
   height: 96px;
   clip-path: polygon(100% 0, 100% 100%, 50% 80%, 0 100%, 0 0);
 }
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & div {
+    font-size: 24px;
+    color: hsl(211, 12%, 43%);
+  }
+}
+
+.expenseActions {
+  position: relative;
+  display: block;
+  height: 24px;
+  min-width: 24px;
+}

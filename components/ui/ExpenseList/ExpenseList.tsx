@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext';
 import { useModal } from '../../../contexts/ModalContext';
@@ -31,7 +32,15 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
               <div className={styles.itemWrapper} key={`expense ${index}`}>
                 <p>{expense.description}</p>
                 <div>{usdFormat(expense.amount)}</div>
-                <button>more actions placeholder</button>
+                <button 
+                  className={styles.expenseActions}
+                >
+                  <Image 
+                    fill
+                    src={'/img/icon-dots-vertical.svg'}
+                    alt={`More actions for expense ${index}`}                  
+                  />
+                </button>
               </div>
             );
           })
