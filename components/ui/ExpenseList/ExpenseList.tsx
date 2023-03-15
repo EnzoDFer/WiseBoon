@@ -25,25 +25,27 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
             <div className={styles.max}>{'/ ' + usdFormat(budget.max)}</div>
           </div>
         </div>
-        {
-          expenseList.map( (expense: IExpense, index: number) => {
-            return (
-              <div className={styles.itemWrapper} key={`expense ${index}`}>
-                <p>{expense.description}</p>
-                <div>{usdFormat(expense.amount)}</div>
-                <button 
-                  className={styles.expenseActions}
-                >
-                  <Image 
-                    fill
-                    src={'/img/icon-dots-vertical.svg'}
-                    alt={`More actions for expense ${index}`}                  
-                  />
-                </button>
-              </div>
-            );
-          })
-        }
+        <div className={styles.itemsContainer}>
+          {
+            expenseList.map( (expense: IExpense, index: number) => {
+              return (
+                <div className={styles.itemWrapper} key={`expense ${index}`}>
+                  <p>{expense.description}</p>
+                  <div>{usdFormat(expense.amount)}</div>
+                  <button
+                    className={styles.expenseActions}
+                  >
+                    <Image
+                      fill
+                      src={'/img/icon-dots-vertical.svg'}
+                      alt={`More actions for expense ${index}`}
+                    />
+                  </button>
+                </div>
+              );
+            })
+          }
+        </div>
         <button
           type="button"
           onClick={toggleModal}
