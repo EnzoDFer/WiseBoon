@@ -4,14 +4,21 @@ import { useBudget } from '../../../contexts/BudgetsContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { IBudget, IExpense } from '../../../utils/interfaces';
 import { usdFormat } from '../../../utils/utilFunctions';
+import { ExpenseEditForm } from '../ExpenseEditForm/ExpenseEditForm';
 import styles from "./ExpenseList.module.scss"
 
 export default function ExpenseList({budget}:{budget: IBudget}) {
   const { getExpenseList, getBudgetExpensesTotal } = useBudget();
-  const { toggleModal } = useModal();
+  const { toggleModal, openModal } = useModal();
 
   const expenseList: IExpense[] = getExpenseList(budget.id);
- 
+
+  function handleExpenseEdit(expense: IExpense) {
+    openModal(
+      <ExpenseEditForm expense={expense} />
+    );
+  }
+
   if (expenseList.length) return (
     <>
       <WarningBanner budget={budget} />
@@ -34,6 +41,8 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
                   <div>{usdFormat(expense.amount)}</div>
                   <button
                     className={styles.expenseActions}
+                    type='button'
+                    onClick={()=>handleExpenseEdit(expense)}
                   >
                     <Image
                       fill

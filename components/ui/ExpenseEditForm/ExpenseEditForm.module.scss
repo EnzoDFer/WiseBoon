@@ -1,0 +1,30 @@
+.expenseWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+
+  & textarea {
+    margin-right: auto;
+    min-width: fit-content;
+  }
+
+  & input {
+    text-align: right;
+    width: 50px;
+    font-size: 24px;
+    color: hsl(211, 12%, 43%);
+  }
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; 
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
