@@ -12,6 +12,7 @@ const defaultContext: IBudgetContext = {
   setCurrentBudget: () => {},
   addBudget: () => {},
   addExpense: () => {},
+  editExpense: () => {},
   deleteBudget: () => {},
   deleteExpense: () => {},
   getTotalExpenses: () => 0,
@@ -91,6 +92,17 @@ export const BudgetsProvider = (
     })
   }
   
+  function editExpense(id: string, updateParams: Partial<IExpense>) {
+    const editedExpenses: IExpense[] = expenses.filter((expense:IExpense) => {
+      if (expense.id === id) return {...expense, ...updateParams} 
+    });
+    setExpenses(editedExpenses);
+    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+      method: 'PUT',
+      body: JSON.stringify({id, updateParams}),
+    })
+  }
+
   function getTotalExpenses(): number {
     return expenses.reduce( (tot: number,curr: IExpense) => {
       return tot+curr.amount;
@@ -124,6 +136,7 @@ export const BudgetsProvider = (
         setCurrentBudget,
         addBudget,
         addExpense,
+        editExpense,
         deleteBudget,
         deleteExpense,
         getTotalExpenses,
