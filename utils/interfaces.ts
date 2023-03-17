@@ -19,7 +19,7 @@ export interface IBudgetContext {
   setCurrentBudget: Dispatch<SetStateAction<IBudget | undefined>>,
   addBudget: ({name, max}: {name:string, max: number}) => void,
   addExpense: ({budgetId, budgetName, amount, description}:{budgetId: string, budgetName: string, amount: number, description: string}) => void,
-  editExpense: (id: string, updateParams: Partial<IExpense>) => void,
+  editExpense: (updateParams: Partial<IExpense>) => void,
   deleteBudget: (id:string) => void,
   deleteExpense: (id:string) => void,
   getTotalExpenses: () => number,

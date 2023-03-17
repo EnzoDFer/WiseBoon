@@ -3,7 +3,6 @@ import { filterByParam, cleanString } from "../utils/utilFunctions";
 import { v4 as uuidV4 } from "uuid";
 import { IBudget, IBudgetContext, IExpense, IUserData } from "../utils/interfaces";
 import { useSession } from "next-auth/react";
-import { isBundle } from "typescript";
 
 const defaultContext: IBudgetContext = {
   budgets: [],
@@ -92,14 +91,18 @@ export const BudgetsProvider = (
     })
   }
   
-  function editExpense(id: string, updateParams: Partial<IExpense>) {
+  function editExpense(updateParams: Partial<IExpense>): void {
+    if (!updateParams.id) throw new Error('Missing Expense ID');
+    const expenseToEdit: IExpense =  filterByParam(expenses, 'id', updateParams.id, "include")[0];
+    const editedExpense: IExpense = { ...expenseToEdit, ...updateParams };
     const editedExpenses: IExpense[] = expenses.filter((expense:IExpense) => {
-      if (expense.id === id) return {...expense, ...updateParams} 
+      if (expense.id === editedExpense.id) return editedExpense;
+      return expense;
     });
     setExpenses(editedExpenses);
     fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
       method: 'PUT',
-      body: JSON.stringify({id, updateParams}),
+      body: JSON.stringify(editedExpense),
     })
   }
 

@@ -62,7 +62,7 @@ export async function PUT(
   const session = await getServerSession(req,res, authOptions);
   if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
   // Providing API authentication for user using session
-  const data: IBudget | IExpense = req.body;
+  const data: IBudget | IExpense = JSON.parse(req.body);
 
   if (data.hasOwnProperty('max')) { // Only budgets have 'max'
     mockDB.filter((user:IUser)=> {
@@ -75,7 +75,7 @@ export async function PUT(
         }
       }
     })
-  } else {
+  } else { // Data is a budget
     mockDB.filter((user:IUser)=> {
       if (user.email===session!.user!.email) {
         return {
