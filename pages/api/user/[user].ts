@@ -32,7 +32,7 @@ export async function POST(
   const session = await getServerSession(req,res, authOptions);
   if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
   // Providing API authentication for user using session
-  const data: IBudget | IExpense = req.body;
+  const data: IBudget | IExpense = JSON.parse(req.body);
 
   if (data.hasOwnProperty('max')) { // Only budgets have 'max'
     mockDB.filter((user:IUser)=> {
@@ -98,7 +98,7 @@ export async function DELETE(
     // Providing API authentication for user using session
     const userData: IUser = filterByParam(mockDB,'name',session?.user?.name,'include')[0]
 
-    const data: IBudget | IExpense = req.body;
+    const data: IBudget | IExpense = JSON.parse(req.body);
     if (data.hasOwnProperty('max')) { // Only budgets have 'max'
       const updatedUserData: IBudget[] = filterByParam(userData.budgets,'id',data.id,'exclude')
       mockDB.filter((user:IUser)=> {
