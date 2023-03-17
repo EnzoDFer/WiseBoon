@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { unstable_getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import mockDB from '../../../mockDB/mockDB';
 import { filterByParam } from '../../../utils/utilFunctions';
 import { IBudget, IExpense, IUser } from '../../../utils/interfaces';
@@ -29,7 +29,7 @@ export async function POST(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const session = await unstable_getServerSession(req,res, authOptions);
+  const session = await getServerSession(req,res, authOptions);
   if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
   // Providing API authentication for user using session
   const data: IBudget | IExpense = req.body;
@@ -59,7 +59,7 @@ export async function PUT(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const session = await unstable_getServerSession(req,res, authOptions);
+  const session = await getServerSession(req,res, authOptions);
   if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
   // Providing API authentication for user using session
   const data: IBudget | IExpense = req.body;
@@ -93,7 +93,7 @@ export async function DELETE(
   req: NextApiRequest,
   res: NextApiResponse,
   ) {
-    const session = await unstable_getServerSession(req,res, authOptions);
+    const session = await getServerSession(req,res, authOptions);
     if (!session || !session.user) res.send({content:'This is a protected route.  Please log in.'})
     // Providing API authentication for user using session
     const userData: IUser = filterByParam(mockDB,'name',session?.user?.name,'include')[0]
