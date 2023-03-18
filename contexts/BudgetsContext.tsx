@@ -51,7 +51,7 @@ export const BudgetsProvider = (
       description: description
     };
     setExpenses([...expenses,newExpense]);
-    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+    fetch(`/api/user/${session?.user?.name}`,{
       method: 'POST',
       body: JSON.stringify(newExpense),
     })
@@ -67,7 +67,7 @@ export const BudgetsProvider = (
       max: max,
     };
     setBudgets([...budgets,newBudget]);
-    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+    fetch(`/api/user/${session?.user?.name}`,{
       method: 'POST',
       body: JSON.stringify(newBudget),
     })
@@ -76,7 +76,7 @@ export const BudgetsProvider = (
   function deleteBudget(id:string): void {
     const filteredBudget:IBudget[] = filterByParam(budgets,'id',id,'exclude');
     setBudgets(filteredBudget);
-    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+    fetch(`/api/user/${session?.user?.name}`,{
       method: 'DELETE',
       body: JSON.stringify(filterByParam(budgets,'id',id,'include')[0]),
     })
@@ -85,7 +85,7 @@ export const BudgetsProvider = (
   function deleteExpense(id: string): void {
     const filteredExpenses: IExpense[] = filterByParam(expenses,'id',id,'exclude');
     setExpenses(filteredExpenses);
-    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+    fetch(`/api/user/${session?.user?.name}`,{
       method: 'DELETE',
       body: JSON.stringify(filterByParam(expenses,'id',id,'include')[0]),
     })
@@ -100,7 +100,7 @@ export const BudgetsProvider = (
       return expense;
     });
     setExpenses(editedExpenses);
-    fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
+    fetch(`/api/user/${session?.user?.name}`,{
       method: 'PUT',
       body: JSON.stringify(editedExpense),
     })
