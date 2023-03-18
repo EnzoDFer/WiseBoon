@@ -2,11 +2,12 @@ import React, { FormEvent, useState } from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { IExpense } from '../../../utils/interfaces';
+import { DeletePrompt } from '../DeletePrompt/DeletePrompt';
 import styles from "./ExpenseEditForm.module.scss"
 
 export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
   const { editExpense } = useBudget();
-  const { toggleModal } = useModal();
+  const { toggleModal, openModal } = useModal();
   const [newExpense, setNewExpense] = useState<Partial<IExpense>>({
     description: expense.description,
     amount: expense.amount
@@ -36,9 +37,10 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
         <input type='number' id='expenseAmount' defaultValue={newExpense.amount} onChange={handleDataUpdate('amount')}/>
       </div>
       <div className={styles.buttonWrapper}>
-      <button
+        <button
           type='button'
-          className='tertiaryAction'
+          className='tertiaryAction'  
+          onClick={()=>openModal(<DeletePrompt item={expense}/>)}
         >
           Delete
         </button>
