@@ -114,7 +114,7 @@ export const BudgetsProvider = (
   function getBudgetExpensesTotal(budgetId:string): number {
     return expenses.reduce( (tot: number, expense: IExpense) => {
       if (expense.budgetId === budgetId) return tot+expense.amount;
-      return 0;
+      return tot;
     }, 0);
   }
 
