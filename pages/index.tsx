@@ -17,19 +17,17 @@ export default function Home({userData}:{userData:IUserData}) {
   return (
     <BudgetsProvider userData={userData}>
       <ModalProvider>
-        <IsAuthorized>
-          <BaseModal/>
-          <main className={styles.main}>
-            <Head>
-              <title>WiseBoon</title>
-              <meta name="description" content="Track your expenses and keep your budget tight!" />
-              <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Header />
-            <SummaryCard />
-            <SummaryTable />
-          </main>
-        </IsAuthorized>
+        <BaseModal/>
+        <main className={styles.main}>
+          <Head>
+            <title>WiseBoon</title>
+            <meta name="description" content="Track your expenses and keep your budget tight!" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <Header />
+          <SummaryCard />
+          <SummaryTable />
+        </main>
       </ModalProvider>
     </BudgetsProvider>
   )
