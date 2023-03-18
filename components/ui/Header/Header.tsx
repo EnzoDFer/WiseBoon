@@ -7,10 +7,10 @@ import CreateBudgetForm from "../CreateBudgetForm/CreateBudgetForm";
 import CreateExpenseForm from "../CreateExpenseForm/CreateExpenseForm";
 import CSVlink from "../CSVlink";
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Header() {
-  const { data: session } = useSession();
-  
+  const {data: session} = useSession();
   return (
     <header 
       className={styles.header}
@@ -24,8 +24,11 @@ export default function Header() {
         >
           <ModalPrompt component={<CreateBudgetForm/>} text='CREATE NEW BUDGET'/>
           <ModalPrompt component={<CreateExpenseForm/>} text='CREATE NEW EXPENSE'/>
-          <CSVlink/>  
-          {session?<button className={styles.menuButton} onClick={() => signOut()}>LOG OUT</button>: null}
+          <CSVlink/>
+          {session?
+            <button className={styles.menuButton} onClick={() => signOut()}>LOG OUT</button>:
+            <Link href='/'>{}</Link>
+          }
         </div>
       </div>
       <a className={styles.iconWrapper} href={'/'}>
