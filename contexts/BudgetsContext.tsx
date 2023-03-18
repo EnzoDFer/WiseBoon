@@ -33,8 +33,8 @@ export const BudgetsProvider = (
 
   const {data: session} = useSession();
 
-  const [budgets, setBudgets] = useState<IBudget[]>(userData.budgets);
-  const [expenses, setExpenses] = useState<IExpense[]>(userData.expenses);
+  const [budgets, setBudgets] = useState<IBudget[]>(session?userData.budgets:[]);
+  const [expenses, setExpenses] = useState<IExpense[]>(session?userData.expenses:[]);
   const [currentBudget,setCurrentBudget] = useState<IBudget|undefined>();
   
   
