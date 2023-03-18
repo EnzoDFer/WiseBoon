@@ -16,9 +16,11 @@ export const SummaryTable = () => {
       className={styles.table}
     >
       <thead>
-        <th scope='col'>BUDGET</th>
-        <th scope='col'>BALANCE</th>
-        <th></th>
+        <tr>
+          <th scope='col'>BUDGET</th>
+          <th scope='col'>BALANCE</th>
+          <th></th>
+        </tr>
       </thead>
       <tbody
         className={styles.body}
