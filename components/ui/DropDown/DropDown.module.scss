@@ -5,14 +5,22 @@
   position: relative;
 }
 
+.label {
+  border-radius: 8px;
+  padding: 8px;
+  color: hsl(350, 94%, 28%);
+  background-color: hsl(0, 100%, 80%);
+  font-weight: bold;
+}
+
+.hasBudget {
+  color: #333;
+  background-color: unset;
+}
+
+
 .checkbox {
-  all: unset;
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  
+
   &:checked ~ .itemWrapper {
     display: flex;
   }
