@@ -19,6 +19,7 @@
 
 .buttonBase {
   all: unset;
+  cursor: pointer;
   display: block;
   box-sizing: border-box;
   text-align: center;
@@ -33,11 +34,14 @@
 
 .loginForm {
   text-align: center;
-  color: hsl(209,18,30);
+  color: hsl(234,62,26);
   font-size: 16px;
   font-weight: bolder;
   width: 192px;
   margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
 }
 
 @media (min-width: 768px) {

@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../components/ui/Button/Button";
 import styles from "../styles/login.module.scss";
 
@@ -24,15 +25,12 @@ export const Login = ():JSX.Element => {
       >
         {
           !session?
-          <>
-            <p>Sign in to continue</p>
-            <Button
-              className={styles.buttonBase}
-              onClick={()=>signIn('github',{ callbackUrl: `/` })}
-            >
-              Sign in using GitHub
-            </Button>
-          </>:
+          <Button
+            className={styles.buttonBase}
+            onClick={()=>signIn('github',{ callbackUrl: `/` })}
+          >
+            Sign in using GitHub
+          </Button>:
           <Button 
             className={styles.buttonBase}
             onClick={()=>signOut()}
@@ -40,6 +38,7 @@ export const Login = ():JSX.Element => {
             Sign out
           </Button>
         }
+        <Link href='/' >Continue as Guest</Link>
       </div>
     </div>
   );
