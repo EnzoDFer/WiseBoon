@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
+import { useBudget } from '../../../contexts/BudgetsContext';
 import { IExpense } from '../../../utils/interfaces';
-import { usdFormat } from '../../../utils/utilFunctions';
 import styles from "./ExpenseEditForm.module.scss"
 
 export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
+  const { editExpense } = useBudget();
+  const [newExpense, setNewExpense] = useState<Partial<IExpense>>({
+    description: expense.description,
+    amount: expense.amount
+  });
+
+  const handleDataUpdate = (param: keyof Partial<IExpense>) => <T extends HTMLElement>(e: React.ChangeEvent<T>) => { 
+    if (!('value' in e.target)) throw new Error('Unexpected form element attempted to update')
+    setNewExpense({ ...newExpense, [param]: e.target.value })
+  }
+
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    editExpense({...newExpense, id: expense.id});
+  };  
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h3>Edit Expense</h3>
       <div className={styles.expenseWrapper}>
         <label className={styles.hidden} htmlFor='expense-description'>Expense Description Box</label>
-        <textarea id='expense-description' placeholder={expense.description}/>
+        <textarea id='expense-description' placeholder={newExpense.description} onChange={handleDataUpdate('description')}/>
 
         <label aria-label='Expense Amount Box' htmlFor='expenseAmount'>$</label>
-        <input type='number' id='expenseAmount' defaultValue={expense.amount}/>
+        <input type='number' id='expenseAmount' defaultValue={newExpense.amount} onChange={handleDataUpdate('amount')}/>
       </div>
+      <button
+        type='submit'
+      >
+        Submit
+      </button>
     </form>
   );
 }
