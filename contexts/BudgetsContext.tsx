@@ -92,13 +92,17 @@ export const BudgetsProvider = (
   }
   
   function editExpense(updateParams: Partial<IExpense>): void {
+    console.log("🚀 ~ file: BudgetsContext.tsx:95 ~ editExpense ~ updateParams:", updateParams)
     if (!updateParams.id) throw new Error('Missing Expense ID');
     const expenseToEdit: IExpense =  filterByParam(expenses, 'id', updateParams.id, "include")[0];
+    console.log("🚀 ~ file: BudgetsContext.tsx:97 ~ editExpense ~ expenseToEdit:", expenseToEdit)
     const editedExpense: IExpense = { ...expenseToEdit, ...updateParams };
-    const editedExpenses: IExpense[] = expenses.filter((expense:IExpense) => {
+    console.log("🚀 ~ file: BudgetsContext.tsx:103 ~ editExpense ~ editedExpense:", editedExpense)
+    const editedExpenses: IExpense[] = expenses.map((expense:IExpense) => {
       if (expense.id === editedExpense.id) return editedExpense;
       return expense;
     });
+    console.log("🚀 ~ file: BudgetsContext.tsx:104 ~ consteditedExpenses:IExpense[]=expenses.filter ~ editedExpenses:", editedExpenses)
     setExpenses(editedExpenses);
     fetch(`${process.env.HOST_URL}/api/user/${session?.user?.name}`,{
       method: 'PUT',

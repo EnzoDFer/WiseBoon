@@ -11,8 +11,10 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
   });
 
   const handleDataUpdate = (param: keyof Partial<IExpense>) => <T extends HTMLElement>(e: React.ChangeEvent<T>) => { 
-    if (!('value' in e.target)) throw new Error('Unexpected form element attempted to update')
-    setNewExpense({ ...newExpense, [param]: e.target.value })
+    if (!('value' in e.target)) throw new Error('Unexpected form element attempted to update');
+    let newValue: string | number = e.target.value as string;
+    if (param === 'amount') newValue = parseInt(newValue);
+    setNewExpense({ ...newExpense, [param]: newValue })
   }
 
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
