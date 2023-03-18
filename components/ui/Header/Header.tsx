@@ -27,7 +27,7 @@ export default function Header() {
           <CSVlink/>
           {session?
             <button className={styles.menuButton} onClick={() => signOut()}>LOG OUT</button>:
-            <Link href='/'>{}</Link>
+            <Link href='/'>LOG IN</Link>
           }
         </div>
       </div>
