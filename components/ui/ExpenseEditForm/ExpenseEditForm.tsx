@@ -1,10 +1,12 @@
 import React, { FormEvent, useState } from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext';
+import { useModal } from '../../../contexts/ModalContext';
 import { IExpense } from '../../../utils/interfaces';
 import styles from "./ExpenseEditForm.module.scss"
 
 export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
   const { editExpense } = useBudget();
+  const { toggleModal } = useModal();
   const [newExpense, setNewExpense] = useState<Partial<IExpense>>({
     description: expense.description,
     amount: expense.amount
@@ -20,6 +22,7 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     editExpense({...newExpense, id: expense.id});
+    toggleModal();
   };  
 
   return (
@@ -42,6 +45,7 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
         <button
           type='button'
           className='secondaryAction'
+          onClick={()=>toggleModal()}
         >
           Cancel
         </button>
