@@ -26,8 +26,8 @@ export default function Header() {
           <ModalPrompt component={<CreateExpenseForm/>} text='CREATE NEW EXPENSE'/>
           <CSVlink/>
           {session?
-            <button className={styles.menuButton} onClick={() => signOut()}>LOG OUT</button>:
-            <Link href='/'>LOG IN</Link>
+            <button className='secondaryAction' onClick={() => signOut()}>LOG OUT</button>:
+            <Link className='secondaryAction' href='/'>LOG IN</Link>
           }
         </div>
       </div>

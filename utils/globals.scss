@@ -81,3 +81,29 @@ input {
     background: black;
   }
 }
+
+@mixin buttonBase {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+}
+
+.secondaryAction {
+  @include buttonBase;
+  background-color: hsl(214, 15%, 91%);
+  color: hsl(230, 49%, 41%);
+}
+
+.primaryAction {
+  @include buttonBase;
+  background-color: hsl(230, 49%, 41%);
+  color: white;
+}
+
+.tertiaryAction {
+  @include buttonBase;
+  color: hsl(230, 49%, 41%);
+}

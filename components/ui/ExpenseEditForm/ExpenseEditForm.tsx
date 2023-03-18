@@ -23,8 +23,8 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
   };  
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Edit Expense</h3>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h3 className={styles.title}>Edit Expense</h3>
       <div className={styles.expenseWrapper}>
         <label className={styles.hidden} htmlFor='expense-description'>Expense Description Box</label>
         <textarea id='expense-description' placeholder={newExpense.description} onChange={handleDataUpdate('description')}/>
@@ -32,11 +32,26 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
         <label aria-label='Expense Amount Box' htmlFor='expenseAmount'>$</label>
         <input type='number' id='expenseAmount' defaultValue={newExpense.amount} onChange={handleDataUpdate('amount')}/>
       </div>
+      <div className={styles.buttonWrapper}>
       <button
-        type='submit'
-      >
-        Submit
-      </button>
+          type='button'
+          className='tertiaryAction'
+        >
+          Delete
+        </button>
+        <button
+          type='button'
+          className='secondaryAction'
+        >
+          Cancel
+        </button>
+        <button
+          type='submit'
+          className='primaryAction'
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 }
