@@ -121,7 +121,7 @@ export const BudgetsProvider = (
   function getOverLimitBudgets(): number {
     return budgets.reduce((tot: number, budget: IBudget) => {
       if ( getBudgetExpensesTotal(budget.id) > budget.max ) return tot+1;
-      return 0;
+      return tot;
     }, 0);
   }
 
