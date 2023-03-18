@@ -30,7 +30,7 @@ export const ExpenseEditForm = ({expense}:{expense: IExpense}) => {
     <form onSubmit={handleSubmit} className={styles.form}>
       <h3 className={styles.title}>Edit Expense</h3>
       <div className={styles.expenseWrapper}>
-        <label className={styles.hidden} htmlFor='expense-description'>Expense Description Box</label>
+        <label className='hidden' htmlFor='expense-description'>Expense Description Box</label>
         <textarea id='expense-description' placeholder={newExpense.description} onChange={handleDataUpdate('description')}/>
 
         <label aria-label='Expense Amount Box' htmlFor='expenseAmount'>$</label>
