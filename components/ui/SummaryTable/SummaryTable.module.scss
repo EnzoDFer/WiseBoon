@@ -1,13 +1,12 @@
 .table {
-  box-shadow: 0 4px 15px hsl(0,0,0,.15);
-  border-radius: 8px;
+  margin: 16px;
   border-collapse: collapse;
   overflow: hidden;
   table-layout: fixed;
+  background-color: white;
 
   & thead {
     font-size: 14px;
-    background-color: hsl(221, 68%, 93%);
     color: hsl(211deg 9% 30%);
   }
 
@@ -28,10 +27,6 @@
 
 .body {
   background-color: hsl(0,0,100);
-
-  & > tr:nth-child(even) {
-  background-color: hsl(221, 68%, 93%);
-  }
 
   & td:nth-child(2) {
     display: flex;
