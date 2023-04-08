@@ -82,3 +82,17 @@
   height: 24px;
   min-width: 24px;
 }
+
+.missing {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  gap: 8px;
+}
+
+.add {
+  height: 100%;
+  width: 100%;
+  font-size: 36px;
+  background: hsl(227deg 100% 83% / 13%);
+}

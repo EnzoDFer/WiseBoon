@@ -4,6 +4,7 @@ import { useBudget } from '../../../contexts/BudgetsContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { IBudget, IExpense } from '../../../utils/interfaces';
 import { usdFormat } from '../../../utils/utilFunctions';
+import CreateExpenseForm from '../CreateExpenseForm/CreateExpenseForm';
 import { ExpenseEditForm } from '../ExpenseEditForm/ExpenseEditForm';
 import styles from "./ExpenseList.module.scss"
 
@@ -67,8 +68,15 @@ export default function ExpenseList({budget}:{budget: IBudget}) {
   );
 
   return (
-    <div>
-      No recorded expenses.
+    <div
+      className={styles.missing}
+    >
+      <button
+        className={`${styles.add} tertiaryAction`}
+        onClick={()=>openModal(<CreateExpenseForm/>)}
+      >
+        Create a new Expense
+      </button>
       <button
         className={styles.cancelButton}
         onClick={toggleModal}
