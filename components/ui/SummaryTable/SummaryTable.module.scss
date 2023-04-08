@@ -4,10 +4,21 @@
   overflow: hidden;
   table-layout: fixed;
   background-color: white;
+  box-shadow: 0 0 70px 900px hsl(199deg 60% 58% / 15%);
+  border-radius: 8px;
 
   & thead {
     font-size: 14px;
     color: hsl(211deg 9% 30%);
+
+    & tr{
+      border-bottom: 2px solid hsl(199deg 62% 50% / 15%);
+    }
+  }
+
+  & tr:has(+ tr) {
+    border-bottom: 2px solid hsl(199deg 62% 50% / 15%);
+    border-top: 2px solid hsl(199deg 62% 50% / 15%);
   }
 
   & th:nth-child(1),
