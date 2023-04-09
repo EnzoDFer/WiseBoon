@@ -3,6 +3,7 @@ import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext'
 import { useModal } from '../../../contexts/ModalContext';
 import { usdFormat } from '../../../utils/utilFunctions';
+import { BudgetBreakdownList } from '../BudgetBreakdownList/BudgetBreakdownList';
 import { TotalSpentList } from '../TotalSpentList/TotalSpentList';
 import styles from './SummaryCard.module.scss'
 
@@ -24,7 +25,7 @@ export const SummaryCard = () => {
         val={usdFormat(getTotalExpenses())}
         text={'spent'}
         alt={'See more regarding total spent'}
-        onClick={()=>openModal(<TotalSpentList/>)}
+        onClick={()=>openModal(<BudgetBreakdownList/>)}
       />
       <SumValue
         val={expenses.length}
@@ -36,7 +37,7 @@ export const SummaryCard = () => {
         val={getOverLimitBudgets()}
         text={'budgets over limit'}
         alt={'See more regarding over-limit budgets'}
-        onClick={()=>{}}
+        onClick={()=>openModal(<BudgetBreakdownList/>)}
       />
     </section>
   )
