@@ -30,7 +30,7 @@ export const SummaryCard = () => {
         val={expenses.length}
         text={'total expenses'}
         alt={'See more regarding total expenses'}
-        onClick={()=>{}}
+        onClick={()=>openModal(<TotalSpentList/>)}
       />
       <SumValue
         val={getOverLimitBudgets()}
