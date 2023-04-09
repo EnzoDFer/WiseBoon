@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
 import { useBudget } from '../../../contexts/BudgetsContext'
+import { useModal } from '../../../contexts/ModalContext';
 import { usdFormat } from '../../../utils/utilFunctions';
+import { TotalSpentList } from '../TotalSpentList/TotalSpentList';
 import styles from './SummaryCard.module.scss'
 
 export const SummaryCard = () => {
@@ -12,6 +14,8 @@ export const SummaryCard = () => {
     expenses,
   } = useBudget();
 
+  const {openModal} = useModal();
+
   return (
     <section
       className={styles.summary}
@@ -20,32 +24,39 @@ export const SummaryCard = () => {
         val={usdFormat(getTotalExpenses())}
         text={'spent'}
         alt={'See more regarding total spent'}
+        onClick={()=>openModal(<TotalSpentList/>)}
       />
       <SumValue
         val={expenses.length}
         text={'total expenses'}
         alt={'See more regarding total expenses'}
+        onClick={()=>{}}
       />
       <SumValue
         val={getOverLimitBudgets()}
         text={'budgets over limit'}
         alt={'See more regarding over-limit budgets'}
+        onClick={()=>{}}
       />
     </section>
   )
 }
 
-const SumValue = ({val,text, alt}: {val: string | number, text: string, alt: string}) => {
+const SumValue = ({val,text, alt, onClick}: {val: string | number, text: string, alt: string, onClick: ()=>void}) => {
   return (
     <p  className={styles.sumValue} >
       <span>{val}</span>
       <span>{` ${text}`}</span>
-      <Image
-        alt={alt}
-        src={'/img/icon-cheveron-right-circle.svg'}
-        height={24}
-        width={24}
-      />
+      <button
+        onClick={onClick}
+      >
+        <Image
+          alt={alt}
+          src={'/img/icon-cheveron-right-circle.svg'}
+          height={24}
+          width={24}
+        />
+      </button>
     </p>
   );
 }
