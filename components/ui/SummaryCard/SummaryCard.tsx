@@ -4,6 +4,7 @@ import { useBudget } from '../../../contexts/BudgetsContext'
 import { useModal } from '../../../contexts/ModalContext';
 import { usdFormat } from '../../../utils/utilFunctions';
 import { BudgetBreakdownList } from '../BudgetBreakdownList/BudgetBreakdownList';
+import { OverLimitBudgetList } from '../OverLimitBudgetList/OverLimitBudgetList';
 import { TotalSpentList } from '../TotalSpentList/TotalSpentList';
 import styles from './SummaryCard.module.scss'
 
@@ -37,7 +38,7 @@ export const SummaryCard = () => {
         val={getOverLimitBudgets()}
         text={'budgets over limit'}
         alt={'See more regarding over-limit budgets'}
-        onClick={()=>openModal(<BudgetBreakdownList/>)}
+        onClick={()=>openModal(<OverLimitBudgetList/>)}
       />
     </section>
   )

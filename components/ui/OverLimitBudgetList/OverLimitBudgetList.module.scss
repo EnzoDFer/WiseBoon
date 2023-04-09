@@ -1,0 +1,19 @@
+@use "../TotalSpentList/TotalSpentList.module.scss";
+
+.itemWrapper {
+  text-align: right;
+
+  & h3 {
+    font-size: 24px;
+    color: hsl(182, 85%, 39%);
+  }
+}
+
+.empty {
+  text-align: center;
+
+  & h3 {
+    font-size: 36px;
+    color: hsl(182, 85%, 39%);
+  }
+}
