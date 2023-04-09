@@ -1,0 +1,8 @@
+@use "../ExpenseList/ExpenseList.module.scss";
+
+.wrapper {
+  color: hsl(211, 9%, 30%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
