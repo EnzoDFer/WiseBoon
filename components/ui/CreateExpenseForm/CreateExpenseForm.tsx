@@ -145,8 +145,9 @@ export default function CreateExpenseForm():JSX.Element|null {
         <button
           type="submit"
           className={styles.confirmButton}
+          disabled={!(budgetIdValid && amountValid && descriptionValid)}
         >
-          Create
+          {!(budgetIdValid && amountValid && descriptionValid)?'Please enter missing information':"Create"}
         </button>
       </div>
     </form>
